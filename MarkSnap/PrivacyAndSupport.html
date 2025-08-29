@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarkSnap Support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            background: white;
+            padding: 40px 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+        }
+        
+        .language-toggle {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .language-toggle button {
+            background: #007AFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .language-toggle button:hover {
+            background: #0056CC;
+        }
+        
+        .language-toggle button.active {
+            background: #34C759;
+        }
+        
+        .content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #007AFF;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: #34495e;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            color: #34C759;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .contact-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #007AFF;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-info a {
+            color: #007AFF;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header, .content {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-icon">📸</div>
+            <h1>MarkSnap</h1>
+            <p class="subtitle">Professional Screenshot Annotation Tool</p>
+        </div>
+        
+        <div class="language-toggle">
+            <button onclick="showLanguage('en')" id="btn-en" class="active">English</button>
+            <button onclick="showLanguage('zh')" id="btn-zh">中文</button>
+        </div>
+        
+        <!-- English Content -->
+        <div id="content-en" class="content">
+            <div class="section">
+                <h2>About MarkSnap</h2>
+                <p>MarkSnap is a powerful screenshot annotation tool designed for professionals who need to create clear, precise visual communications. Whether you're creating tutorials, reporting bugs, or collaborating with team members, MarkSnap provides all the tools you need.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Key Features</h2>
+                <ul class="feature-list">
+                    <li>Intuitive annotation tools (arrows, text, shapes, highlights)</li>
+                    <li>Precise editing capabilities</li>
+                    <li>High-quality export options</li>
+                    <li>Clean, user-friendly interface</li>
+                    <li>Quick sharing functionality</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>Premium Features</h2>
+                <p>Upgrade to MarkSnap Premium to unlock additional capabilities:</p>
+                <ul class="feature-list">
+                    <li>Remove usage limitations</li>
+                    <li>Access to all advanced annotation tools</li>
+                    <li>Export in high resolution</li>
+                    <li>Remove watermarks from exports</li>
+                    <li>Priority customer support</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>How to Use</h2>
+                <h3>Getting Started</h3>
+                <p>1. Take a screenshot or import an image</p>
+                <p>2. Select your annotation tool</p>
+                <p>3. Add arrows, text, shapes, or highlights</p>
+                <p>4. Export or share your annotated image</p>
+                
+                <h3>Tips for Best Results</h3>
+                <p>• Use contrasting colors for better visibility</p>
+                <p>• Keep text annotations concise and clear</p>
+                <p>• Use arrows to direct attention to specific areas</p>
+                <p>• Preview your annotations before saving</p>
+            </div>
+            
+            <div class="section">
+                <h2>Frequently Asked Questions</h2>
+                
+                <h3>How do I restore my Premium purchase?</h3>
+                <p>If you've purchased Premium on this device before, go to Settings and tap "Restore Purchases". This will restore your Premium features without additional charge.</p>
+                
+                <h3>Can I use MarkSnap on multiple devices?</h3>
+                <p>Yes! Your Premium purchase is linked to your Apple ID and can be restored on any device using the same Apple ID.</p>
+                
+                <h3>How do I get a refund?</h3>
+                <p>Refunds are handled by Apple. You can request a refund through your Apple ID account or contact Apple Support directly.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Privacy Policy</h2>
+                <p>Your privacy is important to us. MarkSnap:</p>
+                <ul class="feature-list">
+                    <li>Does not collect personal information</li>
+                    <li>Does not track user behavior</li>
+                    <li>Processes images locally on your device</li>
+                    <li>Does not upload images to external servers</li>
+                    <li>Only uses necessary device permissions</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>Contact Support</h2>
+                <div class="contact-info">
+                    <p><strong>Need help?</strong> We're here to assist you!</p>
+                    <p><strong>Email:</strong> <a href="mailto:jxstudio.apps@gmail.com">jxstudio.apps@gmail.com</a></p>
+                    <p><strong>Premium Users:</strong> Priority support with faster response times</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chinese Content -->
+        <div id="content-zh" class="content hidden">
+            <div class="section">
+                <h2>关于 MarkSnap</h2>
+                <p>MarkSnap 是一款强大的截图标注工具，专为需要创建清晰、精确视觉交流的专业人士设计。无论您是在制作教程、报告错误还是与团队成员协作，MarkSnap 都能提供您所需的所有工具。</p>
+            </div>
+            
+            <div class="section">
+                <h2>主要功能</h2>
+                <ul class="feature-list">
+                    <li>直观的标注工具（箭头、文字、形状、高亮）</li>
+                    <li>精确编辑功能</li>
+                    <li>高质量导出选项</li>
+                    <li>简洁友好的用户界面</li>
+                    <li>快速分享功能</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>高级功能</h2>
+                <p>升级到 MarkSnap 高级版以解锁更多功能：</p>
+                <ul class="feature-list">
+                    <li>移除使用限制</li>
+                    <li>使用所有高级标注工具</li>
+                    <li>高分辨率导出</li>
+                    <li>移除导出水印</li>
+                    <li>优先客户支持</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>使用方法</h2>
+                <h3>快速开始</h3>
+                <p>1. 截取屏幕截图或导入图片</p>
+                <p>2. 选择您的标注工具</p>
+                <p>3. 添加箭头、文字、形状或高亮</p>
+                <p>4. 导出或分享您的标注图片</p>
+                
+                <h3>最佳使用技巧</h3>
+                <p>• 使用对比色以获得更好的可见性</p>
+                <p>• 保持文字标注简洁明了</p>
+                <p>• 使用箭头指向特定区域</p>
+                <p>• 保存前预览您的标注</p>
+            </div>
+            
+            <div class="section">
+                <h2>常见问题</h2>
+                
+                <h3>如何恢复我的高级版购买？</h3>
+                <p>如果您之前在此设备上购买过高级版，请前往设置并点击"恢复购买"。这将免费恢复您的高级版功能。</p>
+                
+                <h3>我可以在多个设备上使用 MarkSnap 吗？</h3>
+                <p>可以！您的高级版购买与您的 Apple ID 关联，可以在使用相同 Apple ID 的任何设备上恢复。</p>
+                
+                <h3>如何申请退款？</h3>
+                <p>退款由苹果公司处理。您可以通过您的 Apple ID 账户申请退款或直接联系苹果客服。</p>
+            </div>
+            
+            <div class="section">
+                <h2>隐私政策</h2>
+                <p>您的隐私对我们很重要。MarkSnap：</p>
+                <ul class="feature-list">
+                    <li>不收集个人信息</li>
+                    <li>不跟踪用户行为</li>
+                    <li>在您的设备上本地处理图片</li>
+                    <li>不将图片上传到外部服务器</li>
+                    <li>仅使用必要的设备权限</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>联系支持</h2>
+                <div class="contact-info">
+                    <p><strong>需要帮助？</strong> 我们在这里为您服务！</p>
+                    <p><strong>邮箱：</strong> <a href="mailto:jxstudio.apps@gmail.com">jxstudio.apps@gmail.com</a></p>
+                    <p><strong>高级版用户：</strong> 享受优先支持，更快的响应时间</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 MarkSnap. All rights reserved.</p>
+            <p>Made with ❤️ for better visual communication</p>
+        </div>
+    </div>
+    
+    <script>
+        function showLanguage(lang) {
+            // Hide all content
+            document.getElementById('content-en').classList.add('hidden');
+            document.getElementById('content-zh').classList.add('hidden');
+            
+            // Remove active class from all buttons
+            document.getElementById('btn-en').classList.remove('active');
+            document.getElementById('btn-zh').classList.remove('active');
+            
+            // Show selected content and activate button
+            if (lang === 'en') {
+                document.getElementById('content-en').classList.remove('hidden');
+                document.getElementById('btn-en').classList.add('active');
+            } else {
+                document.getElementById('content-zh').classList.remove('hidden');
+                document.getElementById('btn-zh').classList.add('active');
+            }
+        }
+        
+        // Set default language based on browser preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const browserLang = navigator.language || navigator.userLanguage;
+            if (browserLang.startsWith('zh')) {
+                showLanguage('zh');
+            } else {
+                showLanguage('en');
+            }
+        });
+    </script>
+</body>
+</html>
