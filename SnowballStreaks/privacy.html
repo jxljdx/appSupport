@@ -8,47 +8,111 @@
 </head>
 <body>
   <main>
-    <section class="hero">
-      <div class="badge">Snowball Streaks</div>
-      <h1>Privacy Policy</h1>
-      <p>Snowball Streaks is designed to be lightweight and local-first.</p>
-    </section>
+    <div class="language-toggle" aria-label="Language switcher">
+      <button id="btn-en" class="active" type="button" onclick="showLanguage('en')">English</button>
+      <button id="btn-zh" type="button" onclick="showLanguage('zh')">中文</button>
+    </div>
 
-    <section class="card">
-      <h2>Data we collect</h2>
-      <p>Snowball Streaks does not require account creation and does not intentionally collect personal account data for core app use.</p>
-    </section>
+    <div id="lang-en" class="lang-pane">
+      <section class="hero">
+        <div class="badge">Snowball Streaks</div>
+        <h1>Privacy Policy</h1>
+        <p>Snowball Streaks is designed to be lightweight and local-first.</p>
+      </section>
 
-    <section class="card">
-      <h2>How data is used</h2>
-      <ul>
-        <li>Habit, streak, timer, and history data are stored locally on your device.</li>
-        <li>App Group storage is used so widgets can display your latest progress.</li>
-        <li>Notification permission is used only for habit reminders if you enable reminders.</li>
-        <li>Siri / App Intents are used only when you actively trigger shortcuts.</li>
-      </ul>
-    </section>
+      <section class="card">
+        <h2>Data we collect</h2>
+        <p>Snowball Streaks does not require account creation and does not intentionally collect personal account data for core app use.</p>
+      </section>
 
-    <section class="card">
-      <h2>Third parties</h2>
-      <p>Based on the current app setup, Snowball Streaks does not use third-party advertising or analytics SDKs.</p>
-    </section>
+      <section class="card">
+        <h2>How data is used</h2>
+        <ul>
+          <li>Habit, streak, timer, and history data are stored locally on your device.</li>
+          <li>App Group storage is used so widgets can display your latest progress.</li>
+          <li>Notification permission is used only for habit reminders if you enable reminders.</li>
+          <li>Siri / App Intents are used only when you actively trigger shortcuts.</li>
+        </ul>
+      </section>
 
-    <section class="card">
-      <h2>Your choices</h2>
-      <ul>
-        <li>You can disable reminders in the app or in iPhone Settings.</li>
-        <li>You can remove the app to delete local data stored on your device.</li>
-      </ul>
-    </section>
+      <section class="card">
+        <h2>Third parties</h2>
+        <p>Based on the current app setup, Snowball Streaks does not use third-party advertising or analytics SDKs.</p>
+      </section>
 
-    <section class="card">
-      <h2>Contact</h2>
-      <p>For privacy questions or support, contact:</p>
-      <p><strong>Email:</strong> jxstudio.apps@gmail.com</p>
-    </section>
+      <section class="card">
+        <h2>Your choices</h2>
+        <ul>
+          <li>You can disable reminders in the app or in iPhone Settings.</li>
+          <li>You can remove the app to delete local data stored on your device.</li>
+        </ul>
+      </section>
 
-    <p class="footer">Last updated: 2026-03-27</p>
+      <section class="card">
+        <h2>Contact</h2>
+        <p>For privacy questions or support, contact:</p>
+        <p><strong>Email:</strong> <a href="mailto:jxstudio.apps@gmail.com">jxstudio.apps@gmail.com</a></p>
+      </section>
+    </div>
+
+    <div id="lang-zh" class="lang-pane hidden">
+      <section class="hero">
+        <div class="badge">雪球打卡</div>
+        <h1>隐私政策</h1>
+        <p>雪球打卡是一款轻量、本地优先的应用。</p>
+      </section>
+
+      <section class="card">
+        <h2>我们收集的数据</h2>
+        <p>雪球打卡不要求注册账号，核心使用流程也不会主动收集个人账号类数据。</p>
+      </section>
+
+      <section class="card">
+        <h2>数据如何使用</h2>
+        <ul>
+          <li>习惯、连续记录、计时器和历史数据默认保存在你的设备本地。</li>
+          <li>App Group 存储仅用于让小组件显示最新进展。</li>
+          <li>通知权限只会在你开启提醒后用于每日提醒。</li>
+          <li>Siri / App Intents 只会在你主动触发快捷指令时使用。</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>第三方服务</h2>
+        <p>基于当前 app 结构，雪球打卡不使用第三方广告或分析统计 SDK。</p>
+      </section>
+
+      <section class="card">
+        <h2>你的选择</h2>
+        <ul>
+          <li>你可以在 app 内或 iPhone 系统设置中关闭提醒。</li>
+          <li>你可以通过删除 app 来移除存储在设备本地的数据。</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>联系我们</h2>
+        <p>如果你有隐私或支持相关问题，请联系：</p>
+        <p><strong>邮箱：</strong><a href="mailto:jxstudio.apps@gmail.com">jxstudio.apps@gmail.com</a></p>
+      </section>
+    </div>
+
+    <p class="footer">Last updated / 最后更新：2026-03-27</p>
   </main>
+  <script>
+    function showLanguage(lang) {
+      const en = document.getElementById('lang-en');
+      const zh = document.getElementById('lang-zh');
+      const enBtn = document.getElementById('btn-en');
+      const zhBtn = document.getElementById('btn-zh');
+      const useZh = lang === 'zh';
+
+      en.classList.toggle('hidden', useZh);
+      zh.classList.toggle('hidden', !useZh);
+      enBtn.classList.toggle('active', !useZh);
+      zhBtn.classList.toggle('active', useZh);
+      document.documentElement.lang = useZh ? 'zh-Hans' : 'en';
+    }
+  </script>
 </body>
 </html>
