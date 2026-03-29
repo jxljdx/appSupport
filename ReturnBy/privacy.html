@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Return By Privacy Policy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <div class="language-toggle" aria-label="Language switcher">
+      <button id="btn-en" class="active" type="button" onclick="showLanguage('en')">English</button>
+      <button id="btn-zh" type="button" onclick="showLanguage('zh')">中文</button>
+    </div>
+
+    <div id="lang-en" class="lang-pane">
+      <section class="hero">
+        <div class="badge">Return By</div>
+        <h1>Privacy Policy</h1>
+        <p>Return By is designed to be local-first and lightweight.</p>
+      </section>
+
+      <section class="card">
+        <h2>Data we collect</h2>
+        <p>Return By does not require account creation and does not intentionally collect personal account data for core app use.</p>
+      </section>
+
+      <section class="card">
+        <h2>How data is used</h2>
+        <ul>
+          <li>Return records, notes, and reminder preferences are stored locally on your device.</li>
+          <li>Photos and receipt images are used only so the app can extract return details and help you save a record.</li>
+          <li>Text recognition for screenshots and receipts is performed on-device using Apple system frameworks.</li>
+          <li>Notification and Reminders permissions are used only if you choose to save reminder alerts.</li>
+          <li>Optional JSON exports are created only when you choose to export your own data.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Third parties</h2>
+        <p>Based on the current app setup, Return By does not use third-party advertising SDKs or third-party analytics SDKs.</p>
+        <p>In-app purchases, if offered, are processed by Apple using StoreKit and your Apple account.</p>
+      </section>
+
+      <section class="card">
+        <h2>Your choices</h2>
+        <ul>
+          <li>You can deny or revoke Camera, Photos, Notifications, or Reminders permissions in iPhone Settings.</li>
+          <li>You can delete local records inside the app or remove the app to delete local data stored on your device.</li>
+          <li>You can export your records as JSON when you want a portable backup.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Contact</h2>
+        <p>For privacy questions or support, contact:</p>
+        <p><strong>Email:</strong> <a href="mailto:jxstudio.apps@gmail.com">jxstudio.apps@gmail.com</a></p>
+      </section>
+    </div>
+
+    <div id="lang-zh" class="lang-pane hidden">
+      <section class="hero">
+        <div class="badge">Return By</div>
+        <h1>隐私政策</h1>
+        <p>Return By 是一款本地优先、尽量轻量的应用。</p>
+      </section>
+
+      <section class="card">
+        <h2>我们收集的数据</h2>
+        <p>Return By 不要求注册账号，核心使用流程也不会主动收集账号类个人数据。</p>
+      </section>
+
+      <section class="card">
+        <h2>数据如何使用</h2>
+        <ul>
+          <li>退货记录、备注和提醒偏好默认保存在你的设备本地。</li>
+          <li>照片和小票图片只用于提取退货相关信息，帮助你保存记录。</li>
+          <li>截图和小票的文字识别通过 Apple 系统框架在设备本地完成。</li>
+          <li>通知权限和提醒事项权限只会在你选择保存提醒时使用。</li>
+          <li>JSON 导出是可选的，只有在你主动导出时才会生成你的数据备份。</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>第三方服务</h2>
+        <p>基于当前 app 结构，Return By 不使用第三方广告 SDK，也不使用第三方分析统计 SDK。</p>
+        <p>如果提供应用内购买，支付流程由 Apple 通过 StoreKit 和你的 Apple 账户处理。</p>
+      </section>
+
+      <section class="card">
+        <h2>你的选择</h2>
+        <ul>
+          <li>你可以在 iPhone 系统设置中拒绝或撤销相机、照片、通知和提醒事项权限。</li>
+          <li>你可以在 app 内删除本地记录，或直接删除 app 来移除设备上的本地数据。</li>
+          <li>如果你需要可迁移备份，可以主动导出 JSON 文件。</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>联系我们</h2>
+        <p>如果你有隐私或支持相关问题，请联系：</p>
+        <p><strong>邮箱：</strong><a href="mailto:jxstudio.apps@gmail.com">jxstudio.apps@gmail.com</a></p>
+      </section>
+    </div>
+
+    <p class="footer">Last updated / 最后更新：2026-03-29</p>
+  </main>
+  <script>
+    function showLanguage(lang) {
+      const en = document.getElementById('lang-en');
+      const zh = document.getElementById('lang-zh');
+      const enBtn = document.getElementById('btn-en');
+      const zhBtn = document.getElementById('btn-zh');
+      const useZh = lang === 'zh';
+
+      en.classList.toggle('hidden', useZh);
+      zh.classList.toggle('hidden', !useZh);
+      enBtn.classList.toggle('active', !useZh);
+      zhBtn.classList.toggle('active', useZh);
+      document.documentElement.lang = useZh ? 'zh-Hans' : 'en';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f5f7fb;
+  --card: rgba(255,255,255,0.92);
+  --text: #162033;
+  --muted: #5b6475;
+  --accent: #2f7cf6;
+  --border: rgba(22,32,51,0.08);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1420;
+    --card: rgba(19,27,41,0.92);
+    --text: #eef3fb;
+    --muted: #a4afc1;
+    --accent: #75a9ff;
+    --border: rgba(255,255,255,0.08);
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg) 82%, white 18%));
+  color: var(--text);
+  line-height: 1.6;
+}
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 20px 72px;
+}
+.language-toggle {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 0 0 18px;
+}
+.language-toggle button {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 10px 16px;
+  font: inherit;
+  cursor: pointer;
+}
+.language-toggle button.active {
+  background: color-mix(in srgb, var(--accent) 18%, var(--card));
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  font-weight: 600;
+}
+h1, h2 { line-height: 1.2; margin: 0 0 12px; }
+p { margin: 0 0 14px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.lang-pane.hidden { display: none; }
+.hero, .card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+  margin-bottom: 18px;
+}
+.badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+ul { padding-left: 20px; margin: 0; }
+li + li { margin-top: 8px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+.note {
+  font-size: 14px;
+  color: var(--muted);
+}
+.footer {
+  margin-top: 28px;
+  font-size: 14px;
+  color: var(--muted);
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Return By Support</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <div class="language-toggle" aria-label="Language switcher">
+      <button id="btn-en" class="active" type="button" onclick="showLanguage('en')">English</button>
+      <button id="btn-zh" type="button" onclick="showLanguage('zh')">中文</button>
+    </div>
+
+    <div id="lang-en" class="lang-pane">
+      <section class="hero">
+        <div class="badge">Return By</div>
+        <h1>App Support</h1>
+        <p>Return By helps you save return deadlines from screenshots and receipts, review key details before saving, and stay ahead of refund windows with reminders.</p>
+        <p class="note">Use this page as your App Store Support URL.</p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Need help?</h2>
+          <ul>
+            <li>If OCR misses a date or amount, open the review step and correct the fields before saving.</li>
+            <li>If reminders do not appear, check both Notifications and Reminders permissions in iPhone Settings.</li>
+            <li>If an imported backup does not recreate alerts automatically, open the record and save reminders again on this device.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Support contact</h2>
+          <p>Contact us any time if you need help using Return By.</p>
+          <p><strong>Email:</strong> <a href="mailto:jxstudio.apps@gmail.com">jxstudio.apps@gmail.com</a></p>
+          <p><strong>Response time:</strong> usually within 2 business days.</p>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>Frequently asked questions</h2>
+        <ul>
+          <li><strong>Do I need an account?</strong> No. Return By works without account signup, inbox access, or merchant integrations.</li>
+          <li><strong>Where is my data stored?</strong> Return records are stored locally on your device. JSON backup export is optional and created only when you choose to export.</li>
+          <li><strong>How do reminders work?</strong> Return By can save reminders to Apple Reminders and also schedule app alerts before the deadline.</li>
+          <li><strong>Can I move my data to another device?</strong> Yes. Export a JSON backup from Settings, then import it on the new device and re-save reminders there.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Policies</h2>
+        <p><a href="privacy.html">Privacy Policy</a></p>
+      </section>
+    </div>
+
+    <div id="lang-zh" class="lang-pane hidden">
+      <section class="hero">
+        <div class="badge">Return By</div>
+        <h1>应用支持</h1>
+        <p>Return By 帮你从订单截图和小票中保存退货截止日期，在保存前确认关键信息，并通过提醒避免错过退款窗口。</p>
+        <p class="note">你可以把此页面作为 App Store 的 Support URL。</p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>需要帮助？</h2>
+          <ul>
+            <li>如果 OCR 没有识别出日期或金额，请在保存前到确认页面手动修正这些字段。</li>
+            <li>如果提醒没有出现，请在 iPhone 系统设置中确认通知权限和提醒事项权限都已开启。</li>
+            <li>如果导入备份后没有自动恢复提醒，请打开对应记录并在当前设备上重新保存提醒。</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>联系支持</h2>
+          <p>如果你在使用 Return By 时遇到问题，可以随时联系我们。</p>
+          <p><strong>邮箱：</strong><a href="mailto:jxstudio.apps@gmail.com">jxstudio.apps@gmail.com</a></p>
+          <p><strong>回复时间：</strong>通常在 2 个工作日内。</p>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>常见问题</h2>
+        <ul>
+          <li><strong>需要注册账号吗？</strong>不需要。Return By 无需账号、邮箱接入或商家集成即可使用。</li>
+          <li><strong>数据存在哪里？</strong>退货记录默认保存在你的设备本地。只有在你主动导出时，才会生成 JSON 备份文件。</li>
+          <li><strong>提醒是怎么工作的？</strong>Return By 可以把截止日保存到 Apple 提醒事项，并同时安排 app 内提醒。</li>
+          <li><strong>可以迁移到新设备吗？</strong>可以。在设置中导出 JSON 备份，在新设备导入后，再重新保存提醒即可。</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>相关政策</h2>
+        <p><a href="privacy.html">隐私政策</a></p>
+      </section>
+    </div>
+
+    <p class="footer">Last updated / 最后更新：2026-03-29</p>
+  </main>
+  <script>
+    function showLanguage(lang) {
+      const en = document.getElementById('lang-en');
+      const zh = document.getElementById('lang-zh');
+      const enBtn = document.getElementById('btn-en');
+      const zhBtn = document.getElementById('btn-zh');
+      const useZh = lang === 'zh';
+
+      en.classList.toggle('hidden', useZh);
+      zh.classList.toggle('hidden', !useZh);
+      enBtn.classList.toggle('active', !useZh);
+      zhBtn.classList.toggle('active', useZh);
+      document.documentElement.lang = useZh ? 'zh-Hans' : 'en';
+    }
+  </script>
+</body>
+</html>
