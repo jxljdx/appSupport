@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deposit Shield Privacy Policy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <div class="language-toggle" aria-label="Language switcher">
+      <button id="btn-en" class="active" type="button" onclick="showLanguage('en')">English</button>
+      <button id="btn-zh" type="button" onclick="showLanguage('zh')">中文</button>
+    </div>
+
+    <div id="lang-en" class="lang-pane">
+      <section class="hero">
+        <div class="badge">Deposit Shield</div>
+        <h1>Privacy Policy</h1>
+        <p>Deposit Shield is designed to help renters stay organized without requiring an account.</p>
+      </section>
+
+      <section class="card">
+        <h2>Data we collect</h2>
+        <p>Deposit Shield does not require account creation and does not intentionally collect personal account data for core app use.</p>
+      </section>
+
+      <section class="card">
+        <h2>How data is used</h2>
+        <ul>
+          <li>Property records, room details, evidence notes, and communication proof are stored locally on your device.</li>
+          <li>Imported photos and screenshots are used only to help you document move-in or move-out condition and keep related proof together.</li>
+          <li>Notification permission is used only if you choose to enable lease-end or walkthrough reminders.</li>
+          <li>App preferences such as reminder settings and Pro status are stored locally on your device.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Third parties</h2>
+        <p>Based on the current app setup, Deposit Shield does not use third-party advertising SDKs or third-party analytics SDKs.</p>
+        <p>If you purchase Pro, payment is handled by Apple through StoreKit and your Apple account.</p>
+      </section>
+
+      <section class="card">
+        <h2>Your choices</h2>
+        <ul>
+          <li>You can deny or revoke Photos or Notifications permissions in iPhone Settings at any time.</li>
+          <li>You can delete records inside the app or remove the app to delete local data stored on your device.</li>
+          <li>You can choose what evidence, screenshots, and notes to save for each property.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Contact</h2>
+        <p>For privacy questions or support, contact:</p>
+        <p><strong>Email:</strong> <a href="mailto:support@depositshield.app">support@depositshield.app</a></p>
+      </section>
+    </div>
+
+    <div id="lang-zh" class="lang-pane hidden">
+      <section class="hero">
+        <div class="badge">Deposit Shield</div>
+        <h1>隐私政策</h1>
+        <p>Deposit Shield 旨在帮助租客整理证据和记录，核心功能无需注册账号。</p>
+      </section>
+
+      <section class="card">
+        <h2>我们收集的数据</h2>
+        <p>Deposit Shield 不要求注册账号，核心使用流程也不会主动收集账号类个人数据。</p>
+      </section>
+
+      <section class="card">
+        <h2>数据如何使用</h2>
+        <ul>
+          <li>房源记录、房间信息、证据备注和沟通截图默认保存在你的设备本地。</li>
+          <li>你主动导入的照片和截图只用于记录入住或退租状态，并把相关证据整理到一起。</li>
+          <li>通知权限只会在你主动开启租约结束或 final walkthrough 提醒时使用。</li>
+          <li>提醒设置、Pro 状态等应用偏好默认保存在你的设备本地。</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>第三方服务</h2>
+        <p>基于当前 app 结构，Deposit Shield 不使用第三方广告 SDK，也不使用第三方分析统计 SDK。</p>
+        <p>如果你购买 Pro，支付流程由 Apple 通过 StoreKit 和你的 Apple 账户处理。</p>
+      </section>
+
+      <section class="card">
+        <h2>你的选择</h2>
+        <ul>
+          <li>你可以随时在 iPhone 系统设置中拒绝或撤销照片、通知权限。</li>
+          <li>你可以在 app 内删除记录，或直接删除 app 来移除设备上的本地数据。</li>
+          <li>你可以自行决定每个房源保存哪些照片、截图和备注。</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>联系我们</h2>
+        <p>如果你有隐私或支持相关问题，请联系：</p>
+        <p><strong>邮箱：</strong><a href="mailto:support@depositshield.app">support@depositshield.app</a></p>
+      </section>
+    </div>
+
+    <p class="footer">Last updated / 最后更新：2026-04-12</p>
+  </main>
+  <script>
+    function showLanguage(lang) {
+      const en = document.getElementById('lang-en');
+      const zh = document.getElementById('lang-zh');
+      const enBtn = document.getElementById('btn-en');
+      const zhBtn = document.getElementById('btn-zh');
+      const useZh = lang === 'zh';
+
+      en.classList.toggle('hidden', useZh);
+      zh.classList.toggle('hidden', !useZh);
+      enBtn.classList.toggle('active', !useZh);
+      zhBtn.classList.toggle('active', useZh);
+      document.documentElement.lang = useZh ? 'zh-Hans' : 'en';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deposit Shield Support</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <div class="language-toggle" aria-label="Language switcher">
+      <button id="btn-en" class="active" type="button" onclick="showLanguage('en')">English</button>
+      <button id="btn-zh" type="button" onclick="showLanguage('zh')">中文</button>
+    </div>
+
+    <div id="lang-en" class="lang-pane">
+      <section class="hero">
+        <div class="badge">Deposit Shield</div>
+        <h1>App Support</h1>
+        <p>Deposit Shield helps renters organize move-in and move-out proof, keep room photos and issue evidence together, and stay on top of lease-end reminders before deposit disputes happen.</p>
+        <p class="note">Use this page as your App Store Support URL.</p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Need help?</h2>
+          <ul>
+            <li>If photos or screenshots do not import, reopen Photos access in iPhone Settings and try again.</li>
+            <li>If reminders do not appear, confirm Notifications are enabled for Deposit Shield and that the property has a lease end date.</li>
+            <li>If Pro does not unlock after purchase, open Settings and use Restore Purchases.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Support contact</h2>
+          <p>Contact us if you need help using Deposit Shield.</p>
+          <p><strong>Email:</strong> <a href="mailto:support@depositshield.app">support@depositshield.app</a></p>
+          <p><strong>Response time:</strong> usually within 2 business days.</p>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>Frequently asked questions</h2>
+        <ul>
+          <li><strong>Do I need an account?</strong> No. Deposit Shield works without account signup.</li>
+          <li><strong>Where is my data stored?</strong> Property records, room notes, evidence, and communication proof are stored locally on your device.</li>
+          <li><strong>What counts as proof?</strong> You can save room photos, issue evidence, and communication screenshots so they stay attached to the right property.</li>
+          <li><strong>How do reminders work?</strong> Deposit Shield can schedule local notifications before lease end and walkthrough dates when you enable reminders.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Policies</h2>
+        <p><a href="privacy.html">Privacy Policy</a></p>
+      </section>
+    </div>
+
+    <div id="lang-zh" class="lang-pane hidden">
+      <section class="hero">
+        <div class="badge">Deposit Shield</div>
+        <h1>应用支持</h1>
+        <p>Deposit Shield 帮助租客整理入住和退租证据，把房间照片、问题证据和沟通截图归档到一起，并在押金纠纷发生前通过提醒提前准备。</p>
+        <p class="note">你可以把此页面作为 App Store 的 Support URL。</p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>需要帮助？</h2>
+          <ul>
+            <li>如果照片或截图无法导入，请到 iPhone 系统设置里重新开启照片权限后再试。</li>
+            <li>如果提醒没有出现，请确认 Deposit Shield 的通知权限已开启，并且该房源已经填写租约结束日期。</li>
+            <li>如果购买后 Pro 没有解锁，请打开设置页面并点击 Restore Purchases。</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>联系支持</h2>
+          <p>如果你在使用 Deposit Shield 时遇到问题，可以联系我们。</p>
+          <p><strong>邮箱：</strong><a href="mailto:support@depositshield.app">support@depositshield.app</a></p>
+          <p><strong>回复时间：</strong>通常在 2 个工作日内。</p>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>常见问题</h2>
+        <ul>
+          <li><strong>需要注册账号吗？</strong>不需要。Deposit Shield 无需账号即可使用。</li>
+          <li><strong>数据存在哪里？</strong>房源记录、房间备注、证据照片和沟通截图默认保存在你的设备本地。</li>
+          <li><strong>哪些内容算证据？</strong>你可以保存房间照片、问题证据和沟通截图，并把它们归档到对应房源下。</li>
+          <li><strong>提醒是怎么工作的？</strong>当你开启提醒后，Deposit Shield 可以在租约结束或 final walkthrough 前发送本地通知。</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>相关政策</h2>
+        <p><a href="privacy.html">隐私政策</a></p>
+      </section>
+    </div>
+
+    <p class="footer">Last updated / 最后更新：2026-04-12</p>
+  </main>
+  <script>
+    function showLanguage(lang) {
+      const en = document.getElementById('lang-en');
+      const zh = document.getElementById('lang-zh');
+      const enBtn = document.getElementById('btn-en');
+      const zhBtn = document.getElementById('btn-zh');
+      const useZh = lang === 'zh';
+
+      en.classList.toggle('hidden', useZh);
+      zh.classList.toggle('hidden', !useZh);
+      enBtn.classList.toggle('active', !useZh);
+      zhBtn.classList.toggle('active', useZh);
+      document.documentElement.lang = useZh ? 'zh-Hans' : 'en';
+    }
+  </script>
+</body>
+</html>
