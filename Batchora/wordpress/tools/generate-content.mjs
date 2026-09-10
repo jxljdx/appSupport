@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { englishEntries } from "../content/en.mjs";
+import { chineseEntries } from "../content/zh-hans.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const releaseDirectory = path.join(root, "release");
@@ -17,20 +18,21 @@ const xml = (value) =>
 const cdata = (value) => String(value).replaceAll("]]>", "]]]]><![CDATA[>");
 
 const now = "2026-09-10 00:00:00";
-const parentIds = new Map();
+const entries = [...englishEntries, ...chineseEntries];
+const entryIds = new Map();
 let nextId = 1000;
 
-for (const entry of englishEntries) {
-  if (!entry.parent) {
-    parentIds.set(entry.key, nextId);
-  }
+for (const entry of entries) {
+  entryIds.set(`${entry.locale}:${entry.key}`, nextId);
   entry._exportId = nextId;
   nextId += 1;
 }
 
-const items = englishEntries
+const items = entries
   .map((entry) => {
-    const parent = entry.parent ? parentIds.get(entry.parent) || 0 : 0;
+    const parent = entry.parent
+      ? entryIds.get(`${entry.locale}:${entry.parent}`) || 0
+      : 0;
     const metadata = {
       _batchora_locale: entry.locale,
       _batchora_translation_key: entry.key,
@@ -112,4 +114,3 @@ ${items}
 await mkdir(releaseDirectory, { recursive: true });
 await writeFile(outputPath, document, "utf8");
 console.log(`Created ${outputPath}`);
-

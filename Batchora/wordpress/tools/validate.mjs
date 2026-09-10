@@ -2,6 +2,7 @@ import { access, readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { englishEntries } from "../content/en.mjs";
+import { chineseEntries } from "../content/zh-hans.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const requiredFiles = [
@@ -51,11 +52,12 @@ if (!templateFiles.every((file) => file.endsWith(".html"))) {
   throw new Error("Block theme templates must use .html files");
 }
 
+const validateEntries = (entries, label) => {
 const slugs = new Set();
 const translationKeys = new Set();
-for (const entry of englishEntries) {
+for (const entry of entries) {
   if (!entry.slug || !entry.title || !entry.seoTitle || !entry.description) {
-    throw new Error(`English content entry is incomplete: ${entry.key}`);
+    throw new Error(`${label} content entry is incomplete: ${entry.key}`);
   }
   if (entry.seoTitle.length > 60) {
     throw new Error(`SEO title exceeds 60 characters: ${entry.key}`);
@@ -67,13 +69,23 @@ for (const entry of englishEntries) {
     throw new Error(`Entry has no answer-first summary: ${entry.key}`);
   }
   if (slugs.has(entry.slug)) {
-    throw new Error(`Duplicate English slug: ${entry.slug}`);
+    throw new Error(`Duplicate ${label} slug: ${entry.slug}`);
   }
   if (translationKeys.has(entry.key)) {
-    throw new Error(`Duplicate English translation key: ${entry.key}`);
+    throw new Error(`Duplicate ${label} translation key: ${entry.key}`);
   }
   slugs.add(entry.slug);
   translationKeys.add(entry.key);
+}
+};
+
+validateEntries(englishEntries, "English");
+validateEntries(chineseEntries, "Chinese");
+
+const englishKeys = englishEntries.map((entry) => entry.key).sort();
+const chineseKeys = chineseEntries.map((entry) => entry.key).sort();
+if (JSON.stringify(englishKeys) !== JSON.stringify(chineseKeys)) {
+  throw new Error("English and Chinese content entries are not aligned");
 }
 
 console.log("Batchora WordPress source is valid.");

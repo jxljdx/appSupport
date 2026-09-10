@@ -13,15 +13,15 @@ import {
 const page = (entry) => ({
   locale: "en-US",
   type: "page",
-  parent: "en",
+  parent: "home",
   status: "draft",
   ...entry
 });
 
 const post = (entry) => ({
   locale: "en-US",
-  type: "post",
-  parent: null,
+  type: "page",
+  parent: "guides",
   status: "draft",
   ...entry
 });
@@ -388,10 +388,10 @@ export const englishEntries = [
       section(
         "Start with a common task",
         bullets([
-          '<a href="/how-to-compress-photos-on-iphone/">How to compress photos without replacing originals</a>',
-          '<a href="/how-to-reduce-video-file-size-iphone/">How to reduce video file size before sharing</a>',
-          '<a href="/how-to-convert-heic-to-jpg-iphone/">How to convert HEIC to JPG on iPhone</a>',
-          '<a href="/how-to-remove-location-from-photo-iphone/">How to remove location metadata from a photo copy</a>'
+          '<a href="/en/guides/how-to-compress-photos-on-iphone/">How to compress photos without replacing originals</a>',
+          '<a href="/en/guides/how-to-reduce-video-file-size-iphone/">How to reduce video file size before sharing</a>',
+          '<a href="/en/guides/how-to-convert-heic-to-jpg-iphone/">How to convert HEIC to JPG on iPhone</a>',
+          '<a href="/en/guides/how-to-remove-location-from-photo-iphone/">How to remove location metadata from a photo copy</a>'
         ])
       )
     )
@@ -633,4 +633,3 @@ export const englishEntries = [
     )
   })
 ];
-
