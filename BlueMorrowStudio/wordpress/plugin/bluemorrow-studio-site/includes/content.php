@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function batchora_current_locale( $post_id = 0 ) {
 	$post_id = $post_id ?: get_queried_object_id();
-	$locale  = $post_id ? get_post_meta( $post_id, '_batchora_locale', true ) : '';
+	$locale  = $post_id ? get_post_meta( $post_id, '_bluemorrow_locale', true ) : '';
 
 	return in_array( $locale, array( 'en-US', 'zh-Hans' ), true )
 		? $locale
@@ -25,7 +25,7 @@ function batchora_is_chinese( $post_id = 0 ) {
 function batchora_translation_key( $post_id = 0 ) {
 	$post_id = $post_id ?: get_queried_object_id();
 	return $post_id
-		? get_post_meta( $post_id, '_batchora_translation_key', true )
+		? get_post_meta( $post_id, '_bluemorrow_translation_key', true )
 		: '';
 }
 
@@ -44,7 +44,7 @@ function batchora_translation_posts( $post_id = 0 ) {
 			'post_type'              => array( 'page', 'post' ),
 			'post_status'            => $status,
 			'posts_per_page'         => 4,
-			'meta_key'               => '_batchora_translation_key',
+			'meta_key'               => '_bluemorrow_translation_key',
 			'meta_value'             => $key,
 			'orderby'                => 'ID',
 			'order'                  => 'ASC',
@@ -75,11 +75,11 @@ function batchora_page_url( $key, $locale = '' ) {
 			'posts_per_page' => 1,
 			'meta_query'     => array(
 				array(
-					'key'   => '_batchora_translation_key',
+					'key'   => '_bluemorrow_translation_key',
 					'value' => $key,
 				),
 				array(
-					'key'   => '_batchora_locale',
+					'key'   => '_bluemorrow_locale',
 					'value' => $locale,
 				),
 			),
@@ -97,7 +97,7 @@ function batchora_page_url( $key, $locale = '' ) {
 }
 
 function batchora_app_store_url() {
-	return 'https://apps.apple.com/app/id' . BATCHORA_APP_STORE_ID;
+	return bluemorrow_app_store_url();
 }
 
 function batchora_is_guide( $post_id = 0 ) {

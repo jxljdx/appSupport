@@ -44,14 +44,14 @@ export const chineseEntries = [
     intent: "iPhone 照片视频批处理工具",
     template: "front-page",
     content: [
-      `<!-- wp:batchora/home-hero /-->`,
+      `<!-- wp:bluemorrow/batchora-home-hero /-->`,
       answer(
         "Batchora 是一款 iPhone 照片与视频批处理 App。它可以批量压缩媒体、预览新文件名、调整照片尺寸与格式、移除选定元数据，并导出单独文件或一个 ZIP；你的媒体不会上传到 Batchora 服务器。"
       ),
-      `<!-- wp:batchora/home-workflow /-->`,
-      `<!-- wp:batchora/feature-explorer /-->`,
-      `<!-- wp:batchora/product-media /-->`,
-      `<!-- wp:batchora/trust-panel /-->`,
+      `<!-- wp:bluemorrow/batchora-home-workflow /-->`,
+      `<!-- wp:bluemorrow/batchora-feature-explorer /-->`,
+      `<!-- wp:bluemorrow/batchora-product-media /-->`,
+      `<!-- wp:bluemorrow/batchora-trust-panel /-->`,
       section(
         "常见问题",
         faq([

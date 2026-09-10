@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Feature grid
- * Slug: batchora/feature-grid
+ * Slug: bluemorrow/feature-grid
  * Categories: batchora
  * Description: Responsive grid for Batchora feature pages.
  */
@@ -75,4 +75,3 @@
   <!-- /wp:columns -->
 </div>
 <!-- /wp:group -->
-

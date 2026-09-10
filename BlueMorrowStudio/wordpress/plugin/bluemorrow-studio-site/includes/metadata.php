@@ -16,7 +16,7 @@ function batchora_document_title( $parts ) {
 
 	$title = get_post_meta(
 		get_queried_object_id(),
-		'_batchora_seo_title',
+		'_bluemorrow_seo_title',
 		true
 	);
 	if ( $title ) {
@@ -61,10 +61,10 @@ function batchora_output_metadata() {
 	}
 
 	$post_id     = get_queried_object_id();
-	$title       = get_post_meta( $post_id, '_batchora_seo_title', true );
+	$title       = get_post_meta( $post_id, '_bluemorrow_seo_title', true );
 	$description = get_post_meta(
 		$post_id,
-		'_batchora_seo_description',
+		'_bluemorrow_seo_description',
 		true
 	);
 	$canonical   = get_permalink( $post_id );
@@ -175,7 +175,7 @@ function batchora_output_schema() {
 	$locale      = batchora_current_locale( $post_id );
 	$description = get_post_meta(
 		$post_id,
-		'_batchora_seo_description',
+		'_bluemorrow_seo_description',
 		true
 	);
 	$graph       = array(

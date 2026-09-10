@@ -37,12 +37,15 @@ const items = entries
       ? entryIds.get(`${entry.locale}:${entry.parent}`) || 0
       : 0;
     const metadata = {
-      _batchora_locale: entry.locale,
-      _batchora_translation_key: entry.key,
-      _batchora_seo_title: entry.seoTitle,
-      _batchora_seo_description: entry.description,
-      _batchora_target_intent: entry.intent,
-      _batchora_app_version: "1.0"
+      _bluemorrow_locale: entry.locale,
+      _bluemorrow_translation_key: entry.key,
+      _bluemorrow_seo_title: entry.seoTitle,
+      _bluemorrow_seo_description: entry.description,
+      _bluemorrow_target_intent: entry.intent,
+      _bluemorrow_app_version: entry.appVersion || "1.0",
+      _bluemorrow_scope: entry.scope || "app",
+      _bluemorrow_app_key:
+        entry.scope === "studio" ? "" : entry.appKey || "batchora"
     };
     if (entry.template) {
       metadata._wp_page_template = entry.template;

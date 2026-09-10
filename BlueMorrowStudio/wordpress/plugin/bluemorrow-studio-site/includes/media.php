@@ -341,7 +341,7 @@ function batchora_feature_hero_block() {
 
 	$locale      = $is_chinese ? 'zh-Hans' : 'en-US';
 	$title       = get_the_title();
-	$description = get_post_meta( get_queried_object_id(), '_batchora_seo_description', true );
+	$description = get_post_meta( get_queried_object_id(), '_bluemorrow_seo_description', true );
 	$chips       = array_map(
 		function( $label ) {
 			return '<span>' . esc_html( $label ) . '</span>';

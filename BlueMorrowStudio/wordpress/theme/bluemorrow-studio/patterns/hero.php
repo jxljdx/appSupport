@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Product hero
- * Slug: batchora/product-hero
+ * Slug: bluemorrow/product-hero
  * Categories: batchora, featured
  * Description: Batchora product hero with App Store action.
  */
@@ -19,7 +19,7 @@
   <!-- /wp:paragraph -->
   <!-- wp:group {"className":"batchora-actions","layout":{"type":"flex","flexWrap":"wrap"}} -->
   <div class="wp-block-group batchora-actions">
-    <!-- wp:batchora/app-store-cta /-->
+    <!-- wp:bluemorrow/app-store-cta /-->
     <!-- wp:paragraph -->
     <p><a href="#features">Explore features</a></p>
     <!-- /wp:paragraph -->

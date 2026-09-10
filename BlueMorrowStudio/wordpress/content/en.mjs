@@ -44,15 +44,15 @@ export const englishEntries = [
     intent: "photo and video batch processing app",
     template: "front-page",
     content: [
-      `<!-- wp:batchora/home-hero /-->`,
+      `<!-- wp:bluemorrow/batchora-home-hero /-->`,
       answer(
         "Batchora is an iPhone app for processing photos and videos in batches. It compresses media, previews new filenames, resizes and converts photos, removes selected metadata, and exports individual files or one ZIP without uploading your media to Batchora servers."
       ),
-      `<!-- wp:batchora/home-workflow /-->`,
-      `<!-- wp:batchora/feature-explorer /-->`,
-      `<!-- wp:batchora/product-media /-->`,
-      `<!-- wp:batchora/trust-panel /-->`,
-      `<!-- wp:pattern {"slug":"batchora/faq"} /-->`,
+      `<!-- wp:bluemorrow/batchora-home-workflow /-->`,
+      `<!-- wp:bluemorrow/batchora-feature-explorer /-->`,
+      `<!-- wp:bluemorrow/batchora-product-media /-->`,
+      `<!-- wp:bluemorrow/batchora-trust-panel /-->`,
+      `<!-- wp:pattern {"slug":"bluemorrow/faq"} /-->`,
       featureCta
     ].join("\n")
   }),

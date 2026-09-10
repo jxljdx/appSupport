@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: App Store call to action
- * Slug: batchora/download-cta
+ * Slug: bluemorrow/download-cta
  * Categories: batchora, call-to-action
  * Description: Download call to action for the Batchora App Store page.
  */
@@ -14,6 +14,6 @@
   <!-- wp:paragraph -->
   <p>Get Batchora for private photo and video batch processing on iPhone.</p>
   <!-- /wp:paragraph -->
-  <!-- wp:batchora/app-store-cta /-->
+  <!-- wp:bluemorrow/app-store-cta /-->
 </div>
 <!-- /wp:group -->

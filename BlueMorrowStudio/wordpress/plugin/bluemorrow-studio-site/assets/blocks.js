@@ -19,36 +19,51 @@
 		} );
 	}
 
-	registerDynamicBlock( 'batchora/app-store-cta', 'Batchora App Store CTA', {
+	registerDynamicBlock( 'bluemorrow/app-store-cta', 'App Store CTA', {
 		compact: {
 			type: 'boolean',
 			default: false,
 		},
 	} );
 	registerDynamicBlock(
-		'batchora/language-switcher',
-		'Batchora Language Switcher'
+		'bluemorrow/language-switcher',
+		'BlueMorrow Language Switcher'
 	);
 	registerDynamicBlock(
-		'batchora/primary-navigation',
-		'Batchora Primary Navigation'
+		'bluemorrow/primary-navigation',
+		'BlueMorrow Primary Navigation'
 	);
 	registerDynamicBlock(
-		'batchora/footer-navigation',
-		'Batchora Footer Navigation'
+		'bluemorrow/footer-navigation',
+		'BlueMorrow Footer Navigation'
 	);
-	registerDynamicBlock( 'batchora/legal-links', 'Batchora Legal Links' );
-	registerDynamicBlock( 'batchora/product-media', 'Batchora Product Media' );
-	registerDynamicBlock( 'batchora/home-hero', 'Batchora Home Hero' );
-	registerDynamicBlock( 'batchora/home-workflow', 'Batchora Home Workflow' );
+	registerDynamicBlock( 'bluemorrow/legal-links', 'BlueMorrow Legal Links' );
 	registerDynamicBlock(
-		'batchora/feature-explorer',
+		'bluemorrow/batchora-product-media',
+		'Batchora Product Media'
+	);
+	registerDynamicBlock(
+		'bluemorrow/batchora-home-hero',
+		'Batchora Home Hero'
+	);
+	registerDynamicBlock(
+		'bluemorrow/batchora-home-workflow',
+		'Batchora Home Workflow'
+	);
+	registerDynamicBlock(
+		'bluemorrow/batchora-feature-explorer',
 		'Batchora Feature Explorer'
 	);
-	registerDynamicBlock( 'batchora/trust-panel', 'Batchora Trust Panel' );
-	registerDynamicBlock( 'batchora/feature-hero', 'Batchora Feature Hero' );
 	registerDynamicBlock(
-		'batchora/related-features',
+		'bluemorrow/batchora-trust-panel',
+		'Batchora Trust Panel'
+	);
+	registerDynamicBlock(
+		'bluemorrow/batchora-feature-hero',
+		'Batchora Feature Hero'
+	);
+	registerDynamicBlock(
+		'bluemorrow/batchora-related-features',
 		'Batchora Related Features'
 	);
 } )( window.wp.blocks, window.wp.element, window.wp.serverSideRender );

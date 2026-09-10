@@ -111,7 +111,7 @@ function batchora_discovery_activate() {
 	flush_rewrite_rules();
 }
 register_activation_hook(
-	BATCHORA_SITE_PATH . 'bluemorrow-studio-site.php',
+	BLUEMORROW_SITE_PATH . 'bluemorrow-studio-site.php',
 	'batchora_discovery_activate'
 );
 
@@ -125,7 +125,7 @@ function batchora_output_llms_txt() {
 			'post_type'      => 'page',
 			'post_status'    => 'publish',
 			'posts_per_page' => 100,
-			'meta_key'       => '_batchora_translation_key',
+			'meta_key'       => '_bluemorrow_translation_key',
 			'orderby'        => array(
 				'menu_order' => 'ASC',
 				'title'      => 'ASC',
@@ -140,7 +140,7 @@ function batchora_output_llms_txt() {
 	foreach ( $pages as $page ) {
 		$description = get_post_meta(
 			$page->ID,
-			'_batchora_seo_description',
+			'_bluemorrow_seo_description',
 			true
 		);
 		printf(

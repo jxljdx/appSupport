@@ -3,7 +3,7 @@ import { englishEntries } from "../content/en.mjs";
 import { chineseEntries } from "../content/zh-hans.mjs";
 
 const baseUrl = new URL(
-  process.env.BATCHORA_SITE_URL || "http://127.0.0.1:9401"
+  process.env.BLUEMORROW_SITE_URL || "http://127.0.0.1:9401"
 );
 const entries = [...englishEntries, ...chineseEntries];
 const byLocaleAndKey = new Map(

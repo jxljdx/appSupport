@@ -52,7 +52,7 @@ export const cta = (title, text) => `<!-- wp:group {"align":"wide","className":"
 <div class="wp-block-group alignwide batchora-cta">
 ${heading(title)}
 ${paragraph(text)}
-<!-- wp:batchora/app-store-cta /-->
+<!-- wp:bluemorrow/app-store-cta /-->
 </div>
 <!-- /wp:group -->`;
 
@@ -77,10 +77,10 @@ export const withFeatureExperience = (entry) => {
   return {
     ...entry,
     content: [
-      `<!-- wp:batchora/feature-hero /-->`,
+      `<!-- wp:bluemorrow/batchora-feature-hero /-->`,
       `<!-- wp:html --><span id="feature-details" class="batchora-anchor" aria-hidden="true"></span><!-- /wp:html -->`,
       entry.content,
-      `<!-- wp:batchora/related-features /-->`
+      `<!-- wp:bluemorrow/batchora-related-features /-->`
     ].join("\n")
   };
 };

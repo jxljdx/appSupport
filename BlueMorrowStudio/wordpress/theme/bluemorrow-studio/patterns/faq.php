@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: FAQ section
- * Slug: batchora/faq
+ * Slug: bluemorrow/faq
  * Categories: batchora
  * Description: Visible FAQ content compatible with FAQ structured data.
  */
@@ -29,4 +29,3 @@
   <!-- /wp:html -->
 </div>
 <!-- /wp:group -->
-

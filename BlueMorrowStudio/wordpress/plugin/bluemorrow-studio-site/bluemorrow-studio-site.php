@@ -13,25 +13,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'BATCHORA_SITE_VERSION', '1.0.0' );
-define( 'BATCHORA_APP_STORE_ID', '6810283756' );
-define( 'BATCHORA_SITE_PATH', plugin_dir_path( __FILE__ ) );
+define( 'BLUEMORROW_SITE_VERSION', '1.0.0' );
+define( 'BLUEMORROW_SITE_PATH', plugin_dir_path( __FILE__ ) );
 
-require_once BATCHORA_SITE_PATH . 'includes/content.php';
-require_once BATCHORA_SITE_PATH . 'includes/metadata.php';
-require_once BATCHORA_SITE_PATH . 'includes/discovery.php';
-require_once BATCHORA_SITE_PATH . 'includes/shortcodes.php';
-require_once BATCHORA_SITE_PATH . 'includes/media.php';
-require_once BATCHORA_SITE_PATH . 'includes/settings.php';
+require_once BLUEMORROW_SITE_PATH . 'includes/apps.php';
+require_once BLUEMORROW_SITE_PATH . 'includes/content.php';
+require_once BLUEMORROW_SITE_PATH . 'includes/metadata.php';
+require_once BLUEMORROW_SITE_PATH . 'includes/discovery.php';
+require_once BLUEMORROW_SITE_PATH . 'includes/shortcodes.php';
+require_once BLUEMORROW_SITE_PATH . 'includes/media.php';
+require_once BLUEMORROW_SITE_PATH . 'includes/settings.php';
 
-function batchora_site_register_meta() {
+function bluemorrow_site_register_meta() {
 	$fields = array(
-		'_batchora_locale',
-		'_batchora_translation_key',
-		'_batchora_seo_title',
-		'_batchora_seo_description',
-		'_batchora_target_intent',
-		'_batchora_app_version',
+		'_bluemorrow_locale',
+		'_bluemorrow_translation_key',
+		'_bluemorrow_seo_title',
+		'_bluemorrow_seo_description',
+		'_bluemorrow_target_intent',
+		'_bluemorrow_app_version',
+		'_bluemorrow_scope',
+		'_bluemorrow_app_key',
 	);
 
 	foreach ( $fields as $field ) {
@@ -50,22 +52,22 @@ function batchora_site_register_meta() {
 		);
 	}
 }
-add_action( 'init', 'batchora_site_register_meta' );
+add_action( 'init', 'bluemorrow_site_register_meta' );
 
-function batchora_site_register_blocks() {
+function bluemorrow_site_register_blocks() {
 	wp_register_script(
-		'batchora-site-blocks',
+		'bluemorrow-site-blocks',
 		plugins_url( 'assets/blocks.js', __FILE__ ),
 		array( 'wp-blocks', 'wp-element', 'wp-server-side-render' ),
-		BATCHORA_SITE_VERSION,
+		BLUEMORROW_SITE_VERSION,
 		true
 	);
 
 	register_block_type(
-		'batchora/app-store-cta',
+		'bluemorrow/app-store-cta',
 		array(
 			'api_version'     => 3,
-			'editor_script'   => 'batchora-site-blocks',
+			'editor_script'   => 'bluemorrow-site-blocks',
 			'attributes'      => array(
 				'compact' => array(
 					'type'    => 'boolean',
@@ -76,92 +78,92 @@ function batchora_site_register_blocks() {
 		)
 	);
 	register_block_type(
-		'batchora/language-switcher',
+		'bluemorrow/language-switcher',
 		array(
 			'api_version'     => 3,
-			'editor_script'   => 'batchora-site-blocks',
+			'editor_script'   => 'bluemorrow-site-blocks',
 			'render_callback' => 'batchora_language_switcher_block',
 		)
 	);
 	register_block_type(
-		'batchora/primary-navigation',
+		'bluemorrow/primary-navigation',
 		array(
 			'api_version'     => 3,
-			'editor_script'   => 'batchora-site-blocks',
+			'editor_script'   => 'bluemorrow-site-blocks',
 			'render_callback' => 'batchora_primary_navigation_block',
 		)
 	);
 	register_block_type(
-		'batchora/legal-links',
+		'bluemorrow/legal-links',
 		array(
 			'api_version'     => 3,
-			'editor_script'   => 'batchora-site-blocks',
+			'editor_script'   => 'bluemorrow-site-blocks',
 			'render_callback' => 'batchora_legal_links_block',
 		)
 	);
 	register_block_type(
-		'batchora/footer-navigation',
+		'bluemorrow/footer-navigation',
 		array(
 			'api_version'     => 3,
-			'editor_script'   => 'batchora-site-blocks',
+			'editor_script'   => 'bluemorrow-site-blocks',
 			'render_callback' => 'batchora_footer_navigation_block',
 		)
 	);
 	register_block_type(
-		'batchora/product-media',
+		'bluemorrow/batchora-product-media',
 		array(
 			'api_version'     => 3,
-			'editor_script'   => 'batchora-site-blocks',
+			'editor_script'   => 'bluemorrow-site-blocks',
 			'render_callback' => 'batchora_product_media_block',
 		)
 	);
 	register_block_type(
-		'batchora/home-hero',
+		'bluemorrow/batchora-home-hero',
 		array(
 			'api_version'     => 3,
-			'editor_script'   => 'batchora-site-blocks',
+			'editor_script'   => 'bluemorrow-site-blocks',
 			'render_callback' => 'batchora_home_hero_block',
 		)
 	);
 	register_block_type(
-		'batchora/home-workflow',
+		'bluemorrow/batchora-home-workflow',
 		array(
 			'api_version'     => 3,
-			'editor_script'   => 'batchora-site-blocks',
+			'editor_script'   => 'bluemorrow-site-blocks',
 			'render_callback' => 'batchora_home_workflow_block',
 		)
 	);
 	register_block_type(
-		'batchora/feature-explorer',
+		'bluemorrow/batchora-feature-explorer',
 		array(
 			'api_version'     => 3,
-			'editor_script'   => 'batchora-site-blocks',
+			'editor_script'   => 'bluemorrow-site-blocks',
 			'render_callback' => 'batchora_feature_explorer_block',
 		)
 	);
 	register_block_type(
-		'batchora/trust-panel',
+		'bluemorrow/batchora-trust-panel',
 		array(
 			'api_version'     => 3,
-			'editor_script'   => 'batchora-site-blocks',
+			'editor_script'   => 'bluemorrow-site-blocks',
 			'render_callback' => 'batchora_trust_panel_block',
 		)
 	);
 	register_block_type(
-		'batchora/feature-hero',
+		'bluemorrow/batchora-feature-hero',
 		array(
 			'api_version'     => 3,
-			'editor_script'   => 'batchora-site-blocks',
+			'editor_script'   => 'bluemorrow-site-blocks',
 			'render_callback' => 'batchora_feature_hero_block',
 		)
 	);
 	register_block_type(
-		'batchora/related-features',
+		'bluemorrow/batchora-related-features',
 		array(
 			'api_version'     => 3,
-			'editor_script'   => 'batchora-site-blocks',
+			'editor_script'   => 'bluemorrow-site-blocks',
 			'render_callback' => 'batchora_related_features_block',
 		)
 	);
 }
-add_action( 'init', 'batchora_site_register_blocks' );
+add_action( 'init', 'bluemorrow_site_register_blocks' );
