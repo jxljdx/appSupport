@@ -213,6 +213,9 @@ function batchora_product_media_block() {
 			'play'    => '播放 18 秒 App 预览',
 			'watch'   => '观看 App 预览',
 			'badge'   => '18 秒',
+			'loading' => '正在载入预览…',
+			'manual'  => '预览已就绪，点击播放按钮开始。',
+			'error'   => '预览暂时无法载入，请稍后重试。',
 		)
 		: array(
 			'eyebrow' => 'An 18-second real demo',
@@ -221,6 +224,9 @@ function batchora_product_media_block() {
 			'play'    => 'Play the 18-second app preview',
 			'watch'   => 'Watch the app preview',
 			'badge'   => '18 sec',
+			'loading' => 'Loading the preview…',
+			'manual'  => 'The preview is ready. Press play to begin.',
+			'error'   => 'The preview could not load. Please try again.',
 		);
 
 	$poster = batchora_responsive_picture(
@@ -233,9 +239,12 @@ function batchora_product_media_block() {
 	$video  = esc_url(
 		batchora_media_url( $locale . '/batchora-app-preview.mp4' )
 	);
+	$poster_url = esc_url(
+		batchora_media_url( $locale . '/preview-poster-480.webp' )
+	);
 
 	return sprintf(
-		'<section id="app-preview" class="batchora-product-media alignwide" aria-labelledby="batchora-product-media-heading"><div class="batchora-product-media__copy"><p class="batchora-eyebrow">%1$s</p><h2 id="batchora-product-media-heading">%2$s</h2><p>%3$s</p><ul><li>%4$s</li><li>%5$s</li><li>%6$s</li></ul></div><div class="batchora-preview"><span class="batchora-preview__duration">%7$s</span><button class="batchora-preview-trigger" type="button" aria-label="%8$s">%9$s<span>%8$s</span></button><video class="batchora-preview-video" controls playsinline preload="none" hidden data-src="%10$s"></video><p class="batchora-preview-status" aria-live="polite"></p><noscript><a href="%10$s">%11$s</a></noscript></div></section>',
+		'<section id="app-preview" class="batchora-product-media alignwide" aria-labelledby="batchora-product-media-heading"><div class="batchora-product-media__copy"><p class="batchora-eyebrow">%1$s</p><h2 id="batchora-product-media-heading">%2$s</h2><p>%3$s</p><ul><li>%4$s</li><li>%5$s</li><li>%6$s</li></ul></div><div class="batchora-preview" data-loading-label="%12$s" data-manual-label="%13$s" data-error-label="%14$s"><span class="batchora-preview__duration">%7$s</span><button class="batchora-preview-trigger" type="button" aria-label="%8$s">%9$s<span>%8$s</span></button><video class="batchora-preview-video" controls playsinline preload="none" poster="%15$s" hidden data-src="%10$s"></video><p class="batchora-preview-status" aria-live="polite"></p><noscript><a href="%10$s">%11$s</a></noscript></div></section>',
 		esc_html( $labels['eyebrow'] ),
 		esc_html( $labels['heading'] ),
 		esc_html( $labels['lede'] ),
@@ -246,7 +255,11 @@ function batchora_product_media_block() {
 		esc_attr( $labels['play'] ),
 		$poster,
 		$video,
-		esc_html( $labels['watch'] )
+		esc_html( $labels['watch'] ),
+		esc_attr( $labels['loading'] ),
+		esc_attr( $labels['manual'] ),
+		esc_attr( $labels['error'] ),
+		$poster_url
 	);
 }
 

@@ -131,12 +131,44 @@ document.addEventListener("click", (event) => {
   if (previewTrigger) {
     const container = previewTrigger.closest(".batchora-preview");
     const video = container?.querySelector(".batchora-preview-video");
+    const status = container?.querySelector(".batchora-preview-status");
     if (video?.dataset.src) {
+      container.classList.add("is-loading");
+      if (status) {
+        status.textContent = container.dataset.loadingLabel || "";
+      }
       video.src = video.dataset.src;
       video.hidden = false;
       previewTrigger.replaceWith(video);
+      video.addEventListener(
+        "loadeddata",
+        () => {
+          container.classList.remove("is-loading");
+          if (status && !container.classList.contains("has-manual-play")) {
+            status.textContent = "";
+          }
+        },
+        { once: true }
+      );
+      video.addEventListener(
+        "error",
+        () => {
+          container.classList.remove("is-loading");
+          container.classList.add("has-error");
+          if (status) {
+            status.textContent = container.dataset.errorLabel || "";
+          }
+        },
+        { once: true }
+      );
       video.load();
-      video.play().catch(() => {});
+      video.play().catch(() => {
+        container.classList.remove("is-loading");
+        container.classList.add("has-manual-play");
+        if (status) {
+          status.textContent = container.dataset.manualLabel || "";
+        }
+      });
     }
     return;
   }

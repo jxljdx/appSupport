@@ -598,9 +598,25 @@ summary:focus-visible {
 }
 
 .batchora-preview-status {
-  color: var(--batchora-muted);
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.8rem;
+  left: 0.8rem;
+  z-index: 4;
+  margin: 0;
+  padding: 0.65rem 0.8rem;
+  border-radius: 0.8rem;
+  color: white;
+  background: rgba(23, 25, 43, 0.82);
   font-size: 0.9rem;
   text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.batchora-preview.is-loading .batchora-preview-status,
+.batchora-preview.has-manual-play .batchora-preview-status,
+.batchora-preview.has-error .batchora-preview-status {
+  color: white;
 }
 
 .batchora-actions {
