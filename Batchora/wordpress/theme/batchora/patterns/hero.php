@@ -19,9 +19,7 @@
   <!-- /wp:paragraph -->
   <!-- wp:group {"className":"batchora-actions","layout":{"type":"flex","flexWrap":"wrap"}} -->
   <div class="wp-block-group batchora-actions">
-    <!-- wp:shortcode -->
-    [batchora_app_store_cta]
-    <!-- /wp:shortcode -->
+    <!-- wp:batchora/app-store-cta /-->
     <!-- wp:paragraph -->
     <p><a href="#features">Explore features</a></p>
     <!-- /wp:paragraph -->
@@ -36,4 +34,3 @@
   <!-- /wp:html -->
 </div>
 <!-- /wp:group -->
-

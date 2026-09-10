@@ -52,6 +52,56 @@ if (!templateFiles.every((file) => file.endsWith(".html"))) {
   throw new Error("Block theme templates must use .html files");
 }
 
+const serializedSources = [
+  path.join(root, "theme/batchora/parts/header.html"),
+  path.join(root, "theme/batchora/parts/footer.html"),
+  path.join(root, "theme/batchora/patterns/hero.php"),
+  path.join(root, "theme/batchora/patterns/download-cta.php")
+];
+
+const validateSerializedBlocks = (source, sourceLabel) => {
+  const blockPattern =
+    /<!--\s+wp:([^\s/>]+)(?:\s+(\{.*?\}))?\s*\/?-->/gs;
+
+  for (const match of source.matchAll(blockPattern)) {
+    const attributes = match[2];
+    if (!attributes) {
+      continue;
+    }
+
+    const line = source.slice(0, match.index).split("\n").length;
+    let parsed;
+    try {
+      parsed = JSON.parse(attributes);
+    } catch (error) {
+      throw new Error(
+        `Invalid block JSON in ${sourceLabel}:${line}: ${error.message}`
+      );
+    }
+
+    const serialized = JSON.stringify(parsed);
+    if (/https?:\/\//i.test(serialized)) {
+      throw new Error(
+        `Block JSON must not serialize an absolute URL in ${sourceLabel}:${line}`
+      );
+    }
+  }
+};
+
+for (const sourcePath of serializedSources) {
+  const source = await readFile(sourcePath, "utf8");
+  validateSerializedBlocks(source, sourcePath);
+  if (
+    source.includes("[batchora_app_store_cta") ||
+    source.includes("[batchora_language_switcher") ||
+    source.includes("[batchora_legal_links")
+  ) {
+    throw new Error(
+      `Batchora UI must use dynamic blocks instead of shortcode blocks: ${sourcePath}`
+    );
+  }
+}
+
 const validateEntries = (entries, label) => {
 const slugs = new Set();
 const translationKeys = new Set();
@@ -81,6 +131,10 @@ for (const entry of entries) {
 
 validateEntries(englishEntries, "English");
 validateEntries(chineseEntries, "Chinese");
+
+for (const entry of [...englishEntries, ...chineseEntries]) {
+  validateSerializedBlocks(entry.content, `${entry.locale}:${entry.key}`);
+}
 
 const englishKeys = englishEntries.map((entry) => entry.key).sort();
 const chineseKeys = chineseEntries.map((entry) => entry.key).sort();

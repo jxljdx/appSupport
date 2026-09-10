@@ -14,9 +14,6 @@
   <!-- wp:paragraph -->
   <p>Get Batchora for private photo and video batch processing on iPhone.</p>
   <!-- /wp:paragraph -->
-  <!-- wp:shortcode -->
-  [batchora_app_store_cta]
-  <!-- /wp:shortcode -->
+  <!-- wp:batchora/app-store-cta /-->
 </div>
 <!-- /wp:group -->
-

@@ -52,12 +52,9 @@ export const cta = (title, text) => `<!-- wp:group {"align":"wide","className":"
 <div class="wp-block-group alignwide batchora-cta">
 ${heading(title)}
 ${paragraph(text)}
-<!-- wp:shortcode -->
-[batchora_app_store_cta]
-<!-- /wp:shortcode -->
+<!-- wp:batchora/app-store-cta /-->
 </div>
 <!-- /wp:group -->`;
 
 export const pageContent = (summary, ...sections) =>
   [answer(summary), ...sections].join("\n");
-

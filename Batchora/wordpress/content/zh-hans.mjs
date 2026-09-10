@@ -51,7 +51,7 @@ export const chineseEntries = [
 <!-- wp:paragraph {"className":"batchora-eyebrow"} --><p class="batchora-eyebrow">Batchora iPhone 版</p><!-- /wp:paragraph -->
 <!-- wp:heading {"level":1,"className":"batchora-display"} --><h1 class="wp-block-heading batchora-display">照片和视频，一次批量搞定。</h1><!-- /wp:heading -->
 <!-- wp:paragraph {"className":"batchora-lede"} --><p class="batchora-lede">压缩、重命名、改尺寸、格式转换、清除元数据与 ZIP 打包，全程在你的 iPhone 本地完成。</p><!-- /wp:paragraph -->
-<!-- wp:shortcode -->[batchora_app_store_cta]<!-- /wp:shortcode -->
+<!-- wp:batchora/app-store-cta /-->
 <!-- wp:html --><div class="batchora-proof" aria-label="产品特点"><span>照片 + 视频</span><span>设备本地处理</span><span>无需注册账号</span></div><!-- /wp:html -->
 </div>
 <!-- /wp:group -->`,
@@ -651,4 +651,3 @@ export const chineseEntries = [
     )
   })
 ];
-
