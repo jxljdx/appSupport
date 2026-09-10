@@ -408,17 +408,20 @@ summary:focus-visible {
   color: var(--batchora-muted);
 }
 
-.batchora-card__icon {
+.batchora-card p.batchora-card__icon {
   display: grid;
   width: 2.9rem;
   height: 2.9rem;
   place-items: center;
   margin-bottom: 1rem;
   border-radius: 0.9rem;
-  color: white;
+  color: #fff;
   background: linear-gradient(135deg, var(--batchora-accent), var(--batchora-purple));
   box-shadow: 0 10px 24px rgba(49, 88, 232, 0.2);
-  font-weight: 800;
+  font-size: 1.2rem;
+  font-weight: 850;
+  line-height: 1;
+  text-shadow: 0 1px 2px rgba(17, 20, 48, 0.28);
 }
 
 .batchora-media-frame {
