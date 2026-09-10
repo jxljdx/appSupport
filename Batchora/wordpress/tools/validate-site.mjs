@@ -25,12 +25,20 @@ const entryPath = (entry) => {
 };
 
 const request = async (pathname) => {
-  const response = await fetch(new URL(pathname, baseUrl), {
-    redirect: "manual"
-  });
-  const body = await response.text();
-  if (response.status !== 200) {
-    throw new Error(`${pathname} returned ${response.status}`);
+  let response;
+  let body = "";
+  for (let attempt = 1; attempt <= 4; attempt += 1) {
+    response = await fetch(new URL(pathname, baseUrl), {
+      redirect: "manual"
+    });
+    body = await response.text();
+    if (response.status === 200) {
+      break;
+    }
+    if (![404, 502].includes(response.status) || attempt === 4) {
+      throw new Error(`${pathname} returned ${response.status}`);
+    }
+    await new Promise((resolve) => setTimeout(resolve, attempt * 250));
   }
   if (/Fatal error|Warning:|Notice:|Deprecated:/i.test(body)) {
     throw new Error(`${pathname} contains a PHP diagnostic`);
@@ -61,6 +69,9 @@ for (const entry of entries) {
   }
   if (!/<link rel="canonical" href="[^"]+">/i.test(html)) {
     throw new Error(`${pathname} is missing a canonical URL`);
+  }
+  if (!/<meta property="og:image" content="[^"]+">/i.test(html)) {
+    throw new Error(`${pathname} is missing an Open Graph image`);
   }
   for (const locale of ["en-US", "zh-Hans", "x-default"]) {
     const expression = new RegExp(

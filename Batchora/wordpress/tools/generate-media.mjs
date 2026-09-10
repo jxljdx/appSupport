@@ -51,6 +51,36 @@ for (const width of [128, 256]) {
     .avif({ quality: 64, effort: 5 })
     .toFile(path.join(outputRoot, `app-icon-${width}.avif`));
 }
+await sharp(iconSource)
+  .resize(512, 512)
+  .png({ compressionLevel: 9, palette: true })
+  .toFile(path.join(outputRoot, "app-icon-512.png"));
+
+const socialCard = Buffer.from(`
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#18265f"/>
+      <stop offset="0.55" stop-color="#3158e8"/>
+      <stop offset="1" stop-color="#7a3de2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <circle cx="1050" cy="80" r="260" fill="#ffffff" opacity="0.08"/>
+  <circle cx="80" cy="610" r="300" fill="#ffffff" opacity="0.06"/>
+  <text x="470" y="265" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="92" font-weight="750">Batchora</text>
+  <text x="470" y="355" fill="#ffffff" opacity="0.9" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-weight="500">Photo &amp; Video Batch Processing</text>
+</svg>`);
+await sharp(socialCard)
+  .composite( [
+    {
+      input: await sharp(iconSource).resize(250, 250).png().toBuffer(),
+      left: 145,
+      top: 190
+    }
+  ] )
+  .png({ compressionLevel: 9 })
+  .toFile(path.join(root, "theme/batchora/assets/social-card.png"));
 
 for (const locale of locales) {
   const localeOutput = path.join(outputRoot, locale);

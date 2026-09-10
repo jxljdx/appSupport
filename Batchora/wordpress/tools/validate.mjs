@@ -14,6 +14,7 @@ const requiredFiles = [
   "theme/batchora/templates/single.html",
   "theme/batchora/parts/header.html",
   "theme/batchora/parts/footer.html",
+  "theme/batchora/assets/social-card.png",
   "plugin/batchora-site/batchora-site.php"
 ];
 
@@ -26,7 +27,8 @@ for (const icon of [
   "app-icon-128.webp",
   "app-icon-128.avif",
   "app-icon-256.webp",
-  "app-icon-256.avif"
+  "app-icon-256.avif",
+  "app-icon-512.png"
 ]) {
   await access(path.join(mediaRoot, icon));
 }
@@ -66,6 +68,13 @@ for (const locale of ["en-US", "zh-Hans"]) {
   if (videoStat.size > 5 * 1024 * 1024) {
     throw new Error(`App preview exceeds 5 MB: ${videoPath}`);
   }
+}
+
+const socialCardStat = await stat(
+  path.join(root, "theme/batchora/assets/social-card.png")
+);
+if (socialCardStat.size > 500 * 1024) {
+  throw new Error("Social card exceeds 500 KB");
 }
 
 JSON.parse(
