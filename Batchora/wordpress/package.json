@@ -5,7 +5,11 @@
   "type": "module",
   "scripts": {
     "generate": "node tools/generate-content.mjs",
+    "generate:media": "node tools/generate-media.mjs",
     "validate": "node tools/validate.mjs",
     "package": "npm run validate && npm run generate && node tools/package.mjs"
+  },
+  "devDependencies": {
+    "sharp": "0.35.4"
   }
 }

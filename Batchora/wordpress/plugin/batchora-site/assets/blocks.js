@@ -30,4 +30,5 @@
 		'Batchora Language Switcher'
 	);
 	registerDynamicBlock( 'batchora/legal-links', 'Batchora Legal Links' );
+	registerDynamicBlock( 'batchora/product-media', 'Batchora Product Media' );
 } )( window.wp.blocks, window.wp.element, window.wp.serverSideRender );

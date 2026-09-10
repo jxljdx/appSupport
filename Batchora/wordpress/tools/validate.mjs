@@ -1,4 +1,4 @@
-import { access, readFile, readdir } from "node:fs/promises";
+import { access, readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { englishEntries } from "../content/en.mjs";
@@ -19,6 +19,53 @@ const requiredFiles = [
 
 for (const relativePath of requiredFiles) {
   await access(path.join(root, relativePath));
+}
+
+const mediaRoot = path.join(root, "theme/batchora/assets/media");
+for (const icon of [
+  "app-icon-128.webp",
+  "app-icon-128.avif",
+  "app-icon-256.webp",
+  "app-icon-256.avif"
+]) {
+  await access(path.join(mediaRoot, icon));
+}
+
+for (const locale of ["en-US", "zh-Hans"]) {
+  for (const name of [
+    "01-home",
+    "02-photo-compression",
+    "03-video-compression",
+    "04-rename",
+    "05-format-resize",
+    "06-privacy-zip",
+    "07-private-results",
+    "preview-poster"
+  ]) {
+    for (const width of [480, 768]) {
+      for (const format of ["webp", "avif"]) {
+        const mediaPath = path.join(
+          mediaRoot,
+          locale,
+          `${name}-${width}.${format}`
+        );
+        const mediaStat = await stat(mediaPath);
+        if (mediaStat.size > 120 * 1024) {
+          throw new Error(`Responsive image exceeds 120 KB: ${mediaPath}`);
+        }
+      }
+    }
+  }
+
+  const videoPath = path.join(
+    mediaRoot,
+    locale,
+    "batchora-app-preview.mp4"
+  );
+  const videoStat = await stat(videoPath);
+  if (videoStat.size > 5 * 1024 * 1024) {
+    throw new Error(`App preview exceeds 5 MB: ${videoPath}`);
+  }
 }
 
 JSON.parse(

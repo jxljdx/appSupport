@@ -47,6 +47,7 @@ export const englishEntries = [
         "Batchora is an iPhone app for processing photos and videos in batches. It compresses media, previews new filenames, resizes and converts photos, removes selected metadata, and exports individual files or one ZIP without uploading your media to Batchora servers."
       ),
       `<!-- wp:pattern {"slug":"batchora/product-hero"} /-->`,
+      `<!-- wp:batchora/product-media /-->`,
       `<!-- wp:pattern {"slug":"batchora/feature-grid"} /-->`,
       section(
         "Built around successful copies",

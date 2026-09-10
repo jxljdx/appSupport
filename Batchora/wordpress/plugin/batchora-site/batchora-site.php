@@ -21,6 +21,7 @@ require_once BATCHORA_SITE_PATH . 'includes/content.php';
 require_once BATCHORA_SITE_PATH . 'includes/metadata.php';
 require_once BATCHORA_SITE_PATH . 'includes/discovery.php';
 require_once BATCHORA_SITE_PATH . 'includes/shortcodes.php';
+require_once BATCHORA_SITE_PATH . 'includes/media.php';
 require_once BATCHORA_SITE_PATH . 'includes/settings.php';
 
 function batchora_site_register_meta() {
@@ -88,6 +89,14 @@ function batchora_site_register_blocks() {
 			'api_version'     => 3,
 			'editor_script'   => 'batchora-site-blocks',
 			'render_callback' => 'batchora_legal_links_block',
+		)
+	);
+	register_block_type(
+		'batchora/product-media',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'batchora-site-blocks',
+			'render_callback' => 'batchora_product_media_block',
 		)
 	);
 }

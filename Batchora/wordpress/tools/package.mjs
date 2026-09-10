@@ -17,6 +17,10 @@ const packages = [
   {
     source: path.join(root, "plugin", "batchora-site"),
     output: path.join(releaseDirectory, `batchora-site-${version}.zip`)
+  },
+  {
+    source: path.join(root, "theme", "batchora", "assets", "media"),
+    output: path.join(releaseDirectory, `batchora-media-${version}.zip`)
   }
 ];
 

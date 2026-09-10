@@ -55,6 +55,7 @@ export const chineseEntries = [
 <!-- wp:html --><div class="batchora-proof" aria-label="产品特点"><span>照片 + 视频</span><span>设备本地处理</span><span>无需注册账号</span></div><!-- /wp:html -->
 </div>
 <!-- /wp:group -->`,
+      `<!-- wp:batchora/product-media /-->`,
       section(
         "一次选择，完成整批任务",
         bullets([
