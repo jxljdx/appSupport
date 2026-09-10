@@ -6,23 +6,26 @@ import { chineseEntries } from "../content/zh-hans.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const requiredFiles = [
-  "theme/batchora/style.css",
-  "theme/batchora/theme.json",
-  "theme/batchora/functions.php",
-  "theme/batchora/templates/index.html",
-  "theme/batchora/templates/page.html",
-  "theme/batchora/templates/single.html",
-  "theme/batchora/parts/header.html",
-  "theme/batchora/parts/footer.html",
-  "theme/batchora/assets/social-card.png",
-  "plugin/batchora-site/batchora-site.php"
+  "theme/bluemorrow-studio/style.css",
+  "theme/bluemorrow-studio/theme.json",
+  "theme/bluemorrow-studio/functions.php",
+  "theme/bluemorrow-studio/templates/index.html",
+  "theme/bluemorrow-studio/templates/page.html",
+  "theme/bluemorrow-studio/templates/single.html",
+  "theme/bluemorrow-studio/parts/header.html",
+  "theme/bluemorrow-studio/parts/footer.html",
+  "theme/bluemorrow-studio/assets/social-card.png",
+  "plugin/bluemorrow-studio-site/bluemorrow-studio-site.php"
 ];
 
 for (const relativePath of requiredFiles) {
   await access(path.join(root, relativePath));
 }
 
-const mediaRoot = path.join(root, "theme/batchora/assets/media");
+const mediaRoot = path.join(
+  root,
+  "theme/bluemorrow-studio/assets/media"
+);
 for (const icon of [
   "app-icon-128.webp",
   "app-icon-128.avif",
@@ -71,18 +74,21 @@ for (const locale of ["en-US", "zh-Hans"]) {
 }
 
 const socialCardStat = await stat(
-  path.join(root, "theme/batchora/assets/social-card.png")
+  path.join(root, "theme/bluemorrow-studio/assets/social-card.png")
 );
 if (socialCardStat.size > 500 * 1024) {
   throw new Error("Social card exceeds 500 KB");
 }
 
 JSON.parse(
-  await readFile(path.join(root, "theme/batchora/theme.json"), "utf8")
+  await readFile(
+    path.join(root, "theme/bluemorrow-studio/theme.json"),
+    "utf8"
+  )
 );
 
 const themeHeader = await readFile(
-  path.join(root, "theme/batchora/style.css"),
+  path.join(root, "theme/bluemorrow-studio/style.css"),
   "utf8"
 );
 for (const field of ["Theme Name:", "Version:", "Requires at least:"]) {
@@ -92,7 +98,10 @@ for (const field of ["Theme Name:", "Version:", "Requires at least:"]) {
 }
 
 const pluginSource = await readFile(
-  path.join(root, "plugin/batchora-site/batchora-site.php"),
+  path.join(
+    root,
+    "plugin/bluemorrow-studio-site/bluemorrow-studio-site.php"
+  ),
   "utf8"
 );
 for (const field of ["Plugin Name:", "Version:", "Requires at least:"]) {
@@ -102,17 +111,17 @@ for (const field of ["Plugin Name:", "Version:", "Requires at least:"]) {
 }
 
 const templateFiles = await readdir(
-  path.join(root, "theme/batchora/templates")
+  path.join(root, "theme/bluemorrow-studio/templates")
 );
 if (!templateFiles.every((file) => file.endsWith(".html"))) {
   throw new Error("Block theme templates must use .html files");
 }
 
 const serializedSources = [
-  path.join(root, "theme/batchora/parts/header.html"),
-  path.join(root, "theme/batchora/parts/footer.html"),
-  path.join(root, "theme/batchora/patterns/hero.php"),
-  path.join(root, "theme/batchora/patterns/download-cta.php")
+  path.join(root, "theme/bluemorrow-studio/parts/header.html"),
+  path.join(root, "theme/bluemorrow-studio/parts/footer.html"),
+  path.join(root, "theme/bluemorrow-studio/patterns/hero.php"),
+  path.join(root, "theme/bluemorrow-studio/patterns/download-cta.php")
 ];
 
 const validateSerializedBlocks = (source, sourceLabel) => {
@@ -198,4 +207,4 @@ if (JSON.stringify(englishKeys) !== JSON.stringify(chineseKeys)) {
   throw new Error("English and Chinese content entries are not aligned");
 }
 
-console.log("Batchora WordPress source is valid.");
+console.log("BlueMorrow Studio WordPress source is valid.");

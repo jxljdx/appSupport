@@ -1,11 +1,11 @@
-# Batchora WordPress Site
+# BlueMorrow Studio WordPress Site
 
-Portable source for the Batchora marketing website.
+Portable source for the BlueMorrow Studio multi-app website.
 
 ## Packages
 
-- `theme/batchora/`: custom WordPress block theme.
-- `plugin/batchora-site/`: product metadata and discovery behavior.
+- `theme/bluemorrow-studio/`: custom WordPress block theme.
+- `plugin/bluemorrow-studio-site/`: product metadata and discovery behavior.
 - `content/`: bilingual page and article source.
 - `tools/`: validation and release packaging scripts.
 
@@ -30,6 +30,6 @@ run `npm run validate:site` while the site is available at
 `http://127.0.0.1:9401`.
 
 The complete upload bundle is
-`release/batchora-wordpress-release-1.0.0.zip`. Follow the checklist in
+`release/bluemorrow-studio-wordpress-release-1.0.0.zip`. Follow the checklist in
 `deployment/wordpress-com-launch-checklist.md`; production credentials and
 exports must remain outside Git.

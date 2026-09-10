@@ -111,7 +111,7 @@ function batchora_discovery_activate() {
 	flush_rewrite_rules();
 }
 register_activation_hook(
-	BATCHORA_SITE_PATH . 'batchora-site.php',
+	BATCHORA_SITE_PATH . 'bluemorrow-studio-site.php',
 	'batchora_discovery_activate'
 );
 

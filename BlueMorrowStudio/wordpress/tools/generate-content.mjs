@@ -5,7 +5,10 @@ import { chineseEntries } from "../content/zh-hans.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const releaseDirectory = path.join(root, "release");
-const outputPath = path.join(releaseDirectory, "batchora-content-1.0.0.xml");
+const outputPath = path.join(
+  releaseDirectory,
+  "bluemorrow-studio-content-1.0.0.xml"
+);
 
 const xml = (value) =>
   String(value)
@@ -90,9 +93,9 @@ const document = `<?xml version="1.0" encoding="UTF-8" ?>
   xmlns:dc="http://purl.org/dc/elements/1.1/"
   xmlns:wp="http://wordpress.org/export/1.2/">
 <channel>
-<title>Batchora</title>
+<title>BlueMorrow Studio</title>
 <link>https://example.com</link>
-<description>Batchora WordPress content package</description>
+<description>BlueMorrow Studio WordPress content package</description>
 <pubDate>Thu, 10 Sep 2026 00:00:00 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>

@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: Batchora Site
- * Description: Product metadata and discovery behavior for the Batchora website.
+ * Plugin Name: BlueMorrow Studio Site
+ * Description: Product metadata and discovery behavior for the BlueMorrow Studio website.
  * Version: 1.0.0
  * Requires at least: 6.8
  * Requires PHP: 7.4
- * Author: Batchora
- * Text Domain: batchora-site
+ * Author: BlueMorrow Studio
+ * Text Domain: bluemorrow-studio-site
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

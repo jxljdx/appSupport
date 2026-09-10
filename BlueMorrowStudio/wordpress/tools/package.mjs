@@ -6,22 +6,37 @@ import process from "node:process";
 
 const root = path.resolve(import.meta.dirname, "..");
 const releaseDirectory = path.join(root, "release");
-const version = process.env.BATCHORA_SITE_VERSION || "1.0.0";
+const version = process.env.BLUEMORROW_STUDIO_VERSION || "1.0.0";
 
 await mkdir(releaseDirectory, { recursive: true });
 
 const packages = [
   {
-    source: path.join(root, "theme", "batchora"),
-    output: path.join(releaseDirectory, `batchora-theme-${version}.zip`)
+    source: path.join(root, "theme", "bluemorrow-studio"),
+    output: path.join(
+      releaseDirectory,
+      `bluemorrow-studio-theme-${version}.zip`
+    )
   },
   {
-    source: path.join(root, "plugin", "batchora-site"),
-    output: path.join(releaseDirectory, `batchora-site-${version}.zip`)
+    source: path.join(root, "plugin", "bluemorrow-studio-site"),
+    output: path.join(
+      releaseDirectory,
+      `bluemorrow-studio-site-${version}.zip`
+    )
   },
   {
-    source: path.join(root, "theme", "batchora", "assets", "media"),
-    output: path.join(releaseDirectory, `batchora-media-${version}.zip`)
+    source: path.join(
+      root,
+      "theme",
+      "bluemorrow-studio",
+      "assets",
+      "media"
+    ),
+    output: path.join(
+      releaseDirectory,
+      `bluemorrow-studio-media-${version}.zip`
+    )
   }
 ];
 
@@ -38,10 +53,10 @@ for (const item of packages) {
 }
 
 const artifactNames = [
-  `batchora-theme-${version}.zip`,
-  `batchora-site-${version}.zip`,
-  `batchora-media-${version}.zip`,
-  `batchora-content-${version}.xml`
+  `bluemorrow-studio-theme-${version}.zip`,
+  `bluemorrow-studio-site-${version}.zip`,
+  `bluemorrow-studio-media-${version}.zip`,
+  `bluemorrow-studio-content-${version}.xml`
 ];
 const checksumLines = [];
 for (const artifactName of artifactNames) {
@@ -55,7 +70,7 @@ await writeFile(
   `${checksumLines.join("\n")}\n`
 );
 
-const bundleName = `batchora-wordpress-release-${version}`;
+const bundleName = `bluemorrow-studio-wordpress-release-${version}`;
 const bundleDirectory = path.join(releaseDirectory, bundleName);
 await rm(bundleDirectory, { recursive: true, force: true });
 await mkdir(bundleDirectory, { recursive: true });

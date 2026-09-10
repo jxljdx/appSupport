@@ -10,7 +10,7 @@
       "step": "installPlugin",
       "pluginData": {
         "resource": "bundled",
-        "path": "/release/batchora-site-1.0.0.zip"
+        "path": "/release/bluemorrow-studio-site-1.0.0.zip"
       },
       "options": {
         "activate": true
@@ -20,7 +20,7 @@
       "step": "installTheme",
       "themeData": {
         "resource": "bundled",
-        "path": "/release/batchora-theme-1.0.0.zip"
+        "path": "/release/bluemorrow-studio-theme-1.0.0.zip"
       },
       "options": {
         "activate": true
@@ -33,7 +33,7 @@
       "step": "importWxr",
       "file": {
         "resource": "bundled",
-        "path": "/release/batchora-content-1.0.0.xml"
+        "path": "/release/bluemorrow-studio-content-1.0.0.xml"
       },
       "fetchAttachments": false,
       "rewriteUrls": true,

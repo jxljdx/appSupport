@@ -8,7 +8,10 @@ const root = path.resolve(import.meta.dirname, "..");
 const appRoot = process.env.BATCHORA_APP_ROOT
   ? path.resolve(process.env.BATCHORA_APP_ROOT)
   : path.resolve(root, "../../../Batchly");
-const outputRoot = path.join(root, "theme/batchora/assets/media");
+const outputRoot = path.join(
+  root,
+  "theme/bluemorrow-studio/assets/media"
+);
 const widths = [480, 768];
 const locales = ["en-US", "zh-Hans"];
 const screenshots = [
@@ -80,7 +83,9 @@ await sharp(socialCard)
     }
   ] )
   .png({ compressionLevel: 9 })
-  .toFile(path.join(root, "theme/batchora/assets/social-card.png"));
+  .toFile(
+    path.join(root, "theme/bluemorrow-studio/assets/social-card.png")
+  );
 
 for (const locale of locales) {
   const localeOutput = path.join(outputRoot, locale);

@@ -1,8 +1,8 @@
 <?php
 /**
- * Batchora theme setup.
+ * BlueMorrow Studio theme setup.
  *
- * @package Batchora
+ * @package BlueMorrowStudio
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -17,7 +17,7 @@ function batchora_theme_setup() {
 	add_editor_style( 'assets/site.css' );
 	register_block_pattern_category(
 		'batchora',
-		array( 'label' => __( 'Batchora', 'batchora' ) )
+		array( 'label' => __( 'Batchora', 'bluemorrow-studio' ) )
 	);
 }
 add_action( 'after_setup_theme', 'batchora_theme_setup' );

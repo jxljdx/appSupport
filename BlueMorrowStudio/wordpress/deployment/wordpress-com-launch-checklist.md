@@ -1,19 +1,19 @@
-# Batchora WordPress.com Launch Checklist
+# BlueMorrow Studio WordPress.com Launch Checklist
 
 ## Before creating the public site
 
 - Purchase or connect the final independent domain.
 - Activate a paid WordPress.com plan that supports custom theme and plugin uploads.
 - Keep the existing GitHub Pages support and privacy URLs unchanged until the new site passes production checks.
-- Download `batchora-wordpress-release-1.0.0.zip` and verify the files against `SHA256SUMS`.
+- Download `bluemorrow-studio-wordpress-release-1.0.0.zip` and verify the files against `SHA256SUMS`.
 
 ## Install the release
 
 1. Connect the final domain and set it as the WordPress.com primary address.
 2. Keep search-engine indexing disabled while importing and checking the site. Do not share the temporary WordPress.com address.
-3. Upload and activate `batchora-site-1.0.0.zip`.
-4. Upload and activate `batchora-theme-1.0.0.zip`.
-5. Use **Tools → Import → WordPress** to import `batchora-content-1.0.0.xml`.
+3. Upload and activate `bluemorrow-studio-site-1.0.0.zip`.
+4. Upload and activate `bluemorrow-studio-theme-1.0.0.zip`.
+5. Use **Tools → Import → WordPress** to import `bluemorrow-studio-content-1.0.0.xml`.
 6. Publish the 36 imported pages after reviewing their parent relationships.
 7. Set permalinks to **Post name**.
 8. Leave **Your homepage displays** set to **Your latest posts**. The site plugin redirects `/` to `/en/`; assigning the English page as a static homepage would remove its `/en/` URL.

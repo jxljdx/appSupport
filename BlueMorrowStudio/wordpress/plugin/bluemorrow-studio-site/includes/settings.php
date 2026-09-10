@@ -22,7 +22,7 @@ function batchora_register_settings() {
 
 	add_settings_field(
 		'batchora_cloudflare_analytics_token',
-		__( 'Cloudflare Web Analytics token', 'batchora-site' ),
+		__( 'Cloudflare Web Analytics token', 'bluemorrow-studio-site' ),
 		'batchora_cloudflare_token_field',
 		'reading'
 	);
@@ -38,7 +38,7 @@ function batchora_cloudflare_token_field() {
 	echo '<p class="description">';
 	esc_html_e(
 		'Leave empty until the production domain is connected.',
-		'batchora-site'
+		'bluemorrow-studio-site'
 	);
 	echo '</p>';
 }
@@ -55,4 +55,3 @@ function batchora_output_cloudflare_analytics() {
 	);
 }
 add_action( 'wp_footer', 'batchora_output_cloudflare_analytics', 100 );
-
