@@ -43,43 +43,14 @@ export const chineseEntries = [
     intent: "iPhone 照片视频批处理工具",
     template: "front-page",
     content: [
+      `<!-- wp:batchora/home-hero /-->`,
       answer(
         "Batchora 是一款 iPhone 照片与视频批处理 App。它可以批量压缩媒体、预览新文件名、调整照片尺寸与格式、移除选定元数据，并导出单独文件或一个 ZIP；你的媒体不会上传到 Batchora 服务器。"
       ),
-      `<!-- wp:group {"align":"wide","className":"batchora-hero","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide batchora-hero">
-<!-- wp:paragraph {"className":"batchora-eyebrow"} --><p class="batchora-eyebrow">Batchora iPhone 版</p><!-- /wp:paragraph -->
-<!-- wp:heading {"level":1,"className":"batchora-display"} --><h1 class="wp-block-heading batchora-display">照片和视频，一次批量搞定。</h1><!-- /wp:heading -->
-<!-- wp:paragraph {"className":"batchora-lede"} --><p class="batchora-lede">压缩、重命名、改尺寸、格式转换、清除元数据与 ZIP 打包，全程在你的 iPhone 本地完成。</p><!-- /wp:paragraph -->
-<!-- wp:batchora/app-store-cta /-->
-<!-- wp:html --><div class="batchora-proof" aria-label="产品特点"><span>照片 + 视频</span><span>设备本地处理</span><span>无需注册账号</span></div><!-- /wp:html -->
-</div>
-<!-- /wp:group -->`,
+      `<!-- wp:batchora/home-workflow /-->`,
+      `<!-- wp:batchora/feature-explorer /-->`,
       `<!-- wp:batchora/product-media /-->`,
-      section(
-        "一次选择，完成整批任务",
-        bullets([
-          '<a href="/zh-hans/photo-compressor/">批量压缩照片并控制画质</a>',
-          '<a href="/zh-hans/video-compressor/">减小视频文件体积，方便分享</a>',
-          '<a href="/zh-hans/batch-rename-photos/">预览并批量重命名照片和视频</a>',
-          '<a href="/zh-hans/heic-to-jpg/">将 HEIC 转为 JPG 或 PNG</a>',
-          '<a href="/zh-hans/resize-images/">统一调整整批照片尺寸</a>',
-          '<a href="/zh-hans/remove-photo-metadata/">从副本中移除定位或更多元数据</a>',
-          '<a href="/zh-hans/zip-photos-iphone/">把处理结果打包成一个 ZIP</a>'
-        ])
-      ),
-      section(
-        "先保存成功副本，再由你决定原件",
-        paragraph(
-          "Batchora 会先保存成功处理的副本，不会静默覆盖原件。只有当你主动请求删除并确认 Apple 单独显示的“照片”系统提示后，符合条件的原件才可能改变。"
-        ),
-        bullets([
-          "照片和视频处理都在设备本地完成。",
-          "免费版单张照片处理不限次数。",
-          "Batchora Pro 移除多图与视频时长的每日额度。",
-          "元数据隐私控制属于 Batchora Pro 功能。"
-        ])
-      ),
+      `<!-- wp:batchora/trust-panel /-->`,
       section(
         "常见问题",
         faq([
