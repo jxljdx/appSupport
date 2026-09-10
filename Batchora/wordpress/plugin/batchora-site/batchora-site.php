@@ -115,5 +115,37 @@ function batchora_site_register_blocks() {
 			'render_callback' => 'batchora_product_media_block',
 		)
 	);
+	register_block_type(
+		'batchora/home-hero',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'batchora-site-blocks',
+			'render_callback' => 'batchora_home_hero_block',
+		)
+	);
+	register_block_type(
+		'batchora/home-workflow',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'batchora-site-blocks',
+			'render_callback' => 'batchora_home_workflow_block',
+		)
+	);
+	register_block_type(
+		'batchora/feature-explorer',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'batchora-site-blocks',
+			'render_callback' => 'batchora_feature_explorer_block',
+		)
+	);
+	register_block_type(
+		'batchora/trust-panel',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'batchora-site-blocks',
+			'render_callback' => 'batchora_trust_panel_block',
+		)
+	);
 }
 add_action( 'init', 'batchora_site_register_blocks' );

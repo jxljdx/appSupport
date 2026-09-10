@@ -39,4 +39,11 @@
 	);
 	registerDynamicBlock( 'batchora/legal-links', 'Batchora Legal Links' );
 	registerDynamicBlock( 'batchora/product-media', 'Batchora Product Media' );
+	registerDynamicBlock( 'batchora/home-hero', 'Batchora Home Hero' );
+	registerDynamicBlock( 'batchora/home-workflow', 'Batchora Home Workflow' );
+	registerDynamicBlock(
+		'batchora/feature-explorer',
+		'Batchora Feature Explorer'
+	);
+	registerDynamicBlock( 'batchora/trust-panel', 'Batchora Trust Panel' );
 } )( window.wp.blocks, window.wp.element, window.wp.serverSideRender );

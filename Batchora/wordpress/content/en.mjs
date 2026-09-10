@@ -43,36 +43,14 @@ export const englishEntries = [
     intent: "photo and video batch processing app",
     template: "front-page",
     content: [
+      `<!-- wp:batchora/home-hero /-->`,
       answer(
         "Batchora is an iPhone app for processing photos and videos in batches. It compresses media, previews new filenames, resizes and converts photos, removes selected metadata, and exports individual files or one ZIP without uploading your media to Batchora servers."
       ),
-      `<!-- wp:pattern {"slug":"batchora/product-hero"} /-->`,
+      `<!-- wp:batchora/home-workflow /-->`,
+      `<!-- wp:batchora/feature-explorer /-->`,
       `<!-- wp:batchora/product-media /-->`,
-      `<!-- wp:pattern {"slug":"batchora/feature-grid"} /-->`,
-      section(
-        "Built around successful copies",
-        paragraph(
-          "Batchora saves successful processed copies first. It never silently replaces an original. If you choose to request deletion, Apple shows a separate Photos confirmation before eligible originals can change."
-        ),
-        bullets([
-          "Photo and video processing happens on your device.",
-          "Single-photo processing is unlimited in the free version.",
-          "Batchora Pro removes the daily multi-photo and video-duration limits.",
-          "Metadata privacy controls are available with Batchora Pro."
-        ])
-      ),
-      section(
-        "Choose the task you need",
-        bullets([
-          '<a href="/en/photo-compressor/">Compress photos and control image quality</a>',
-          '<a href="/en/video-compressor/">Reduce video file size for sharing</a>',
-          '<a href="/en/batch-rename-photos/">Preview and batch rename media</a>',
-          '<a href="/en/heic-to-jpg/">Convert HEIC to JPG or PNG</a>',
-          '<a href="/en/resize-images/">Resize a whole photo selection</a>',
-          '<a href="/en/remove-photo-metadata/">Remove location or broader metadata from copies</a>',
-          '<a href="/en/zip-photos-iphone/">Package processed files into one ZIP</a>'
-        ])
-      ),
+      `<!-- wp:batchora/trust-panel /-->`,
       `<!-- wp:pattern {"slug":"batchora/faq"} /-->`,
       featureCta
     ].join("\n")

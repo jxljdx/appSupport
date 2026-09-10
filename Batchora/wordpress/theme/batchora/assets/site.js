@@ -3,8 +3,13 @@ document.documentElement.classList.add("batchora-js");
 const revealTargets = document.querySelectorAll(
   [
     ".batchora-hero > *",
+    ".batchora-home-hero__copy > *",
+    ".batchora-home-hero__visual",
     ".batchora-product-media > *",
     ".batchora-section",
+    ".batchora-workflow-card",
+    ".batchora-feature-card",
+    ".batchora-trust-fact",
     ".batchora-card",
     ".batchora-cta",
     ".batchora-faq details"
