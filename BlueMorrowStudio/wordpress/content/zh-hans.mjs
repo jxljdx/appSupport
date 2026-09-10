@@ -57,15 +57,14 @@ export const chineseEntries = [
       "BlueMorrow Studio 打造清晰、注重隐私的日常工具。了解 Batchora iPhone 照片与视频批处理 App。",
     intent: "BlueMorrow Studio App",
     template: "front-page",
-    content: pageContent(
-      "BlueMorrow Studio 专注于清晰、克制并从一开始就考虑隐私的实用工具。首款 App Batchora 可在 iPhone 本地批量处理照片与视频。",
-      section(
-        "简单工具，用心打造。",
-        paragraph(
-          "用专注的 App 解决重复任务，不强加多余账号、复杂界面或无法兑现的宣传。"
-        )
-      )
-    )
+    content: [
+      `<!-- wp:bluemorrow/studio-home-hero /-->`,
+      answer(
+        "BlueMorrow Studio 专注于清晰、克制并从一开始就考虑隐私的实用工具。首款 App Batchora 可在 iPhone 本地批量处理照片与视频。"
+      ),
+      `<!-- wp:bluemorrow/studio-apps /-->`,
+      `<!-- wp:bluemorrow/studio-principles /-->`
+    ].join("\n")
   }),
   studioPage({
     key: "apps",
@@ -75,15 +74,13 @@ export const chineseEntries = [
     description:
       "了解 BlueMorrow Studio 的 App，包括用于 iPhone 照片与视频本地批处理的 Batchora。",
     intent: "BlueMorrow Studio App",
-    content: pageContent(
-      "BlueMorrow Studio 目前推出了 Batchora，一款可在 iPhone 批量压缩、重命名、改尺寸、转换并导出照片和视频的 App。",
-      section(
-        "Batchora",
-        paragraph(
-          "Batchora 把照片和视频批处理能力整合到一个清晰、设备本地完成的流程中。"
-        )
-      )
-    )
+    content: [
+      `<!-- wp:bluemorrow/studio-page-hero /-->`,
+      answer(
+        "BlueMorrow Studio 目前推出了 Batchora，一款可在 iPhone 批量压缩、重命名、改尺寸、转换并导出照片和视频的 App。"
+      ),
+      `<!-- wp:bluemorrow/studio-apps /-->`
+    ].join("\n")
   }),
   studioPage({
     key: "studio-about",
@@ -93,15 +90,25 @@ export const chineseEntries = [
     description:
       "了解 BlueMorrow Studio 对实用软件、清晰体验、隐私和准确产品内容的设计原则。",
     intent: "关于 BlueMorrow Studio",
-    content: pageContent(
-      "BlueMorrow Studio 为日常任务打造专注的 App。产品页面和指南会依据当前真实功能维护，不宣传软件无法可靠做到的效果。",
+    content: [
+      `<!-- wp:bluemorrow/studio-page-hero /-->`,
+      answer(
+        "BlueMorrow Studio 为日常任务打造专注的 App。产品页面和指南会依据当前真实功能维护，不宣传软件无法可靠做到的效果。"
+      ),
       section(
-        "我们的方式",
+        "围绕任务设计",
         paragraph(
-          "从真实任务出发，让流程容易理解，并让用户始终掌控自己的文件和选择。"
+          "一款产品应该让用户很快明白它能完成什么。我们先确认真正需要解决的任务，再去掉不能帮助完成任务的界面和选择。"
+        )
+      ),
+      `<!-- wp:bluemorrow/studio-principles /-->`,
+      section(
+        "可以信赖的产品说明",
+        paragraph(
+          "功能页、隐私说明和指南都依据当前 App 行为维护。当结果会受到源文件、设备或 Apple 系统行为影响时，网站会说明边界，而不是承诺一个对所有情况都成立的结果。"
         )
       )
-    )
+    ].join("\n")
   }),
   studioPage({
     key: "studio-privacy",
@@ -111,15 +118,30 @@ export const chineseEntries = [
     description:
       "了解 BlueMorrow Studio 网站如何使用聚合分析和处理联系信息，并查看每款 App 的独立隐私政策。",
     intent: "BlueMorrow Studio 隐私",
-    content: pageContent(
-      "BlueMorrow Studio 网站使用注重隐私的聚合访问分析来了解页面使用情况。每款 App 都有独立隐私政策，说明该产品的数据处理方式。",
+    content: [
+      `<!-- wp:bluemorrow/studio-page-hero /-->`,
+      answer(
+        "BlueMorrow Studio 网站使用注重隐私的聚合访问分析来了解页面使用情况。每款 App 都有独立隐私政策，说明该产品的数据处理方式。"
+      ),
+      section(
+        "网站访问分析",
+        paragraph(
+          "网站可能使用 Cloudflare Web Analytics 了解页面浏览量、来源网站等聚合信息，不用于建立广告画像。"
+        )
+      ),
       section(
         "App 独立隐私政策",
         paragraph(
-          "请从 App 或支持页面选择产品，查看真正适用于该 App 的隐私说明。"
+          "网站行为与 App 行为并不相同。请从 App 或支持页面选择产品，查看真正适用于该 App 功能和数据处理方式的隐私政策。"
+        )
+      ),
+      section(
+        "联系信息",
+        paragraph(
+          "当你主动联系支持时，邮件或消息中的信息只用于理解并回复你的请求。"
         )
       )
-    )
+    ].join("\n")
   }),
   studioPage({
     key: "studio-support",
@@ -129,15 +151,13 @@ export const chineseEntries = [
     description:
       "选择 BlueMorrow Studio App，查看对应的帮助、隐私信息、故障排查和联系入口。",
     intent: "BlueMorrow Studio 支持",
-    content: pageContent(
-      "支持内容按 App 整理，确保操作说明、隐私细节和故障排查准确对应你正在使用的产品。",
-      section(
-        "Batchora 支持",
-        paragraph(
-          "Batchora 支持涵盖照片与视频处理、导出、订阅、隐私和常见问题排查。"
-        )
-      )
-    )
+    content: [
+      `<!-- wp:bluemorrow/studio-page-hero /-->`,
+      answer(
+        "支持内容按 App 整理，确保操作说明、隐私细节和故障排查准确对应你正在使用的产品。"
+      ),
+      `<!-- wp:bluemorrow/studio-support /-->`
+    ].join("\n")
   }),
   page({
     key: "batchora-home",
