@@ -218,6 +218,326 @@ summary:focus-visible {
   padding: clamp(2.5rem, 7vw, 6rem) clamp(1rem, 3vw, 2.5rem);
 }
 
+.bluemorrow-studio-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(19rem, 0.92fr);
+  gap: clamp(2.5rem, 7vw, 6rem);
+  min-height: clamp(35rem, 66vw, 46rem);
+  padding: clamp(2.5rem, 7vw, 6.5rem);
+  overflow: hidden;
+  border: 1px solid var(--batchora-border);
+  border-radius: var(--batchora-radius-large);
+  background:
+    radial-gradient(circle at 82% 18%, rgba(130, 93, 238, 0.19), transparent 23rem),
+    radial-gradient(circle at 8% 92%, rgba(49, 88, 232, 0.14), transparent 25rem),
+    rgba(255, 255, 255, 0.84);
+  box-shadow: var(--batchora-shadow);
+}
+
+.bluemorrow-studio-hero__copy {
+  position: relative;
+  z-index: 2;
+  align-self: center;
+}
+
+.bluemorrow-studio-hero h1 {
+  max-width: 11ch;
+  margin: 0;
+  font-size: clamp(3.2rem, 7vw, 6.8rem);
+  letter-spacing: -0.07em;
+  line-height: 0.94;
+}
+
+.bluemorrow-studio-hero__lede {
+  max-width: 36rem;
+  margin: 1.6rem 0 0;
+  color: var(--batchora-muted);
+  font-size: clamp(1.12rem, 2vw, 1.4rem);
+  line-height: 1.55;
+}
+
+.bluemorrow-studio-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 2rem;
+}
+
+.bluemorrow-studio-proof span,
+.bluemorrow-app-card__features span {
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--batchora-border);
+  border-radius: 999px;
+  color: var(--batchora-muted);
+  background: var(--batchora-surface);
+  font-size: 0.78rem;
+  font-weight: 720;
+}
+
+.bluemorrow-studio-hero__visual {
+  position: relative;
+  min-height: 28rem;
+}
+
+.bluemorrow-hero-mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: clamp(16rem, 32vw, 26rem);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 31%;
+  color: #fff;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.24), transparent 43%),
+    linear-gradient(135deg, #3158e8 0%, #5268ea 42%, #8548db 100%);
+  box-shadow:
+    0 35px 90px rgba(49, 88, 232, 0.28),
+    inset 0 1px rgba(255, 255, 255, 0.38);
+  font-size: clamp(3.6rem, 8vw, 6.8rem);
+  font-weight: 850;
+  letter-spacing: -0.08em;
+  transform: translate(-50%, -50%) rotate(8deg);
+}
+
+.bluemorrow-hero-mark::after {
+  position: absolute;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.32);
+  content: "";
+  inset: 0 auto 0 50%;
+}
+
+.bluemorrow-hero-mark span {
+  display: grid;
+  place-items: center;
+}
+
+.bluemorrow-orbit {
+  position: absolute;
+  border: 1px solid rgba(49, 88, 232, 0.18);
+  border-radius: 50%;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bluemorrow-orbit--one {
+  width: 32rem;
+  height: 32rem;
+}
+
+.bluemorrow-orbit--two {
+  width: 39rem;
+  height: 39rem;
+  border-color: rgba(122, 61, 226, 0.12);
+}
+
+.bluemorrow-page-hero {
+  position: relative;
+  padding: clamp(3.25rem, 8vw, 7rem);
+  overflow: hidden;
+  border: 1px solid var(--batchora-border);
+  border-radius: var(--batchora-radius-large);
+  background:
+    radial-gradient(circle at 86% 10%, rgba(122, 61, 226, 0.18), transparent 22rem),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(241, 244, 255, 0.9));
+  box-shadow: var(--batchora-shadow-soft);
+}
+
+.bluemorrow-page-hero::after {
+  position: absolute;
+  width: 14rem;
+  height: 14rem;
+  border: 1px solid rgba(49, 88, 232, 0.14);
+  border-radius: 32%;
+  content: "";
+  inset: auto 5% -42% auto;
+  transform: rotate(18deg);
+}
+
+.bluemorrow-page-hero h1 {
+  max-width: 13ch;
+  margin: 0;
+  font-size: clamp(2.8rem, 6vw, 5.75rem);
+  letter-spacing: -0.06em;
+}
+
+.bluemorrow-page-hero > p:last-child {
+  max-width: 44rem;
+  margin: 1.35rem 0 0;
+  color: var(--batchora-muted);
+  font-size: clamp(1.08rem, 2vw, 1.3rem);
+}
+
+.bluemorrow-app-showcase,
+.bluemorrow-principles {
+  margin-top: clamp(4rem, 10vw, 8rem);
+}
+
+.bluemorrow-app-showcase__heading {
+  max-width: 44rem;
+  margin-bottom: clamp(1.75rem, 4vw, 3rem);
+}
+
+.bluemorrow-app-showcase__heading h2,
+.bluemorrow-principles h2 {
+  margin: 0;
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+}
+
+.bluemorrow-app-showcase__heading > p:last-child {
+  color: var(--batchora-muted);
+  font-size: 1.1rem;
+}
+
+.bluemorrow-app-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(20rem, 1.08fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  min-height: 37rem;
+  padding: clamp(2rem, 5vw, 4.5rem);
+  overflow: hidden;
+  border: 1px solid rgba(49, 88, 232, 0.16);
+  border-radius: var(--batchora-radius-large);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(237, 241, 255, 0.9));
+  box-shadow: var(--batchora-shadow);
+}
+
+.bluemorrow-app-card__copy {
+  position: relative;
+  z-index: 2;
+  align-self: center;
+}
+
+.bluemorrow-app-card__identity {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.bluemorrow-app-card__identity img {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 1.35rem;
+  box-shadow: 0 15px 32px rgba(49, 88, 232, 0.22);
+}
+
+.bluemorrow-app-card__identity strong,
+.bluemorrow-app-card__identity span {
+  display: block;
+}
+
+.bluemorrow-app-card__identity strong {
+  color: var(--batchora-ink);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  letter-spacing: -0.055em;
+}
+
+.bluemorrow-app-card__identity span {
+  color: var(--batchora-muted);
+  font-weight: 650;
+}
+
+.bluemorrow-app-card__features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 2rem 0 0;
+}
+
+.bluemorrow-app-card__visual {
+  position: relative;
+  min-height: 29rem;
+}
+
+.bluemorrow-app-card__glow {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(87, 91, 232, 0.24);
+  filter: blur(65px);
+  inset: 12% 0 0 8%;
+}
+
+.bluemorrow-app-card__screen {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  width: min(22rem, 78%);
+  height: auto;
+  border-radius: 2.6rem;
+  box-shadow: 0 35px 75px rgba(37, 45, 105, 0.25);
+  transform: translateX(-50%) rotate(5deg);
+}
+
+.bluemorrow-principles__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2.2rem;
+}
+
+.bluemorrow-principles__grid article {
+  min-height: 15rem;
+  padding: 1.6rem;
+  border: 1px solid var(--batchora-border);
+  border-radius: var(--batchora-radius);
+  background: var(--batchora-card);
+  box-shadow: var(--batchora-shadow-soft);
+}
+
+.bluemorrow-principles__grid article > span {
+  color: var(--batchora-accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.bluemorrow-principles__grid h3 {
+  margin: 2.5rem 0 0.7rem;
+  font-size: 1.4rem;
+}
+
+.bluemorrow-principles__grid p {
+  margin: 0;
+  color: var(--batchora-muted);
+}
+
+.bluemorrow-support-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+  margin-top: clamp(3rem, 8vw, 6rem);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid var(--batchora-border);
+  border-radius: var(--batchora-radius-large);
+  background: var(--batchora-card);
+  box-shadow: var(--batchora-shadow-soft);
+}
+
+.bluemorrow-support-card img {
+  width: clamp(5rem, 11vw, 7rem);
+  height: auto;
+  border-radius: 1.8rem;
+  box-shadow: 0 15px 32px rgba(49, 88, 232, 0.2);
+}
+
+.bluemorrow-support-card h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.bluemorrow-support-card p {
+  max-width: 42rem;
+  color: var(--batchora-muted);
+}
+
 .batchora-hero {
   position: relative;
   overflow: hidden;
@@ -1326,6 +1646,35 @@ summary:focus-visible {
 }
 
 @media (max-width: 900px) {
+  .bluemorrow-studio-hero,
+  .bluemorrow-app-card {
+    grid-template-columns: 1fr;
+  }
+
+  .bluemorrow-studio-hero {
+    min-height: 0;
+  }
+
+  .bluemorrow-studio-hero__visual {
+    min-height: 25rem;
+  }
+
+  .bluemorrow-app-card__visual {
+    min-height: 31rem;
+  }
+
+  .bluemorrow-principles__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bluemorrow-principles__grid article {
+    min-height: 0;
+  }
+
+  .bluemorrow-principles__grid h3 {
+    margin-top: 1.5rem;
+  }
+
   .batchora-home-hero {
     min-height: 0;
     grid-template-columns: 1fr;
@@ -1523,6 +1872,55 @@ summary:focus-visible {
     padding: 1.25rem 0.8rem 4rem;
   }
 
+  .bluemorrow-studio-hero,
+  .bluemorrow-page-hero,
+  .bluemorrow-app-card {
+    padding: 1.6rem;
+  }
+
+  .bluemorrow-studio-hero {
+    gap: 1rem;
+  }
+
+  .bluemorrow-studio-hero h1 {
+    font-size: clamp(3rem, 14vw, 4.6rem);
+  }
+
+  .bluemorrow-studio-hero__visual {
+    min-height: 20rem;
+  }
+
+  .bluemorrow-hero-mark {
+    width: min(16rem, 72vw);
+  }
+
+  .bluemorrow-orbit--one {
+    width: 19rem;
+    height: 19rem;
+  }
+
+  .bluemorrow-orbit--two {
+    width: 23rem;
+    height: 23rem;
+  }
+
+  .bluemorrow-page-hero h1 {
+    font-size: clamp(2.7rem, 13vw, 4.2rem);
+  }
+
+  .bluemorrow-app-card__visual {
+    min-height: 25rem;
+  }
+
+  .bluemorrow-app-card__screen {
+    width: min(17rem, 76%);
+    border-radius: 2rem;
+  }
+
+  .bluemorrow-support-card {
+    grid-template-columns: 1fr;
+  }
+
   .batchora-hero {
     padding: 1.6rem;
   }
@@ -1623,6 +2021,11 @@ summary:focus-visible {
   }
 
   .site-header__inner,
+  .bluemorrow-studio-hero,
+  .bluemorrow-page-hero,
+  .bluemorrow-app-card,
+  .bluemorrow-principles__grid article,
+  .bluemorrow-support-card,
   .batchora-hero,
   .batchora-card,
   .batchora-faq details,
@@ -1635,6 +2038,17 @@ summary:focus-visible {
   }
 
   .batchora-proof span {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .bluemorrow-studio-hero,
+  .bluemorrow-page-hero,
+  .bluemorrow-app-card {
+    background-color: rgba(18, 22, 43, 0.9);
+  }
+
+  .bluemorrow-studio-proof span,
+  .bluemorrow-app-card__features span {
     background: rgba(255, 255, 255, 0.06);
   }
 

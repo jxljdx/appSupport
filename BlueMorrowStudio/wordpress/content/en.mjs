@@ -57,15 +57,14 @@ export const englishEntries = [
       "BlueMorrow Studio makes clear, privacy-conscious apps for everyday tasks. Explore Batchora for photo and video batch processing on iPhone.",
     intent: "BlueMorrow Studio apps",
     template: "front-page",
-    content: pageContent(
-      "BlueMorrow Studio creates simple tools with careful design, clear controls, and privacy considered from the start. Its first app, Batchora, processes photos and videos in batches on iPhone.",
-      section(
-        "Simple tools, thoughtfully made.",
-        paragraph(
-          "Explore focused apps that solve repetitive tasks without unnecessary accounts, clutter, or inflated promises."
-        )
-      )
-    )
+    content: [
+      `<!-- wp:bluemorrow/studio-home-hero /-->`,
+      answer(
+        "BlueMorrow Studio creates simple tools with careful design, clear controls, and privacy considered from the start. Its first app, Batchora, processes photos and videos in batches on iPhone."
+      ),
+      `<!-- wp:bluemorrow/studio-apps /-->`,
+      `<!-- wp:bluemorrow/studio-principles /-->`
+    ].join("\n")
   }),
   studioPage({
     key: "apps",
@@ -75,15 +74,13 @@ export const englishEntries = [
     description:
       "Explore apps from BlueMorrow Studio, starting with Batchora for private photo and video batch processing on iPhone.",
     intent: "BlueMorrow Studio apps",
-    content: pageContent(
-      "BlueMorrow Studio currently offers Batchora, an iPhone app for compressing, renaming, resizing, converting, and exporting photos and videos in batches.",
-      section(
-        "Batchora",
-        paragraph(
-          "Batchora brings photo and video batch tools into one clear, on-device workflow."
-        )
-      )
-    )
+    content: [
+      `<!-- wp:bluemorrow/studio-page-hero /-->`,
+      answer(
+        "BlueMorrow Studio currently offers Batchora, an iPhone app for compressing, renaming, resizing, converting, and exporting photos and videos in batches."
+      ),
+      `<!-- wp:bluemorrow/studio-apps /-->`
+    ].join("\n")
   }),
   studioPage({
     key: "studio-about",
@@ -93,15 +90,25 @@ export const englishEntries = [
     description:
       "Learn how BlueMorrow Studio approaches useful software, product clarity, privacy, and accurate support content.",
     intent: "about BlueMorrow Studio",
-    content: pageContent(
-      "BlueMorrow Studio builds focused apps for everyday tasks. Product pages and guides are maintained to match current app behavior and avoid claims the software cannot reliably support.",
+    content: [
+      `<!-- wp:bluemorrow/studio-page-hero /-->`,
+      answer(
+        "BlueMorrow Studio builds focused apps for everyday tasks. Product pages and guides are maintained to match current app behavior and avoid claims the software cannot reliably support."
+      ),
       section(
-        "Our approach",
+        "Built around the task",
         paragraph(
-          "Start with a real task, make the workflow understandable, and keep the user in control of their files and choices."
+          "A product should make its purpose understandable quickly. We start with the job someone needs to finish, then remove decisions and interface that do not help with that job."
+        )
+      ),
+      `<!-- wp:bluemorrow/studio-principles /-->`,
+      section(
+        "Product information you can rely on",
+        paragraph(
+          "Feature pages, privacy details, and guides are written against current app behavior. When a result depends on the source file, device, or Apple system behavior, the site explains that boundary instead of promising one universal outcome."
         )
       )
-    )
+    ].join("\n")
   }),
   studioPage({
     key: "studio-privacy",
@@ -111,15 +118,30 @@ export const englishEntries = [
     description:
       "Read how the BlueMorrow Studio website handles analytics and contact, and find the separate privacy policy for each app.",
     intent: "BlueMorrow Studio privacy",
-    content: pageContent(
-      "The BlueMorrow Studio website uses privacy-conscious aggregate analytics to understand page traffic. Each app has a separate privacy policy describing its own data handling.",
+    content: [
+      `<!-- wp:bluemorrow/studio-page-hero /-->`,
+      answer(
+        "The BlueMorrow Studio website uses privacy-conscious aggregate analytics to understand page traffic. Each app has a separate privacy policy describing its own data handling."
+      ),
+      section(
+        "Website analytics",
+        paragraph(
+          "The site may use Cloudflare Web Analytics for aggregate traffic information such as page views and referring sites. It is not used to build advertising profiles."
+        )
+      ),
       section(
         "App-specific privacy",
         paragraph(
-          "Choose an app from the Apps or Support page to read the privacy details that apply to that product."
+          "Website behavior and app behavior are different. Choose a product from the Apps or Support page to read the privacy policy that applies to its features and data handling."
+        )
+      ),
+      section(
+        "Contact",
+        paragraph(
+          "When you choose to contact support, the information in your message is used to understand and respond to the request."
         )
       )
-    )
+    ].join("\n")
   }),
   studioPage({
     key: "studio-support",
@@ -129,15 +151,13 @@ export const englishEntries = [
     description:
       "Choose a BlueMorrow Studio app to find product-specific help, privacy information, troubleshooting, and contact options.",
     intent: "BlueMorrow Studio support",
-    content: pageContent(
-      "Support is organized by app so instructions, privacy details, and troubleshooting stay accurate for the product you use.",
-      section(
-        "Batchora support",
-        paragraph(
-          "Batchora support covers photo and video processing, exports, subscriptions, privacy, and common troubleshooting."
-        )
-      )
-    )
+    content: [
+      `<!-- wp:bluemorrow/studio-page-hero /-->`,
+      answer(
+        "Support is organized by app so instructions, privacy details, and troubleshooting stay accurate for the product you use."
+      ),
+      `<!-- wp:bluemorrow/studio-support /-->`
+    ].join("\n")
   }),
   page({
     key: "batchora-home",

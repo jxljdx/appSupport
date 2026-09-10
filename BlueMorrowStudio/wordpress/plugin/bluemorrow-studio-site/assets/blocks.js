@@ -41,6 +41,23 @@
 	registerDynamicBlock( 'bluemorrow/footer-brand', 'BlueMorrow Footer Brand' );
 	registerDynamicBlock( 'bluemorrow/legal-links', 'BlueMorrow Legal Links' );
 	registerDynamicBlock(
+		'bluemorrow/studio-home-hero',
+		'BlueMorrow Studio Home Hero'
+	);
+	registerDynamicBlock(
+		'bluemorrow/studio-page-hero',
+		'BlueMorrow Studio Page Hero'
+	);
+	registerDynamicBlock( 'bluemorrow/studio-apps', 'BlueMorrow Studio Apps' );
+	registerDynamicBlock(
+		'bluemorrow/studio-principles',
+		'BlueMorrow Studio Principles'
+	);
+	registerDynamicBlock(
+		'bluemorrow/studio-support',
+		'BlueMorrow Studio Support'
+	);
+	registerDynamicBlock(
 		'bluemorrow/batchora-product-media',
 		'Batchora Product Media'
 	);

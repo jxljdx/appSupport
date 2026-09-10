@@ -22,6 +22,7 @@ require_once BLUEMORROW_SITE_PATH . 'includes/metadata.php';
 require_once BLUEMORROW_SITE_PATH . 'includes/discovery.php';
 require_once BLUEMORROW_SITE_PATH . 'includes/shortcodes.php';
 require_once BLUEMORROW_SITE_PATH . 'includes/media.php';
+require_once BLUEMORROW_SITE_PATH . 'includes/studio.php';
 require_once BLUEMORROW_SITE_PATH . 'includes/settings.php';
 
 function bluemorrow_site_register_meta() {
@@ -123,6 +124,46 @@ function bluemorrow_site_register_blocks() {
 			'api_version'     => 3,
 			'editor_script'   => 'bluemorrow-site-blocks',
 			'render_callback' => 'batchora_footer_navigation_block',
+		)
+	);
+	register_block_type(
+		'bluemorrow/studio-home-hero',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'bluemorrow-site-blocks',
+			'render_callback' => 'bluemorrow_studio_home_hero_block',
+		)
+	);
+	register_block_type(
+		'bluemorrow/studio-page-hero',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'bluemorrow-site-blocks',
+			'render_callback' => 'bluemorrow_studio_page_hero_block',
+		)
+	);
+	register_block_type(
+		'bluemorrow/studio-apps',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'bluemorrow-site-blocks',
+			'render_callback' => 'bluemorrow_studio_apps_block',
+		)
+	);
+	register_block_type(
+		'bluemorrow/studio-principles',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'bluemorrow-site-blocks',
+			'render_callback' => 'bluemorrow_studio_principles_block',
+		)
+	);
+	register_block_type(
+		'bluemorrow/studio-support',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'bluemorrow-site-blocks',
+			'render_callback' => 'bluemorrow_studio_support_block',
 		)
 	);
 	register_block_type(

@@ -51,7 +51,7 @@ export const chineseEntries = [
     key: "studio-home",
     slug: "zh-hans",
     parent: null,
-    title: "BlueMorrow Studio",
+    title: "BlueMorrow Studio 简体中文",
     seoTitle: "BlueMorrow Studio｜用心打造的实用 App",
     description:
       "BlueMorrow Studio 打造清晰、注重隐私的日常工具。了解 Batchora iPhone 照片与视频批处理 App。",
