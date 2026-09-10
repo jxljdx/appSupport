@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "generate": "node tools/generate-content.mjs",
     "validate": "node tools/validate.mjs",
-    "package": "npm run validate && node tools/package.mjs"
+    "package": "npm run validate && npm run generate && node tools/package.mjs"
   }
 }
-

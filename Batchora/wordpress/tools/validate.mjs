@@ -1,6 +1,7 @@
 import { access, readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { englishEntries } from "../content/en.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const requiredFiles = [
@@ -50,5 +51,29 @@ if (!templateFiles.every((file) => file.endsWith(".html"))) {
   throw new Error("Block theme templates must use .html files");
 }
 
-console.log("Batchora WordPress source is valid.");
+const slugs = new Set();
+const translationKeys = new Set();
+for (const entry of englishEntries) {
+  if (!entry.slug || !entry.title || !entry.seoTitle || !entry.description) {
+    throw new Error(`English content entry is incomplete: ${entry.key}`);
+  }
+  if (entry.seoTitle.length > 60) {
+    throw new Error(`SEO title exceeds 60 characters: ${entry.key}`);
+  }
+  if (entry.description.length > 160) {
+    throw new Error(`SEO description exceeds 160 characters: ${entry.key}`);
+  }
+  if (!entry.content.includes("batchora-answer")) {
+    throw new Error(`Entry has no answer-first summary: ${entry.key}`);
+  }
+  if (slugs.has(entry.slug)) {
+    throw new Error(`Duplicate English slug: ${entry.slug}`);
+  }
+  if (translationKeys.has(entry.key)) {
+    throw new Error(`Duplicate English translation key: ${entry.key}`);
+  }
+  slugs.add(entry.slug);
+  translationKeys.add(entry.key);
+}
 
+console.log("Batchora WordPress source is valid.");

@@ -7,7 +7,6 @@ const root = path.resolve(import.meta.dirname, "..");
 const releaseDirectory = path.join(root, "release");
 const version = process.env.BATCHORA_SITE_VERSION || "1.0.0";
 
-await rm(releaseDirectory, { recursive: true, force: true });
 await mkdir(releaseDirectory, { recursive: true });
 
 const packages = [
@@ -22,6 +21,7 @@ const packages = [
 ];
 
 for (const item of packages) {
+  await rm(item.output, { force: true });
   const result = spawnSync(
     "ditto",
     ["-c", "-k", "--keepParent", item.source, item.output],
@@ -33,4 +33,3 @@ for (const item of packages) {
 }
 
 console.log(`Created WordPress packages in ${releaseDirectory}`);
-
