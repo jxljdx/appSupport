@@ -1,0 +1,11 @@
+{
+  "name": "batchora-wordpress-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "validate": "node tools/validate.mjs",
+    "package": "npm run validate && node tools/package.mjs"
+  }
+}
+
