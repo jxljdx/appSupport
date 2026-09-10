@@ -19,6 +19,7 @@
 		} );
 	}
 
+	registerDynamicBlock( 'bluemorrow/site-brand', 'BlueMorrow Site Brand' );
 	registerDynamicBlock( 'bluemorrow/app-store-cta', 'App Store CTA', {
 		compact: {
 			type: 'boolean',
@@ -37,6 +38,7 @@
 		'bluemorrow/footer-navigation',
 		'BlueMorrow Footer Navigation'
 	);
+	registerDynamicBlock( 'bluemorrow/footer-brand', 'BlueMorrow Footer Brand' );
 	registerDynamicBlock( 'bluemorrow/legal-links', 'BlueMorrow Legal Links' );
 	registerDynamicBlock(
 		'bluemorrow/batchora-product-media',

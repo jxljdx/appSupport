@@ -77,6 +77,58 @@ summary:focus-visible {
   gap: 0.65rem;
 }
 
+.bluemorrow-brand {
+  display: inline-flex;
+  gap: 0.65rem;
+  align-items: center;
+  color: var(--batchora-ink);
+  text-decoration: none;
+}
+
+.bluemorrow-mark {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 2.65rem;
+  height: 2.65rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 0.9rem;
+  color: #fff;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.2), transparent 45%),
+    linear-gradient(135deg, var(--batchora-accent), var(--batchora-purple));
+  box-shadow: 0 9px 22px rgba(49, 88, 232, 0.24);
+  font-size: 0.72rem;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.bluemorrow-mark::after {
+  position: absolute;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.32);
+  content: "";
+  inset: 0 auto 0 50%;
+}
+
+.bluemorrow-mark span {
+  display: grid;
+  place-items: center;
+}
+
+.bluemorrow-wordmark {
+  font-size: 1.05rem;
+  font-weight: 780;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.bluemorrow-wordmark strong {
+  color: var(--batchora-muted);
+  font-weight: 620;
+}
+
 .site-brand .wp-block-site-logo img {
   border-radius: 0.8rem;
   box-shadow: 0 8px 20px rgba(49, 88, 232, 0.22);
@@ -155,6 +207,10 @@ summary:focus-visible {
 
 .batchora-mobile-cta {
   display: none;
+}
+
+.batchora-mobile-cta:empty {
+  display: none !important;
 }
 
 .site-main {
@@ -1169,8 +1225,14 @@ summary:focus-visible {
   align-items: start;
 }
 
-.site-footer__brand {
+.site-footer__brand,
+.bluemorrow-footer-brand {
   max-width: 24rem;
+}
+
+.bluemorrow-footer-brand p {
+  max-width: 22rem;
+  margin: 1rem 0;
 }
 
 .site-footer .batchora-button {
@@ -1446,6 +1508,10 @@ summary:focus-visible {
   }
 
   .site-brand .wp-block-site-logo {
+    display: none;
+  }
+
+  .bluemorrow-wordmark strong {
     display: none;
   }
 

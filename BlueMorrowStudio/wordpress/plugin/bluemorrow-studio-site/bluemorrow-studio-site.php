@@ -64,6 +64,14 @@ function bluemorrow_site_register_blocks() {
 	);
 
 	register_block_type(
+		'bluemorrow/site-brand',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'bluemorrow-site-blocks',
+			'render_callback' => 'bluemorrow_site_brand_block',
+		)
+	);
+	register_block_type(
 		'bluemorrow/app-store-cta',
 		array(
 			'api_version'     => 3,
@@ -99,6 +107,14 @@ function bluemorrow_site_register_blocks() {
 			'api_version'     => 3,
 			'editor_script'   => 'bluemorrow-site-blocks',
 			'render_callback' => 'batchora_legal_links_block',
+		)
+	);
+	register_block_type(
+		'bluemorrow/footer-brand',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'bluemorrow-site-blocks',
+			'render_callback' => 'bluemorrow_footer_brand_block',
 		)
 	);
 	register_block_type(
