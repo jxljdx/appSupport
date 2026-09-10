@@ -23,18 +23,19 @@ function batchora_theme_setup() {
 add_action( 'after_setup_theme', 'batchora_theme_setup' );
 
 function batchora_enqueue_assets() {
-	$theme = wp_get_theme();
+	$style_path  = get_theme_file_path( 'assets/site.css' );
+	$script_path = get_theme_file_path( 'assets/site.js' );
 	wp_enqueue_style(
 		'batchora-site',
 		get_theme_file_uri( 'assets/site.css' ),
 		array(),
-		$theme->get( 'Version' )
+		file_exists( $style_path ) ? (string) filemtime( $style_path ) : null
 	);
 	wp_enqueue_script(
 		'batchora-site',
 		get_theme_file_uri( 'assets/site.js' ),
 		array(),
-		$theme->get( 'Version' ),
+		file_exists( $script_path ) ? (string) filemtime( $script_path ) : null,
 		true
 	);
 }

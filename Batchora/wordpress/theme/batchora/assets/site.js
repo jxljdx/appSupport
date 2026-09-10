@@ -53,6 +53,74 @@ if (
   revealTargets.forEach((target) => target.classList.add("is-visible"));
 }
 
+const menuToggle = document.querySelector(".batchora-menu-toggle");
+const navigationShell = menuToggle?.closest(".primary-navigation-shell");
+
+const closeNavigation = () => {
+  if (!menuToggle || !navigationShell) {
+    return;
+  }
+  menuToggle.setAttribute("aria-expanded", "false");
+  navigationShell.classList.remove("is-open");
+  document.body.classList.remove("batchora-menu-open");
+};
+
+menuToggle?.addEventListener("click", () => {
+  const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+  menuToggle.setAttribute("aria-expanded", String(!isOpen));
+  navigationShell?.classList.toggle("is-open", !isOpen);
+  document.body.classList.toggle("batchora-menu-open", !isOpen);
+});
+
+navigationShell?.addEventListener("click", (event) => {
+  if (event.target.closest("a")) {
+    closeNavigation();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeNavigation();
+    menuToggle?.focus();
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (
+    navigationShell?.classList.contains("is-open") &&
+    !event.target.closest(".primary-navigation-shell")
+  ) {
+    closeNavigation();
+  }
+});
+
+const mobileCta = document.querySelector(".batchora-mobile-cta");
+const pageEndTargets = document.querySelectorAll(".batchora-cta, .site-footer");
+let pageEndVisible = false;
+
+const updateMobileCta = () => {
+  if (!mobileCta) {
+    return;
+  }
+  mobileCta.classList.toggle(
+    "is-visible",
+    window.scrollY > 420 && !pageEndVisible
+  );
+};
+
+if (mobileCta) {
+  const pageEndObserver = new IntersectionObserver(
+    (entries) => {
+      pageEndVisible = entries.some((entry) => entry.isIntersecting);
+      updateMobileCta();
+    },
+    { rootMargin: "0px 0px 5% 0px", threshold: 0.02 }
+  );
+  pageEndTargets.forEach((target) => pageEndObserver.observe(target));
+  window.addEventListener("scroll", updateMobileCta, { passive: true });
+  updateMobileCta();
+}
+
 document.addEventListener("click", (event) => {
   const previewTrigger = event.target.closest(".batchora-preview-trigger");
   if (previewTrigger) {

@@ -73,6 +73,7 @@ function batchora_language_switcher_block() {
 
 function batchora_primary_navigation_block() {
 	$is_chinese = batchora_is_chinese();
+	$current_key = batchora_translation_key();
 	$links      = $is_chinese
 		? array(
 			'home'             => '首页',
@@ -95,15 +96,91 @@ function batchora_primary_navigation_block() {
 		if ( ! $url ) {
 			continue;
 		}
+		$current = $key === $current_key ? ' aria-current="page"' : '';
 		$html[] = sprintf(
-			'<a href="%s">%s</a>',
+			'<a href="%1$s"%2$s>%3$s</a>',
 			esc_url( $url ),
+			$current,
 			esc_html( $label )
 		);
 	}
 
-	return '<nav class="primary-navigation" aria-label="' .
-		esc_attr__( 'Primary navigation', 'batchora-site' ) .
+	$menu_label = $is_chinese ? '打开导航菜单' : 'Open navigation menu';
+	$nav_label  = $is_chinese ? '主导航' : 'Primary navigation';
+
+	return sprintf(
+		'<div class="primary-navigation-shell"><button class="batchora-menu-toggle" type="button" aria-expanded="false" aria-controls="batchora-primary-navigation" aria-label="%1$s"><span aria-hidden="true"></span><span aria-hidden="true"></span></button><nav id="batchora-primary-navigation" class="primary-navigation" aria-label="%2$s">%3$s</nav></div>',
+		esc_attr( $menu_label ),
+		esc_attr( $nav_label ),
+		implode( '', $html )
+	);
+}
+
+function batchora_footer_navigation_block() {
+	$is_chinese = batchora_is_chinese();
+	$groups     = $is_chinese
+		? array(
+			'产品' => array(
+				'photo-compressor' => '照片压缩',
+				'video-compressor' => '视频压缩',
+				'batch-rename'     => '批量重命名',
+				'heic-to-jpg'      => 'HEIC 转 JPG',
+			),
+			'了解更多' => array(
+				'guides'  => '使用指南',
+				'faq'     => '常见问题',
+				'about'   => '关于 Batchora',
+			),
+			'帮助' => array(
+				'support' => '应用支持',
+				'privacy' => '隐私政策',
+				'terms'   => '使用条款',
+			),
+		)
+		: array(
+			'Product' => array(
+				'photo-compressor' => 'Photo compression',
+				'video-compressor' => 'Video compression',
+				'batch-rename'     => 'Batch rename',
+				'heic-to-jpg'      => 'HEIC to JPG',
+			),
+			'Learn' => array(
+				'guides' => 'Guides',
+				'faq'    => 'FAQ',
+				'about'  => 'About Batchora',
+			),
+			'Help' => array(
+				'support' => 'Support',
+				'privacy' => 'Privacy',
+				'terms'   => 'Terms',
+			),
+		);
+	$html       = array();
+
+	foreach ( $groups as $heading => $links ) {
+		$items = array();
+		foreach ( $links as $key => $label ) {
+			$url = batchora_page_url( $key );
+			if ( ! $url ) {
+				continue;
+			}
+			$items[] = sprintf(
+				'<a href="%1$s">%2$s</a>',
+				esc_url( $url ),
+				esc_html( $label )
+			);
+		}
+		if ( $items ) {
+			$html[] = sprintf(
+				'<div><h2>%1$s</h2>%2$s</div>',
+				esc_html( $heading ),
+				implode( '', $items )
+			);
+		}
+	}
+
+	return '<nav class="batchora-footer-navigation" aria-label="' .
+		esc_attr( $is_chinese ? '页脚导航' : 'Footer navigation' ) .
 		'">' . implode( '', $html ) . '</nav>';
 }
 
