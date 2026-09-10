@@ -87,16 +87,28 @@ summary:focus-visible {
 }
 
 .primary-navigation {
+  display: flex;
+  gap: clamp(0.65rem, 1.4vw, 1.15rem);
+  align-items: center;
   font-size: 0.93rem;
   font-weight: 650;
 }
 
 .primary-navigation a {
   color: var(--batchora-ink);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.primary-navigation a:hover {
+  color: var(--batchora-accent);
+  transform: translateY(-1px);
 }
 
 .header-actions {
   gap: 0.65rem;
+  flex-shrink: 0;
 }
 
 .site-main {
@@ -115,6 +127,23 @@ summary:focus-visible {
     radial-gradient(circle at 12% 80%, rgba(49, 88, 232, 0.15), transparent 20rem),
     rgba(255, 255, 255, 0.86);
   box-shadow: var(--batchora-shadow);
+}
+
+.batchora-hero::before {
+  position: absolute;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 38% 62% 58% 42%;
+  background: linear-gradient(
+    145deg,
+    rgba(49, 88, 232, 0.13),
+    rgba(122, 61, 226, 0.06)
+  );
+  content: "";
+  filter: blur(2px);
+  inset: -7rem auto auto 55%;
+  pointer-events: none;
+  animation: batchora-orbit 14s ease-in-out infinite alternate;
 }
 
 .batchora-hero::after {
@@ -188,6 +217,23 @@ summary:focus-visible {
   box-shadow: 0 24px 70px rgba(41, 50, 125, 0.16);
 }
 
+.batchora-media-card {
+  animation: batchora-media-float 7s ease-in-out infinite alternate;
+  transition: box-shadow 220ms ease, transform 220ms ease;
+}
+
+.batchora-media-gallery picture:nth-child(2) .batchora-media-card {
+  animation-delay: -2.4s;
+}
+
+.batchora-media-gallery picture:nth-child(3) .batchora-media-card {
+  animation-delay: -4.8s;
+}
+
+.batchora-media-card:hover {
+  box-shadow: 0 32px 82px rgba(41, 50, 125, 0.23);
+}
+
 .batchora-preview {
   position: relative;
   width: min(100%, 27rem);
@@ -220,6 +266,7 @@ summary:focus-visible {
   content: "▶";
   inset: 50% auto auto 50%;
   transform: translate(-50%, -50%);
+  animation: batchora-play-pulse 2.8s ease-in-out infinite;
 }
 
 .batchora-preview-trigger span {
@@ -245,13 +292,24 @@ summary:focus-visible {
 }
 
 .batchora-actions {
+  gap: 0.8rem 1.25rem;
+  align-items: center;
   margin-top: 1.75rem;
+}
+
+.batchora-actions > *,
+.batchora-actions > p {
+  margin-block: 0;
 }
 
 .batchora-button,
 .wp-element-button,
 .wp-block-button__link {
+  display: inline-flex;
+  max-width: 100%;
   min-height: 3rem;
+  align-items: center;
+  justify-content: center;
   padding: 0.78rem 1.25rem;
   border: 0;
   border-radius: 999px;
@@ -259,6 +317,8 @@ summary:focus-visible {
   background: linear-gradient(120deg, var(--batchora-accent), var(--batchora-purple));
   box-shadow: 0 10px 26px rgba(49, 88, 232, 0.24);
   font-weight: 720;
+  line-height: 1.25;
+  text-align: center;
   text-decoration: none;
   transition: box-shadow 160ms ease, transform 160ms ease;
 }
@@ -274,6 +334,7 @@ summary:focus-visible {
   min-height: 2.5rem;
   padding: 0.6rem 1rem;
   font-size: 0.88rem;
+  white-space: nowrap;
 }
 
 .batchora-language {
@@ -325,6 +386,13 @@ summary:focus-visible {
   border-radius: var(--batchora-radius);
   background: var(--batchora-card);
   box-shadow: 0 14px 40px rgba(41, 50, 125, 0.07);
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.batchora-card:hover {
+  border-color: rgba(49, 88, 232, 0.2);
+  box-shadow: 0 22px 52px rgba(41, 50, 125, 0.13);
+  transform: translateY(-0.35rem);
 }
 
 .batchora-card h2,
@@ -391,6 +459,13 @@ summary:focus-visible {
   border: 1px solid var(--batchora-border);
   border-radius: 1rem;
   background: rgba(255, 255, 255, 0.82);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.batchora-faq details[open] {
+  border-color: rgba(49, 88, 232, 0.2);
+  box-shadow: 0 14px 36px rgba(41, 50, 125, 0.09);
+  transform: translateY(-0.12rem);
 }
 
 .batchora-faq summary {
@@ -419,6 +494,10 @@ summary:focus-visible {
     radial-gradient(circle at 90% 20%, rgba(255, 255, 255, 0.2), transparent 15rem),
     linear-gradient(125deg, #294acb, #7438d4);
   box-shadow: var(--batchora-shadow);
+}
+
+.batchora-cta .batchora-button {
+  margin-top: 1rem;
 }
 
 .batchora-cta a:not(.batchora-button) {
@@ -454,6 +533,10 @@ summary:focus-visible {
   gap: 2rem;
 }
 
+.site-footer .batchora-button {
+  margin-top: 0.4rem;
+}
+
 .site-footer__legal {
   font-size: 0.82rem;
 }
@@ -464,9 +547,58 @@ summary:focus-visible {
   gap: 0.8rem 1.2rem;
 }
 
+.batchora-motion-ready .batchora-reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity 650ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--batchora-reveal-delay, 0ms);
+}
+
+.batchora-motion-ready .batchora-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes batchora-orbit {
+  from {
+    transform: translate3d(-1rem, -0.5rem, 0) rotate(-8deg);
+  }
+
+  to {
+    transform: translate3d(2rem, 1.25rem, 0) rotate(12deg);
+  }
+}
+
+@keyframes batchora-media-float {
+  from {
+    transform: translateY(-0.2rem);
+  }
+
+  to {
+    transform: translateY(0.3rem);
+  }
+}
+
+@keyframes batchora-play-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.45),
+      0 0 0 0 rgba(255, 255, 255, 0.16);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.55),
+      0 0 0 0.8rem rgba(255, 255, 255, 0);
+  }
+}
+
 @media (max-width: 900px) {
   .primary-navigation {
-    order: 3;
+    display: none;
   }
 
   .header-actions .batchora-button {
@@ -507,6 +639,14 @@ summary:focus-visible {
   .batchora-hero {
     padding: 1.6rem;
   }
+
+  .batchora-actions {
+    align-items: stretch;
+  }
+
+  .batchora-actions .batchora-button {
+    width: 100%;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -544,7 +684,14 @@ summary:focus-visible {
   *,
   *::before,
   *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .batchora-motion-ready .batchora-reveal {
+    opacity: 1;
+    transform: none;
   }
 }

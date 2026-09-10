@@ -84,6 +84,14 @@ function batchora_site_register_blocks() {
 		)
 	);
 	register_block_type(
+		'batchora/primary-navigation',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'batchora-site-blocks',
+			'render_callback' => 'batchora_primary_navigation_block',
+		)
+	);
+	register_block_type(
 		'batchora/legal-links',
 		array(
 			'api_version'     => 3,

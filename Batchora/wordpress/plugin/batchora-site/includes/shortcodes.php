@@ -71,6 +71,42 @@ function batchora_language_switcher_block() {
 	return batchora_language_switcher_shortcode();
 }
 
+function batchora_primary_navigation_block() {
+	$is_chinese = batchora_is_chinese();
+	$links      = $is_chinese
+		? array(
+			'home'             => '首页',
+			'photo-compressor' => '照片压缩',
+			'video-compressor' => '视频压缩',
+			'guides'           => '使用指南',
+			'support'          => '支持',
+		)
+		: array(
+			'home'             => 'Home',
+			'photo-compressor' => 'Photos',
+			'video-compressor' => 'Videos',
+			'guides'           => 'Guides',
+			'support'          => 'Support',
+		);
+	$html       = array();
+
+	foreach ( $links as $key => $label ) {
+		$url = batchora_page_url( $key );
+		if ( ! $url ) {
+			continue;
+		}
+		$html[] = sprintf(
+			'<a href="%s">%s</a>',
+			esc_url( $url ),
+			esc_html( $label )
+		);
+	}
+
+	return '<nav class="primary-navigation" aria-label="' .
+		esc_attr__( 'Primary navigation', 'batchora-site' ) .
+		'">' . implode( '', $html ) . '</nav>';
+}
+
 function batchora_legal_links_shortcode() {
 	$is_chinese = batchora_is_chinese();
 	$links      = array(
