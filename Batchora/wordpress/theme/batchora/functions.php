@@ -15,6 +15,10 @@ function batchora_theme_setup() {
 	add_theme_support( 'responsive-embeds' );
 	add_theme_support( 'wp-block-styles' );
 	add_editor_style( 'assets/site.css' );
+	register_block_pattern_category(
+		'batchora',
+		array( 'label' => __( 'Batchora', 'batchora' ) )
+	);
 }
 add_action( 'after_setup_theme', 'batchora_theme_setup' );
 
@@ -35,4 +39,3 @@ function batchora_enqueue_assets() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'batchora_enqueue_assets' );
-

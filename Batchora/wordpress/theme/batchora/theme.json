@@ -3,11 +3,83 @@
   "version": 3,
   "settings": {
     "appearanceTools": true,
+    "color": {
+      "defaultPalette": false,
+      "palette": [
+        {
+          "color": "#17192b",
+          "name": "Ink",
+          "slug": "ink"
+        },
+        {
+          "color": "#5f647b",
+          "name": "Muted",
+          "slug": "muted"
+        },
+        {
+          "color": "#3158e8",
+          "name": "Blue",
+          "slug": "blue"
+        },
+        {
+          "color": "#7a3de2",
+          "name": "Purple",
+          "slug": "purple"
+        },
+        {
+          "color": "#f7f8ff",
+          "name": "Canvas",
+          "slug": "canvas"
+        },
+        {
+          "color": "#ffffff",
+          "name": "White",
+          "slug": "white"
+        }
+      ]
+    },
     "layout": {
       "contentSize": "760px",
       "wideSize": "1180px"
     },
     "spacing": {
+      "spacingSizes": [
+        {
+          "name": "2XS",
+          "size": "0.5rem",
+          "slug": "20"
+        },
+        {
+          "name": "XS",
+          "size": "0.75rem",
+          "slug": "30"
+        },
+        {
+          "name": "S",
+          "size": "1rem",
+          "slug": "40"
+        },
+        {
+          "name": "M",
+          "size": "1.5rem",
+          "slug": "50"
+        },
+        {
+          "name": "L",
+          "size": "2.25rem",
+          "slug": "60"
+        },
+        {
+          "name": "XL",
+          "size": "3.5rem",
+          "slug": "70"
+        },
+        {
+          "name": "2XL",
+          "size": "5rem",
+          "slug": "80"
+        }
+      ],
       "units": ["px", "rem", "vw"]
     },
     "typography": {
@@ -17,6 +89,41 @@
           "fontFamily": "-apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\", sans-serif",
           "name": "System Sans",
           "slug": "system-sans"
+        }
+      ],
+      "fontSizes": [
+        {
+          "fluid": false,
+          "name": "Small",
+          "size": "0.875rem",
+          "slug": "small"
+        },
+        {
+          "fluid": {
+            "min": "1rem",
+            "max": "1.125rem"
+          },
+          "name": "Body",
+          "size": "1.0625rem",
+          "slug": "body"
+        },
+        {
+          "fluid": {
+            "min": "1.5rem",
+            "max": "2rem"
+          },
+          "name": "Heading",
+          "size": "1.75rem",
+          "slug": "heading"
+        },
+        {
+          "fluid": {
+            "min": "2.5rem",
+            "max": "4.75rem"
+          },
+          "name": "Display",
+          "size": "4rem",
+          "slug": "display"
         }
       ]
     }
@@ -32,7 +139,32 @@
     "typography": {
       "fontFamily": "var:preset|font-family|system-sans",
       "lineHeight": "1.65"
+    },
+    "elements": {
+      "button": {
+        "border": {
+          "radius": "999px"
+        },
+        "color": {
+          "background": "#3158e8",
+          "text": "#ffffff"
+        },
+        "typography": {
+          "fontWeight": "700"
+        }
+      },
+      "heading": {
+        "typography": {
+          "fontWeight": "750",
+          "letterSpacing": "-0.035em",
+          "lineHeight": "1.12"
+        }
+      },
+      "link": {
+        "color": {
+          "text": "#3158e8"
+        }
+      }
     }
   }
 }
-
