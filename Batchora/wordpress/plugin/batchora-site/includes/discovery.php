@@ -68,11 +68,43 @@ function batchora_robots_txt( $output, $public ) {
 }
 add_filter( 'robots_txt', 'batchora_robots_txt', 10, 2 );
 
+function batchora_sitemap_status() {
+	if ( get_query_var( 'sitemap' ) ) {
+		status_header( 200 );
+	}
+}
+add_action( 'template_redirect', 'batchora_sitemap_status', 0 );
+
+function batchora_redirect_site_root() {
+	if ( is_admin() || wp_doing_ajax() || ! is_front_page() ) {
+		return;
+	}
+
+	$request_path = wp_parse_url(
+		isset( $_SERVER['REQUEST_URI'] )
+			? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) )
+			: '/',
+		PHP_URL_PATH
+	);
+	if ( '/' !== $request_path ) {
+		return;
+	}
+
+	wp_safe_redirect( home_url( '/en/' ), 302 );
+	exit;
+}
+add_action( 'template_redirect', 'batchora_redirect_site_root', 0 );
+
 function batchora_register_discovery_routes() {
 	add_rewrite_rule( '^llms\.txt$', 'index.php?batchora_llms=1', 'top' );
 	add_rewrite_tag( '%batchora_llms%', '1' );
 }
 add_action( 'init', 'batchora_register_discovery_routes' );
+
+function batchora_preserve_llms_url( $redirect_url ) {
+	return get_query_var( 'batchora_llms' ) ? false : $redirect_url;
+}
+add_filter( 'redirect_canonical', 'batchora_preserve_llms_url' );
 
 function batchora_discovery_activate() {
 	batchora_register_discovery_routes();

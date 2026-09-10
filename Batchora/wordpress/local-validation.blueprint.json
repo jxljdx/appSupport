@@ -1,0 +1,49 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/en/",
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "7.1"
+  },
+  "steps": [
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "bundled",
+        "path": "/release/batchora-site-1.0.0.zip"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "installTheme",
+      "themeData": {
+        "resource": "bundled",
+        "path": "/release/batchora-theme-1.0.0.zip"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "resetData"
+    },
+    {
+      "step": "importWxr",
+      "file": {
+        "resource": "bundled",
+        "path": "/release/batchora-content-1.0.0.xml"
+      },
+      "fetchAttachments": false,
+      "rewriteUrls": true,
+      "importComments": false,
+      "authorsMode": "default-author",
+      "defaultAuthorUsername": "admin"
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php\nrequire_once '/wordpress/wp-load.php';\n\n$pages = get_posts(\n\tarray(\n\t\t'post_type'      => array( 'page', 'post' ),\n\t\t'post_status'    => 'draft',\n\t\t'posts_per_page' => -1,\n\t)\n);\nforeach ( $pages as $page ) {\n\twp_update_post( array( 'ID' => $page->ID, 'post_status' => 'publish' ) );\n}\nupdate_option( 'show_on_front', 'posts' );\nupdate_option( 'page_on_front', 0 );\nupdate_option( 'blogname', 'Batchora' );\nupdate_option( 'blogdescription', 'Photo and video batch processing for iPhone' );\nupdate_option( 'blog_public', 1 );\nupdate_option( 'permalink_structure', '/%postname%/' );\nflush_rewrite_rules();"
+    }
+  ]
+}
