@@ -254,6 +254,10 @@ summary:focus-visible {
   cursor: pointer;
 }
 
+.batchora-preview-trigger[hidden] {
+  display: none;
+}
+
 .batchora-preview-trigger::after {
   position: absolute;
   display: grid;

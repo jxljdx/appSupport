@@ -61,7 +61,7 @@ document.addEventListener("click", (event) => {
     if (video?.dataset.src) {
       video.src = video.dataset.src;
       video.hidden = false;
-      previewTrigger.hidden = true;
+      previewTrigger.replaceWith(video);
       video.load();
       video.play().catch(() => {});
     }
