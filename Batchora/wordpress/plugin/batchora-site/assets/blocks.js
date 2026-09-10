@@ -46,4 +46,9 @@
 		'Batchora Feature Explorer'
 	);
 	registerDynamicBlock( 'batchora/trust-panel', 'Batchora Trust Panel' );
+	registerDynamicBlock( 'batchora/feature-hero', 'Batchora Feature Hero' );
+	registerDynamicBlock(
+		'batchora/related-features',
+		'Batchora Related Features'
+	);
 } )( window.wp.blocks, window.wp.element, window.wp.serverSideRender );

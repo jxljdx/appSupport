@@ -147,5 +147,21 @@ function batchora_site_register_blocks() {
 			'render_callback' => 'batchora_trust_panel_block',
 		)
 	);
+	register_block_type(
+		'batchora/feature-hero',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'batchora-site-blocks',
+			'render_callback' => 'batchora_feature_hero_block',
+		)
+	);
+	register_block_type(
+		'batchora/related-features',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'batchora-site-blocks',
+			'render_callback' => 'batchora_related_features_block',
+		)
+	);
 }
 add_action( 'init', 'batchora_site_register_blocks' );

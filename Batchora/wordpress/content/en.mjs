@@ -7,7 +7,8 @@ import {
   pageContent,
   paragraph,
   section,
-  steps
+  steps,
+  withFeatureExperience
 } from "./shared.mjs";
 
 const page = (entry) => ({
@@ -15,7 +16,7 @@ const page = (entry) => ({
   type: "page",
   parent: "home",
   status: "draft",
-  ...entry
+  ...withFeatureExperience(entry)
 });
 
 const post = (entry) => ({

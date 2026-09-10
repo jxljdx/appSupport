@@ -293,3 +293,115 @@ function batchora_trust_panel_block() {
 		implode( '', $facts )
 	);
 }
+
+function batchora_feature_page_config( $key, $is_chinese ) {
+	$configs = $is_chinese
+		? array(
+			'photo-compressor' => array( '照片压缩', '控制整批照片的画质、尺寸和输出格式。', '02-photo-compression', array( 'HEIC / JPEG / PNG', '画质与尺寸', '副本优先' ) ),
+			'video-compressor' => array( '视频压缩', '生成更易保存和分享的 H.264 MP4 视频副本。', '03-video-compression', array( 'H.264 MP4', '保留音频', '分辨率选择' ) ),
+			'batch-rename'     => array( '批量重命名', '导出前预览文字、日期、原文件名与连续序号。', '04-rename', array( '完整预览', '顺序编号', '保留导出顺序' ) ),
+			'heic-to-jpg'      => array( '格式转换', '把整批 HEIC 照片转换为 JPEG 或 PNG 副本。', '05-format-resize', array( 'HEIC 转 JPEG', 'PNG 输出', '整批统一设置' ) ),
+			'resize-images'    => array( '照片改尺寸', '按最长边或比例统一调整整批照片尺寸。', '05-format-resize', array( '最长边限制', '比例缩放', '画质可控' ) ),
+			'remove-metadata'  => array( '元数据控制', '从处理副本中移除定位或更多照片元数据。', '06-privacy-zip', array( '移除定位', '副本处理', 'Pro 功能' ) ),
+			'zip-photos'       => array( 'ZIP 打包', '把成功处理的文件按预览名称和顺序打包分享。', '06-privacy-zip', array( '一份 ZIP', '保留文件名', '保持顺序' ) ),
+		)
+		: array(
+			'photo-compressor' => array( 'Photo compression', 'Control quality, dimensions, and output format across a photo batch.', '02-photo-compression', array( 'HEIC / JPEG / PNG', 'Quality and size', 'Copies first' ) ),
+			'video-compressor' => array( 'Video compression', 'Create H.264 MP4 copies that are easier to store and share.', '03-video-compression', array( 'H.264 MP4', 'Audio kept', 'Resolution choices' ) ),
+			'batch-rename'     => array( 'Batch rename', 'Preview text, dates, original names, and sequence numbers before export.', '04-rename', array( 'Full preview', 'Sequence numbers', 'Export order kept' ) ),
+			'heic-to-jpg'      => array( 'Format conversion', 'Convert a whole HEIC selection into JPEG or PNG copies.', '05-format-resize', array( 'HEIC to JPEG', 'PNG output', 'One batch setting' ) ),
+			'resize-images'    => array( 'Photo resizing', 'Resize a photo batch by longest edge or percentage.', '05-format-resize', array( 'Longest edge', 'Percentage resize', 'Quality control' ) ),
+			'remove-metadata'  => array( 'Metadata control', 'Remove location or broader photo metadata from processed copies.', '06-privacy-zip', array( 'Remove location', 'Copy-based', 'Pro feature' ) ),
+			'zip-photos'       => array( 'ZIP packaging', 'Package successful files using the names and order you previewed.', '06-privacy-zip', array( 'One ZIP', 'Names preserved', 'Order preserved' ) ),
+		);
+
+	return isset( $configs[ $key ] ) ? $configs[ $key ] : array();
+}
+
+function batchora_feature_hero_block() {
+	$is_chinese = batchora_is_chinese();
+	$key        = batchora_translation_key();
+	$config     = batchora_feature_page_config( $key, $is_chinese );
+	if ( ! $config ) {
+		return '';
+	}
+
+	$locale      = $is_chinese ? 'zh-Hans' : 'en-US';
+	$title       = get_the_title();
+	$description = get_post_meta( get_queried_object_id(), '_batchora_seo_description', true );
+	$chips       = array_map(
+		function( $label ) {
+			return '<span>' . esc_html( $label ) . '</span>';
+		},
+		$config[3]
+	);
+	$picture     = batchora_responsive_picture(
+		$locale,
+		$config[2],
+		$title,
+		'batchora-feature-hero__screen',
+		array(
+			'eager' => true,
+			'sizes' => '(max-width: 800px) 72vw, 22rem',
+		)
+	);
+
+	return sprintf(
+		'<section class="batchora-feature-hero alignwide"><div class="batchora-feature-hero__copy"><nav class="batchora-breadcrumb" aria-label="%1$s"><a href="%2$s">%3$s</a><span aria-hidden="true">/</span><span aria-current="page">%4$s</span></nav><p class="batchora-eyebrow">%5$s</p><h1>%6$s</h1><p class="batchora-lede">%7$s</p><div class="batchora-actions">%8$s<a class="batchora-text-link" href="#feature-details">%9$s</a></div><div class="batchora-proof">%10$s</div></div><div class="batchora-feature-hero__visual">%11$s</div></section>',
+		esc_attr( $is_chinese ? '面包屑' : 'Breadcrumb' ),
+		esc_url( batchora_page_url( 'home' ) ),
+		esc_html( $is_chinese ? '首页' : 'Home' ),
+		esc_html( $config[0] ),
+		esc_html( $config[0] ),
+		esc_html( $title ),
+		esc_html( $description ? $description : $config[1] ),
+		batchora_app_store_cta_block( array() ),
+		esc_html( $is_chinese ? '了解工作方式' : 'See how it works' ),
+		implode( '', $chips ),
+		$picture
+	);
+}
+
+function batchora_related_features_block() {
+	$is_chinese = batchora_is_chinese();
+	$current    = batchora_translation_key();
+	$items      = $is_chinese
+		? array(
+			'photo-compressor' => array( '照片压缩', '控制画质和输出格式。' ),
+			'video-compressor' => array( '视频压缩', '生成更易分享的 MP4 副本。' ),
+			'batch-rename'     => array( '批量重命名', '导出前预览整批文件名。' ),
+			'heic-to-jpg'      => array( '格式转换', '把 HEIC 转为 JPEG 或 PNG。' ),
+			'remove-metadata'  => array( '元数据控制', '从副本中移除定位信息。' ),
+			'zip-photos'       => array( 'ZIP 打包', '把成功结果合并为一份归档。' ),
+		)
+		: array(
+			'photo-compressor' => array( 'Compress photos', 'Control quality and output format.' ),
+			'video-compressor' => array( 'Compress videos', 'Create more shareable MP4 copies.' ),
+			'batch-rename'     => array( 'Batch rename', 'Preview every filename before export.' ),
+			'heic-to-jpg'      => array( 'Convert formats', 'Turn HEIC into JPEG or PNG.' ),
+			'remove-metadata'  => array( 'Control metadata', 'Remove location data from copies.' ),
+			'zip-photos'       => array( 'Package a ZIP', 'Combine successful results in one archive.' ),
+		);
+	unset( $items[ $current ] );
+	$cards = array();
+
+	foreach ( array_slice( $items, 0, 3, true ) as $key => $item ) {
+		$url = batchora_page_url( $key );
+		if ( ! $url ) {
+			continue;
+		}
+		$cards[] = sprintf(
+			'<a class="batchora-related-card" href="%1$s"><h3>%2$s</h3><p>%3$s</p><span aria-hidden="true">↗</span></a>',
+			esc_url( $url ),
+			esc_html( $item[0] ),
+			esc_html( $item[1] )
+		);
+	}
+
+	return sprintf(
+		'<section class="batchora-related-features alignwide"><div><p class="batchora-eyebrow">%1$s</p><h2>%2$s</h2></div><div class="batchora-related-features__grid">%3$s</div></section>',
+		esc_html( $is_chinese ? '继续探索' : 'Keep exploring' ),
+		esc_html( $is_chinese ? '下一项批处理任务' : 'Your next batch task' ),
+		implode( '', $cards )
+	);
+}

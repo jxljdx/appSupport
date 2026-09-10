@@ -58,3 +58,29 @@ ${paragraph(text)}
 
 export const pageContent = (summary, ...sections) =>
   [answer(summary), ...sections].join("\n");
+
+const featurePageKeys = new Set([
+  "photo-compressor",
+  "video-compressor",
+  "batch-rename",
+  "heic-to-jpg",
+  "resize-images",
+  "remove-metadata",
+  "zip-photos"
+]);
+
+export const withFeatureExperience = (entry) => {
+  if (!featurePageKeys.has(entry.key)) {
+    return entry;
+  }
+
+  return {
+    ...entry,
+    content: [
+      `<!-- wp:batchora/feature-hero /-->`,
+      `<!-- wp:html --><span id="feature-details" class="batchora-anchor" aria-hidden="true"></span><!-- /wp:html -->`,
+      entry.content,
+      `<!-- wp:batchora/related-features /-->`
+    ].join("\n")
+  };
+};

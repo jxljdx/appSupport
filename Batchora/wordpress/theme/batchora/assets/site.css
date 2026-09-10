@@ -265,6 +265,90 @@ summary:focus-visible {
   isolation: isolate;
 }
 
+.batchora-anchor {
+  display: block;
+  height: 0;
+  scroll-margin-top: 7rem;
+}
+
+.batchora-feature-hero {
+  display: grid;
+  width: min(100%, 74rem);
+  min-height: 39rem;
+  grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.75fr);
+  gap: clamp(2rem, 7vw, 6rem);
+  align-items: center;
+  margin-inline: auto;
+  padding: clamp(2rem, 5vw, 4.75rem);
+  overflow: hidden;
+  border: 1px solid var(--batchora-border);
+  border-radius: var(--batchora-radius-large);
+  background:
+    radial-gradient(circle at 88% 8%, rgba(122, 61, 226, 0.2), transparent 22rem),
+    var(--batchora-surface-strong);
+  box-shadow: var(--batchora-shadow);
+}
+
+.batchora-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+  margin-bottom: 1.35rem;
+  color: var(--batchora-muted);
+  font-size: 0.82rem;
+}
+
+.batchora-breadcrumb a {
+  color: var(--batchora-muted);
+  text-decoration: none;
+}
+
+.batchora-breadcrumb a:hover {
+  color: var(--batchora-accent);
+}
+
+.batchora-feature-hero h1 {
+  max-width: 12ch;
+  margin-block: 1rem 1.3rem;
+  font-size: clamp(2.8rem, 5.2vw, 5rem);
+  letter-spacing: -0.055em;
+  line-height: 0.99;
+}
+
+.batchora-feature-hero__visual {
+  position: relative;
+  min-height: 31rem;
+}
+
+.batchora-feature-hero__visual::before {
+  position: absolute;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  background: linear-gradient(
+    145deg,
+    rgba(49, 88, 232, 0.24),
+    rgba(122, 61, 226, 0.18)
+  );
+  content: "";
+  filter: blur(32px);
+  inset: 10% auto auto 0;
+}
+
+.batchora-feature-hero__screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: min(80%, 22rem);
+  height: auto;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: clamp(1.25rem, 3vw, 2rem);
+  box-shadow: 0 32px 80px rgba(35, 43, 112, 0.22);
+  transform: translate(-50%, -50%) rotate(2.5deg);
+}
+
 .batchora-hero-glow {
   position: absolute;
   width: 26rem;
@@ -520,6 +604,8 @@ summary:focus-visible {
 }
 
 .batchora-actions {
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.8rem 1.25rem;
   align-items: center;
   margin-top: 1.75rem;
@@ -846,6 +932,71 @@ summary:focus-visible {
   font-size: 0.94rem;
 }
 
+.batchora-related-features {
+  display: grid;
+  width: min(100%, 74rem);
+  grid-template-columns: minmax(13rem, 0.55fr) minmax(0, 1.45fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+  margin: clamp(3rem, 8vw, 6rem) auto 0;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border: 1px solid var(--batchora-border);
+  border-radius: var(--batchora-radius-large);
+  background: var(--batchora-surface);
+}
+
+.batchora-related-features h2 {
+  margin-block: 1rem 0;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.batchora-related-features__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.batchora-related-card {
+  position: relative;
+  min-height: 11rem;
+  padding: 1.25rem;
+  border: 1px solid var(--batchora-border);
+  border-radius: 1.2rem;
+  color: var(--batchora-ink);
+  background: var(--batchora-surface-strong);
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.batchora-related-card:hover {
+  border-color: rgba(49, 88, 232, 0.24);
+  box-shadow: var(--batchora-shadow-soft);
+  transform: translateY(-0.25rem);
+}
+
+.batchora-related-card h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1.15rem;
+}
+
+.batchora-related-card p {
+  margin: 0;
+  color: var(--batchora-muted);
+  font-size: 0.92rem;
+}
+
+.batchora-related-card > span {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.8rem;
+  color: var(--batchora-accent);
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
 .batchora-feature-grid {
   gap: 1rem;
 }
@@ -1110,6 +1261,15 @@ summary:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .batchora-feature-hero {
+    min-height: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .batchora-feature-hero__visual {
+    min-height: 30rem;
+  }
+
   .batchora-home-hero__visual {
     min-height: 34rem;
   }
@@ -1129,6 +1289,10 @@ summary:focus-visible {
 
   .batchora-product-media,
   .batchora-trust-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .batchora-related-features {
     grid-template-columns: 1fr;
   }
 
@@ -1294,6 +1458,19 @@ summary:focus-visible {
     padding: 1.6rem;
   }
 
+  .batchora-feature-hero {
+    gap: 1rem;
+    padding: 1.6rem;
+  }
+
+  .batchora-feature-hero h1 {
+    font-size: clamp(2.65rem, 12vw, 4rem);
+  }
+
+  .batchora-feature-hero__visual {
+    min-height: 27rem;
+  }
+
   .batchora-home-hero .batchora-display {
     font-size: clamp(2.75rem, 13vw, 4.2rem);
   }
@@ -1347,6 +1524,14 @@ summary:focus-visible {
 
   .batchora-trust-panel {
     padding: 1.6rem;
+  }
+
+  .batchora-related-features {
+    padding: 1.5rem;
+  }
+
+  .batchora-related-features__grid {
+    grid-template-columns: 1fr;
   }
 }
 
