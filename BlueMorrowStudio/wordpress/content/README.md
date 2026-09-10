@@ -10,8 +10,9 @@ Each content entry must define:
 - page title
 - SEO title and description
 - target user intent
+- Studio or App content scope
+- App key for product-specific pages
 - canonical counterpart in the other locale
 - visible answer summary
 - internal links
-- App Store call to action
-
+- App Store call to action where the page belongs to an App

@@ -14,7 +14,7 @@
 3. Upload and activate `bluemorrow-studio-site-1.0.0.zip`.
 4. Upload and activate `bluemorrow-studio-theme-1.0.0.zip`.
 5. Use **Tools → Import → WordPress** to import `bluemorrow-studio-content-1.0.0.xml`.
-6. Publish the 36 imported pages after reviewing their parent relationships.
+6. Publish the 46 imported pages after reviewing their parent relationships.
 7. Set permalinks to **Post name**.
 8. Leave **Your homepage displays** set to **Your latest posts**. The site plugin redirects `/` to `/en/`; assigning the English page as a static homepage would remove its `/en/` URL.
 9. Upload `app-icon-512.png` from the media package as the Site Icon.

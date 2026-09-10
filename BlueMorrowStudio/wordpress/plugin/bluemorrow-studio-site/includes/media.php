@@ -362,7 +362,7 @@ function batchora_feature_hero_block() {
 	return sprintf(
 		'<section class="batchora-feature-hero alignwide"><div class="batchora-feature-hero__copy"><nav class="batchora-breadcrumb" aria-label="%1$s"><a href="%2$s">%3$s</a><span aria-hidden="true">/</span><span aria-current="page">%4$s</span></nav><p class="batchora-eyebrow">%5$s</p><h1>%6$s</h1><p class="batchora-lede">%7$s</p><div class="batchora-actions">%8$s<a class="batchora-text-link" href="#feature-details">%9$s</a></div><div class="batchora-proof">%10$s</div></div><div class="batchora-feature-hero__visual">%11$s</div></section>',
 		esc_attr( $is_chinese ? '面包屑' : 'Breadcrumb' ),
-		esc_url( batchora_page_url( 'home' ) ),
+		esc_url( batchora_page_url( 'batchora-home' ) ),
 		esc_html( $is_chinese ? '首页' : 'Home' ),
 		esc_html( $config[0] ),
 		esc_html( $config[0] ),

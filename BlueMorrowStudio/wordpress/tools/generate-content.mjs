@@ -64,7 +64,7 @@ const items = entries
 <title>${xml(entry.title)}</title>
 <link>https://example.com/${xml(entry.slug)}/</link>
 <pubDate>Thu, 10 Sep 2026 00:00:00 +0000</pubDate>
-<dc:creator><![CDATA[batchora]]></dc:creator>
+<dc:creator><![CDATA[bluemorrowstudio]]></dc:creator>
 <guid isPermaLink="false">https://example.com/?p=${entry._exportId}</guid>
 <description></description>
 <content:encoded><![CDATA[${cdata(entry.content)}]]></content:encoded>
@@ -106,11 +106,11 @@ const document = `<?xml version="1.0" encoding="UTF-8" ?>
 <wp:base_blog_url>https://example.com</wp:base_blog_url>
 <wp:author>
   <wp:author_id>1</wp:author_id>
-  <wp:author_login><![CDATA[batchora]]></wp:author_login>
+  <wp:author_login><![CDATA[bluemorrowstudio]]></wp:author_login>
   <wp:author_email><![CDATA[]]></wp:author_email>
-  <wp:author_display_name><![CDATA[Batchora Team]]></wp:author_display_name>
-  <wp:author_first_name><![CDATA[Batchora]]></wp:author_first_name>
-  <wp:author_last_name><![CDATA[Team]]></wp:author_last_name>
+  <wp:author_display_name><![CDATA[BlueMorrow Studio]]></wp:author_display_name>
+  <wp:author_first_name><![CDATA[BlueMorrow]]></wp:author_first_name>
+  <wp:author_last_name><![CDATA[Studio]]></wp:author_last_name>
 </wp:author>
 ${items}
 </channel>

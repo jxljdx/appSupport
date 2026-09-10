@@ -91,7 +91,7 @@ function batchora_page_url( $key, $locale = '' ) {
 		return get_permalink( $posts[0] );
 	}
 
-	return 'home' === $key
+	return 'studio-home' === $key
 		? home_url( 'zh-Hans' === $locale ? '/zh-hans/' : '/en/' )
 		: '';
 }

@@ -197,7 +197,7 @@ function batchora_output_schema() {
 		batchora_breadcrumb_schema( $post_id ),
 	);
 
-	if ( 'home' === batchora_translation_key( $post_id ) ) {
+	if ( 'batchora-home' === batchora_translation_key( $post_id ) ) {
 		$graph[] = array(
 			'@type'                => 'MobileApplication',
 			'name'                 => 'Batchora: Photo & Video',

@@ -168,30 +168,51 @@ for (const sourcePath of serializedSources) {
 }
 
 const validateEntries = (entries, label) => {
-const slugs = new Set();
-const translationKeys = new Set();
-for (const entry of entries) {
-  if (!entry.slug || !entry.title || !entry.seoTitle || !entry.description) {
-    throw new Error(`${label} content entry is incomplete: ${entry.key}`);
+  const paths = new Set();
+  const translationKeys = new Set();
+  const entriesByKey = new Map(entries.map((entry) => [entry.key, entry]));
+
+  for (const entry of entries) {
+    if (!entry.slug || !entry.title || !entry.seoTitle || !entry.description) {
+      throw new Error(`${label} content entry is incomplete: ${entry.key}`);
+    }
+    if (entry.seoTitle.length > 60) {
+      throw new Error(`SEO title exceeds 60 characters: ${entry.key}`);
+    }
+    if (entry.description.length > 160) {
+      throw new Error(`SEO description exceeds 160 characters: ${entry.key}`);
+    }
+    if (!entry.content.includes("batchora-answer")) {
+      throw new Error(`Entry has no answer-first summary: ${entry.key}`);
+    }
+    if (!["studio", "app"].includes(entry.scope)) {
+      throw new Error(`Invalid ${label} page scope: ${entry.key}`);
+    }
+    if (entry.scope === "app" && !entry.appKey) {
+      throw new Error(`App page is missing an app key: ${entry.key}`);
+    }
+    if (entry.scope === "studio" && entry.appKey) {
+      throw new Error(`Studio page must not have an app key: ${entry.key}`);
+    }
+    if (entry.parent && !entriesByKey.has(entry.parent)) {
+      throw new Error(`Missing ${label} parent for ${entry.key}: ${entry.parent}`);
+    }
+
+    const pathKey = `${entry.parent || "root"}/${entry.slug}`;
+    if (paths.has(pathKey)) {
+      throw new Error(`Duplicate ${label} path segment: ${pathKey}`);
+    }
+    if (translationKeys.has(entry.key)) {
+      throw new Error(`Duplicate ${label} translation key: ${entry.key}`);
+    }
+    paths.add(pathKey);
+    translationKeys.add(entry.key);
   }
-  if (entry.seoTitle.length > 60) {
-    throw new Error(`SEO title exceeds 60 characters: ${entry.key}`);
+
+  const roots = entries.filter((entry) => !entry.parent);
+  if (roots.length !== 1 || roots[0].key !== "studio-home") {
+    throw new Error(`${label} must have one Studio root page`);
   }
-  if (entry.description.length > 160) {
-    throw new Error(`SEO description exceeds 160 characters: ${entry.key}`);
-  }
-  if (!entry.content.includes("batchora-answer")) {
-    throw new Error(`Entry has no answer-first summary: ${entry.key}`);
-  }
-  if (slugs.has(entry.slug)) {
-    throw new Error(`Duplicate ${label} slug: ${entry.slug}`);
-  }
-  if (translationKeys.has(entry.key)) {
-    throw new Error(`Duplicate ${label} translation key: ${entry.key}`);
-  }
-  slugs.add(entry.slug);
-  translationKeys.add(entry.key);
-}
 };
 
 validateEntries(englishEntries, "English");
@@ -205,6 +226,9 @@ const englishKeys = englishEntries.map((entry) => entry.key).sort();
 const chineseKeys = chineseEntries.map((entry) => entry.key).sort();
 if (JSON.stringify(englishKeys) !== JSON.stringify(chineseKeys)) {
   throw new Error("English and Chinese content entries are not aligned");
+}
+if (englishEntries.length !== 23 || chineseEntries.length !== 23) {
+  throw new Error("Expected 23 pages per locale");
 }
 
 console.log("BlueMorrow Studio WordPress source is valid.");

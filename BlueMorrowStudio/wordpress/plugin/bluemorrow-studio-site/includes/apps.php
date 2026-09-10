@@ -17,7 +17,7 @@ function bluemorrow_apps() {
 			'name'            => 'Batchora',
 			'store_name'      => 'Batchora: Photo & Video',
 			'app_store_id'    => '6810283756',
-			'home_key'        => 'batchora-home',
+			'home_key'          => 'batchora-home',
 			'icon'            => 'app-icon-512.png',
 			'supported_locales' => array( 'en-US', 'zh-Hans' ),
 		),

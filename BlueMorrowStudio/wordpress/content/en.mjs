@@ -14,15 +14,29 @@ import {
 const page = (entry) => ({
   locale: "en-US",
   type: "page",
-  parent: "home",
+  parent: "batchora-home",
+  scope: "app",
+  appKey: "batchora",
   status: "draft",
   ...withFeatureExperience(entry)
+});
+
+const studioPage = (entry) => ({
+  locale: "en-US",
+  type: "page",
+  parent: "studio-home",
+  scope: "studio",
+  appKey: "",
+  status: "draft",
+  ...entry
 });
 
 const post = (entry) => ({
   locale: "en-US",
   type: "page",
   parent: "guides",
+  scope: "app",
+  appKey: "batchora",
   status: "draft",
   ...entry
 });
@@ -33,16 +47,107 @@ const featureCta = cta(
 );
 
 export const englishEntries = [
-  page({
-    key: "home",
+  studioPage({
+    key: "studio-home",
     slug: "en",
     parent: null,
+    title: "BlueMorrow Studio",
+    seoTitle: "BlueMorrow Studio | Thoughtful Apps for Everyday Tasks",
+    description:
+      "BlueMorrow Studio makes clear, privacy-conscious apps for everyday tasks. Explore Batchora for photo and video batch processing on iPhone.",
+    intent: "BlueMorrow Studio apps",
+    template: "front-page",
+    content: pageContent(
+      "BlueMorrow Studio creates simple tools with careful design, clear controls, and privacy considered from the start. Its first app, Batchora, processes photos and videos in batches on iPhone.",
+      section(
+        "Simple tools, thoughtfully made.",
+        paragraph(
+          "Explore focused apps that solve repetitive tasks without unnecessary accounts, clutter, or inflated promises."
+        )
+      )
+    )
+  }),
+  studioPage({
+    key: "apps",
+    slug: "apps",
+    title: "Apps",
+    seoTitle: "Apps from BlueMorrow Studio",
+    description:
+      "Explore apps from BlueMorrow Studio, starting with Batchora for private photo and video batch processing on iPhone.",
+    intent: "BlueMorrow Studio apps",
+    content: pageContent(
+      "BlueMorrow Studio currently offers Batchora, an iPhone app for compressing, renaming, resizing, converting, and exporting photos and videos in batches.",
+      section(
+        "Batchora",
+        paragraph(
+          "Batchora brings photo and video batch tools into one clear, on-device workflow."
+        )
+      )
+    )
+  }),
+  studioPage({
+    key: "studio-about",
+    slug: "about",
+    title: "About BlueMorrow Studio",
+    seoTitle: "About BlueMorrow Studio",
+    description:
+      "Learn how BlueMorrow Studio approaches useful software, product clarity, privacy, and accurate support content.",
+    intent: "about BlueMorrow Studio",
+    content: pageContent(
+      "BlueMorrow Studio builds focused apps for everyday tasks. Product pages and guides are maintained to match current app behavior and avoid claims the software cannot reliably support.",
+      section(
+        "Our approach",
+        paragraph(
+          "Start with a real task, make the workflow understandable, and keep the user in control of their files and choices."
+        )
+      )
+    )
+  }),
+  studioPage({
+    key: "studio-privacy",
+    slug: "privacy",
+    title: "BlueMorrow Studio Website Privacy",
+    seoTitle: "Website Privacy | BlueMorrow Studio",
+    description:
+      "Read how the BlueMorrow Studio website handles analytics and contact, and find the separate privacy policy for each app.",
+    intent: "BlueMorrow Studio privacy",
+    content: pageContent(
+      "The BlueMorrow Studio website uses privacy-conscious aggregate analytics to understand page traffic. Each app has a separate privacy policy describing its own data handling.",
+      section(
+        "App-specific privacy",
+        paragraph(
+          "Choose an app from the Apps or Support page to read the privacy details that apply to that product."
+        )
+      )
+    )
+  }),
+  studioPage({
+    key: "studio-support",
+    slug: "support",
+    title: "BlueMorrow Studio Support",
+    seoTitle: "Support | BlueMorrow Studio",
+    description:
+      "Choose a BlueMorrow Studio app to find product-specific help, privacy information, troubleshooting, and contact options.",
+    intent: "BlueMorrow Studio support",
+    content: pageContent(
+      "Support is organized by app so instructions, privacy details, and troubleshooting stay accurate for the product you use.",
+      section(
+        "Batchora support",
+        paragraph(
+          "Batchora support covers photo and video processing, exports, subscriptions, privacy, and common troubleshooting."
+        )
+      )
+    )
+  }),
+  page({
+    key: "batchora-home",
+    slug: "batchora",
+    parent: "apps",
     title: "Batchora for iPhone",
     seoTitle: "Batchora: Photo & Video Batch Processing for iPhone",
     description:
       "Compress photos and videos, batch rename, resize, convert HEIC, remove metadata, and export ZIP files privately on iPhone.",
     intent: "photo and video batch processing app",
-    template: "front-page",
     content: [
       `<!-- wp:bluemorrow/batchora-home-hero /-->`,
       answer(

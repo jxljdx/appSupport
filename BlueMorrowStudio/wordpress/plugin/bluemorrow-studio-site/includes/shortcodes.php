@@ -76,14 +76,14 @@ function batchora_primary_navigation_block() {
 	$current_key = batchora_translation_key();
 	$links      = $is_chinese
 		? array(
-			'home'             => '首页',
+			'batchora-home'    => '首页',
 			'photo-compressor' => '照片压缩',
 			'video-compressor' => '视频压缩',
 			'guides'           => '使用指南',
 			'support'          => '支持',
 		)
 		: array(
-			'home'             => 'Home',
+			'batchora-home'    => 'Home',
 			'photo-compressor' => 'Photos',
 			'video-compressor' => 'Videos',
 			'guides'           => 'Guides',
@@ -188,7 +188,7 @@ function batchora_legal_links_shortcode() {
 	$is_chinese = batchora_is_chinese();
 	$links      = array(
 		array(
-			'url'   => batchora_page_url( 'home' ),
+			'url'   => batchora_page_url( 'batchora-home' ),
 			'label' => $is_chinese ? '首页' : 'Home',
 		),
 	);
