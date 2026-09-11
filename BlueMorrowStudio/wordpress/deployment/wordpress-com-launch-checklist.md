@@ -19,7 +19,9 @@
 8. Leave **Your homepage displays** set to **Your latest posts**. The site plugin redirects `/` to `/en/`; assigning the English page as a static homepage would remove its `/en/` URL.
 9. Upload `site-icon-512.png` from the media package as the Site Icon. Keep
    `app-icon-512.png` for Batchora product cards and App-specific uses.
-10. Create the primary navigation with links to the English and Chinese home, feature, guide, support, privacy, and terms pages.
+10. Verify the plugin-generated primary and footer navigation in both locales.
+    Do not replace the dynamic navigation blocks with a manually created
+    WordPress Navigation menu.
 
 ## Configure production services
 
