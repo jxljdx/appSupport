@@ -59,6 +59,29 @@ await sharp(iconSource)
   .png({ compressionLevel: 9, palette: true })
   .toFile(path.join(outputRoot, "app-icon-512.png"));
 
+const siteIcon = Buffer.from(`
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3158e8"/>
+      <stop offset="0.5" stop-color="#5268ea"/>
+      <stop offset="1" stop-color="#8548db"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.28"/>
+      <stop offset="0.45" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="158" fill="url(#background)"/>
+  <rect width="512" height="512" rx="158" fill="url(#shine)"/>
+  <path d="M256 72V440" stroke="#ffffff" stroke-opacity="0.28" stroke-width="2"/>
+  <text x="139" y="305" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="142" font-weight="800" text-anchor="middle">B</text>
+  <text x="373" y="305" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="142" font-weight="800" text-anchor="middle">M</text>
+</svg>`);
+await sharp(siteIcon)
+  .png({ compressionLevel: 9 })
+  .toFile(path.join(outputRoot, "site-icon-512.png"));
+
 const socialCard = Buffer.from(`
 <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -71,17 +94,14 @@ const socialCard = Buffer.from(`
   <rect width="1200" height="630" fill="url(#background)"/>
   <circle cx="1050" cy="80" r="260" fill="#ffffff" opacity="0.08"/>
   <circle cx="80" cy="610" r="300" fill="#ffffff" opacity="0.06"/>
-  <text x="470" y="265" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="92" font-weight="750">Batchora</text>
-  <text x="470" y="355" fill="#ffffff" opacity="0.9" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-weight="500">Photo &amp; Video Batch Processing</text>
+  <rect x="145" y="165" width="260" height="260" rx="80" fill="#ffffff" opacity="0.12"/>
+  <path d="M275 165V425" stroke="#ffffff" stroke-opacity="0.28" stroke-width="2"/>
+  <text x="210" y="330" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="92" font-weight="800" text-anchor="middle">B</text>
+  <text x="340" y="330" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="92" font-weight="800" text-anchor="middle">M</text>
+  <text x="470" y="265" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="66" font-weight="750">BlueMorrow Studio</text>
+  <text x="470" y="355" fill="#ffffff" opacity="0.9" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="40" font-weight="500">Simple tools, thoughtfully made.</text>
 </svg>`);
 await sharp(socialCard)
-  .composite( [
-    {
-      input: await sharp(iconSource).resize(250, 250).png().toBuffer(),
-      left: 145,
-      top: 190
-    }
-  ] )
   .png({ compressionLevel: 9 })
   .toFile(
     path.join(root, "theme/bluemorrow-studio/assets/social-card.png")

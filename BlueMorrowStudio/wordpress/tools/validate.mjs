@@ -31,7 +31,8 @@ for (const icon of [
   "app-icon-128.avif",
   "app-icon-256.webp",
   "app-icon-256.avif",
-  "app-icon-512.png"
+  "app-icon-512.png",
+  "site-icon-512.png"
 ]) {
   await access(path.join(mediaRoot, icon));
 }

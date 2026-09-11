@@ -17,7 +17,8 @@
 6. Publish the 46 imported pages after reviewing their parent relationships.
 7. Set permalinks to **Post name**.
 8. Leave **Your homepage displays** set to **Your latest posts**. The site plugin redirects `/` to `/en/`; assigning the English page as a static homepage would remove its `/en/` URL.
-9. Upload `app-icon-512.png` from the media package as the Site Icon.
+9. Upload `site-icon-512.png` from the media package as the Site Icon. Keep
+   `app-icon-512.png` for Batchora product cards and App-specific uses.
 10. Create the primary navigation with links to the English and Chinese home, feature, guide, support, privacy, and terms pages.
 
 ## Configure production services
