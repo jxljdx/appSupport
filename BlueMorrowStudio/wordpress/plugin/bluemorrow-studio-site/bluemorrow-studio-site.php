@@ -23,6 +23,7 @@ require_once BLUEMORROW_SITE_PATH . 'includes/discovery.php';
 require_once BLUEMORROW_SITE_PATH . 'includes/shortcodes.php';
 require_once BLUEMORROW_SITE_PATH . 'includes/media.php';
 require_once BLUEMORROW_SITE_PATH . 'includes/studio.php';
+require_once BLUEMORROW_SITE_PATH . 'includes/tucklet.php';
 require_once BLUEMORROW_SITE_PATH . 'includes/settings.php';
 
 function bluemorrow_site_register_meta() {
@@ -220,6 +221,38 @@ function bluemorrow_site_register_blocks() {
 			'api_version'     => 3,
 			'editor_script'   => 'bluemorrow-site-blocks',
 			'render_callback' => 'batchora_related_features_block',
+		)
+	);
+	register_block_type(
+		'bluemorrow/tucklet-home-hero',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'bluemorrow-site-blocks',
+			'render_callback' => 'tucklet_home_hero_block',
+		)
+	);
+	register_block_type(
+		'bluemorrow/tucklet-workflow',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'bluemorrow-site-blocks',
+			'render_callback' => 'tucklet_workflow_block',
+		)
+	);
+	register_block_type(
+		'bluemorrow/tucklet-screenshot-gallery',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'bluemorrow-site-blocks',
+			'render_callback' => 'tucklet_screenshot_gallery_block',
+		)
+	);
+	register_block_type(
+		'bluemorrow/tucklet-trust-panel',
+		array(
+			'api_version'     => 3,
+			'editor_script'   => 'bluemorrow-site-blocks',
+			'render_callback' => 'tucklet_trust_panel_block',
 		)
 	);
 }

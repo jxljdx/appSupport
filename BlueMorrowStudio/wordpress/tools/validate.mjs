@@ -32,6 +32,11 @@ for (const icon of [
   "app-icon-256.webp",
   "app-icon-256.avif",
   "app-icon-512.png",
+  "tucklet-icon-128.webp",
+  "tucklet-icon-128.avif",
+  "tucklet-icon-256.webp",
+  "tucklet-icon-256.avif",
+  "tucklet-icon-512.png",
   "site-icon-512.png"
 ]) {
   await access(path.join(mediaRoot, icon));
@@ -47,6 +52,28 @@ for (const locale of ["en-US", "zh-Hans"]) {
     "06-privacy-zip",
     "07-private-results",
     "preview-poster"
+  ]) {
+    for (const width of [480, 768]) {
+      for (const format of ["webp", "avif"]) {
+        const mediaPath = path.join(
+          mediaRoot,
+          locale,
+          `${name}-${width}.${format}`
+        );
+        const mediaStat = await stat(mediaPath);
+        if (mediaStat.size > 120 * 1024) {
+          throw new Error(`Responsive image exceeds 120 KB: ${mediaPath}`);
+        }
+      }
+    }
+  }
+
+  for (const name of [
+    "01-auto-delete",
+    "02-fast-capture",
+    "03-useful-actions",
+    "04-confidential",
+    "05-expiry-reminders"
   ]) {
     for (const width of [480, 768]) {
       for (const format of ["webp", "avif"]) {
@@ -228,8 +255,8 @@ const chineseKeys = chineseEntries.map((entry) => entry.key).sort();
 if (JSON.stringify(englishKeys) !== JSON.stringify(chineseKeys)) {
   throw new Error("English and Chinese content entries are not aligned");
 }
-if (englishEntries.length !== 23 || chineseEntries.length !== 23) {
-  throw new Error("Expected 23 pages per locale");
+if (englishEntries.length !== 29 || chineseEntries.length !== 29) {
+  throw new Error("Expected 29 pages per locale");
 }
 
 console.log("BlueMorrow Studio WordPress source is valid.");

@@ -736,5 +736,211 @@ export const englishEntries = [
       ),
       featureCta
     )
+  }),
+  page({
+    key: "tucklet-home",
+    slug: "tucklet",
+    parent: "apps",
+    appKey: "tucklet",
+    title: "Tucklet for iPhone",
+    seoTitle: "Tucklet: Temporary Notes That Expire on iPhone",
+    description:
+      "Tucklet keeps temporary information useful on iPhone, with expiry choices, automatic removal, reminders, and confidential details.",
+    intent: "temporary notes that expire on iPhone",
+    content: [
+      `<!-- wp:bluemorrow/tucklet-home-hero /-->`,
+      answer(
+        "Tucklet is an iPhone app for temporary information: paste a detail, choose when it expires, use its helpful details, and let Tucklet remove it when the app next loads or returns to the foreground after expiry."
+      ),
+      `<!-- wp:bluemorrow/tucklet-workflow /-->`,
+      `<!-- wp:bluemorrow/tucklet-screenshot-gallery /-->`,
+      `<!-- wp:bluemorrow/tucklet-trust-panel /-->`,
+      cta(
+        "Temporary information, handled with intention.",
+        "Tucklet is coming soon to the App Store."
+      )
+    ].join("\n")
+  }),
+  page({
+    key: "tucklet-faq",
+    slug: "faq",
+    parent: "tucklet-home",
+    appKey: "tucklet",
+    title: "Tucklet Frequently Asked Questions",
+    seoTitle: "Tucklet FAQ: Temporary Notes, Expiry, and Privacy",
+    description:
+      "Answers about Tucklet temporary details, expiry, reminders, confidential content, local storage, free saves, and permanent unlock.",
+    intent: "Tucklet temporary notes FAQ",
+    content: pageContent(
+      "Tucklet keeps temporary details on your iPhone until they expire or you remove them. It is designed to make useful details easy to capture, use, and let go.",
+      faq([
+        {
+          question: "Does Tucklet require an account?",
+          response:
+            "No. Tucklet does not require a Tucklet account or login."
+        },
+        {
+          question: "When are expired details removed?",
+          response:
+            "Tucklet removes expired details when the app loads or returns to the foreground after their selected expiry time."
+        },
+        {
+          question: "Does Tucklet read my clipboard automatically?",
+          response:
+            "No. Clipboard access is initiated only when you choose to paste information into Tucklet."
+        },
+        {
+          question: "What does confidential mean?",
+          response:
+            "A confidential detail requires device authentication before Tucklet shows its protected content."
+        },
+        {
+          question: "Can Tucklet remind me before a detail expires?",
+          response:
+            "Yes. You can turn on an expiry reminder for a saved detail. iPhone notification settings can affect whether it is delivered."
+        },
+        {
+          question: "What is free and what does the permanent unlock cost?",
+          response:
+            "The first 10 successful new saves are free. After that, Tucklet offers a one-time permanent unlock for $0.99 in the current StoreKit configuration."
+        }
+      ]),
+      cta(
+        "A quieter place for temporary details.",
+        "Tucklet is coming soon to the App Store."
+      )
+    )
+  }),
+  page({
+    key: "tucklet-support",
+    slug: "support",
+    parent: "tucklet-home",
+    appKey: "tucklet",
+    title: "Tucklet Support",
+    seoTitle: "Tucklet Support for iPhone",
+    description:
+      "Get help with Tucklet temporary details, expiry, reminders, confidential content, device authentication, and permanent unlock.",
+    intent: "Tucklet support",
+    content: pageContent(
+      "For Tucklet help, first confirm the detail has not expired, review iPhone notification settings for reminders, and check that device authentication is available for confidential content.",
+      section(
+        "Quick checks",
+        bullets([
+          "Expired details are removed when Tucklet loads or returns to the foreground.",
+          "Confirm notifications are allowed in iPhone Settings before relying on an expiry reminder.",
+          "Use Face ID, Touch ID, or your device passcode when opening confidential content.",
+          "Use Restore Purchases with the Apple Account used for the permanent unlock."
+        ])
+      ),
+      section(
+        "Contact support",
+        paragraph(
+          'Email <a href="mailto:jxstudio.apps@gmail.com?subject=Tucklet%20Support">jxstudio.apps@gmail.com</a> with the task, what happened, your iOS version, and your Tucklet version. Do not send private details unless they are necessary.'
+        )
+      )
+    )
+  }),
+  page({
+    key: "tucklet-privacy",
+    slug: "privacy",
+    parent: "tucklet-home",
+    appKey: "tucklet",
+    title: "Tucklet Privacy Policy",
+    seoTitle: "Tucklet Privacy Policy",
+    description:
+      "How Tucklet handles encrypted local details, clipboard actions, confidential content, reminders, Apple purchases, and support email.",
+    intent: "Tucklet privacy policy",
+    content: pageContent(
+      "Tucklet does not require an account. Saved details are encrypted and stored locally on your device; Tucklet does not upload them to Tucklet servers.",
+      section(
+        "Temporary details and clipboard actions",
+        bullets([
+          "Tucklet stores saved details in its encrypted local app storage.",
+          "Clipboard information is read only after you choose Tucklet’s paste action.",
+          "Expired details are removed when Tucklet next loads or returns to the foreground after expiry.",
+          "Removing Tucklet deletes its local app container subject to standard iOS behavior."
+        ])
+      ),
+      section(
+        "Confidential content and reminders",
+        paragraph(
+          "Confidential details require device authentication before their content is shown. If you enable an expiry reminder, Tucklet asks iOS to schedule a local notification; delivery remains subject to your iPhone notification settings."
+        )
+      ),
+      section(
+        "Purchases and support",
+        paragraph(
+          "Apple processes the one-time permanent unlock through StoreKit. If you email support, the support mailbox receives your email address, message, and any information you choose to include."
+        )
+      ),
+      section(
+        "Contact",
+        paragraph(
+          'For privacy questions, email <a href="mailto:jxstudio.apps@gmail.com?subject=Tucklet%20Privacy">jxstudio.apps@gmail.com</a>. Last updated September 15, 2026.'
+        )
+      )
+    )
+  }),
+  page({
+    key: "tucklet-terms",
+    slug: "terms",
+    parent: "tucklet-home",
+    appKey: "tucklet",
+    title: "Tucklet Terms of Use",
+    seoTitle: "Tucklet Terms of Use",
+    description:
+      "Terms for using Tucklet, including temporary detail expiry, device authentication, Apple’s licensed application agreement, and purchases.",
+    intent: "Tucklet terms of use",
+    content: pageContent(
+      "Tucklet uses Apple’s Standard Licensed Application End User License Agreement. Your use of Tucklet is also subject to these product terms.",
+      section(
+        "Using temporary details",
+        paragraph(
+          "You are responsible for deciding which information to save, selecting an appropriate expiry, and confirming a detail before it expires. Do not rely on Tucklet as the only record of information you must retain."
+        )
+      ),
+      section(
+        "Purchases",
+        paragraph(
+          "The permanent unlock is a one-time in-app purchase processed by Apple. Restore Purchases is available for the Apple Account used to buy it. Apple manages payment, billing, and refund requests under its applicable terms."
+        )
+      ),
+      section(
+        "Contact",
+        paragraph(
+          'Questions about these terms can be sent to <a href="mailto:jxstudio.apps@gmail.com?subject=Tucklet%20Terms">jxstudio.apps@gmail.com</a>. Last updated September 15, 2026.'
+        )
+      )
+    )
+  }),
+  page({
+    key: "tucklet-about",
+    slug: "about",
+    parent: "tucklet-home",
+    appKey: "tucklet",
+    title: "About Tucklet",
+    seoTitle: "About Tucklet for iPhone",
+    description:
+      "Learn how Tucklet helps keep temporary information clear, useful, local, and ready to expire when you no longer need it.",
+    intent: "about Tucklet",
+    content: pageContent(
+      "Tucklet is built for small pieces of information that matter briefly: a pickup code, a contact detail, an address, or a note you want to keep only until a task is done.",
+      section(
+        "Designed for the temporary",
+        paragraph(
+          "Instead of mixing short-lived details into permanent notes, Tucklet gives them an expiry, practical actions, and a deliberate place on your iPhone."
+        )
+      ),
+      section(
+        "Part of BlueMorrow Studio",
+        paragraph(
+          'Tucklet is made by <a href="/en/">BlueMorrow Studio</a>, which creates focused iPhone tools with clear controls and accurate privacy explanations.'
+        )
+      ),
+      cta(
+        "Keep it while it helps.",
+        "Tucklet is coming soon to the App Store."
+      )
+    )
   })
 ];

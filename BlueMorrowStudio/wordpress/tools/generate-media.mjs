@@ -8,6 +8,9 @@ const root = path.resolve(import.meta.dirname, "..");
 const appRoot = process.env.BATCHORA_APP_ROOT
   ? path.resolve(process.env.BATCHORA_APP_ROOT)
   : path.resolve(root, "../../../Batchly");
+const tuckletAppRoot = process.env.TUCKLET_APP_ROOT
+  ? path.resolve(process.env.TUCKLET_APP_ROOT)
+  : path.resolve(root, "../../../Tucklet");
 const outputRoot = path.join(
   root,
   "theme/bluemorrow-studio/assets/media"
@@ -22,6 +25,13 @@ const screenshots = [
   "05-format-resize",
   "06-privacy-zip",
   "07-private-results"
+];
+const tuckletScreenshots = [
+  "01-auto-delete",
+  "02-fast-capture",
+  "03-useful-actions",
+  "04-confidential",
+  "05-expiry-reminders"
 ];
 
 const createResponsiveImage = async (input, outputBase) => {
@@ -58,6 +68,25 @@ await sharp(iconSource)
   .resize(512, 512)
   .png({ compressionLevel: 9, palette: true })
   .toFile(path.join(outputRoot, "app-icon-512.png"));
+
+const tuckletIconSource = path.join(
+  tuckletAppRoot,
+  "Tucklet/Assets.xcassets/AppIcon.appiconset/AppIcon.png"
+);
+for (const width of [128, 256]) {
+  await sharp(tuckletIconSource)
+    .resize(width, width)
+    .webp({ quality: 88, effort: 5 })
+    .toFile(path.join(outputRoot, `tucklet-icon-${width}.webp`));
+  await sharp(tuckletIconSource)
+    .resize(width, width)
+    .avif({ quality: 64, effort: 5 })
+    .toFile(path.join(outputRoot, `tucklet-icon-${width}.avif`));
+}
+await sharp(tuckletIconSource)
+  .resize(512, 512)
+  .png({ compressionLevel: 9, palette: true })
+  .toFile(path.join(outputRoot, "tucklet-icon-512.png"));
 
 const siteIcon = Buffer.from(`
 <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
@@ -114,6 +143,16 @@ for (const locale of locales) {
   for (const screenshot of screenshots) {
     const input = path.join(
       appRoot,
+      "fastlane/screenshots",
+      locale,
+      `${screenshot}.png`
+    );
+    await createResponsiveImage(input, path.join(localeOutput, screenshot));
+  }
+
+  for (const screenshot of tuckletScreenshots) {
+    const input = path.join(
+      tuckletAppRoot,
       "fastlane/screenshots",
       locale,
       `${screenshot}.png`
@@ -178,4 +217,4 @@ for (const locale of locales) {
   }
 }
 
-console.log(`Created responsive Batchora media in ${outputRoot}`);
+console.log(`Created responsive BlueMorrow Studio media in ${outputRoot}`);

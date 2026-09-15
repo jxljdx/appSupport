@@ -747,5 +747,210 @@ export const chineseEntries = [
       ),
       featureCta
     )
+  }),
+  page({
+    key: "tucklet-home",
+    slug: "tucklet",
+    parent: "apps",
+    appKey: "tucklet",
+    title: "Tucklet iPhone 版",
+    seoTitle: "Tucklet：iPhone 临时信息到期删除",
+    description:
+      "Tucklet 让 iPhone 临时信息在需要时随手可用，提供到期删除、提醒和私密详情保护。",
+    intent: "iPhone 临时信息到期删除",
+    content: [
+      `<!-- wp:bluemorrow/tucklet-home-hero /-->`,
+      answer(
+        "Tucklet 用于保存短时间需要的信息：主动粘贴一条详情，选择到期时间，随手使用其中的实用内容；到期后，Tucklet 会在下次启动或回到前台时将其移除。"
+      ),
+      `<!-- wp:bluemorrow/tucklet-workflow /-->`,
+      `<!-- wp:bluemorrow/tucklet-screenshot-gallery /-->`,
+      `<!-- wp:bluemorrow/tucklet-trust-panel /-->`,
+      cta(
+        "临时信息，也值得被认真对待。",
+        "Tucklet 即将在 App Store 推出。"
+      )
+    ].join("\n")
+  }),
+  page({
+    key: "tucklet-faq",
+    slug: "faq",
+    parent: "tucklet-home",
+    appKey: "tucklet",
+    title: "Tucklet 常见问题",
+    seoTitle: "Tucklet 常见问题：临时信息、到期与隐私",
+    description:
+      "了解 Tucklet 的临时信息、到期删除、提醒、私密内容、本地存储、免费保存次数和永久解锁。",
+    intent: "Tucklet 临时信息常见问题",
+    content: pageContent(
+      "Tucklet 把临时详情留在你的 iPhone 上，直到到期或你主动移除。它让信息易于收好、使用并放心忘掉。",
+      faq([
+        {
+          question: "Tucklet 需要注册账号吗？",
+          response: "不需要。Tucklet 不要求登录或注册 Tucklet 账号。"
+        },
+        {
+          question: "到期的信息何时会被移除？",
+          response:
+            "当 Tucklet 在所选到期时间之后启动或回到前台时，它会移除到期的详情。"
+        },
+        {
+          question: "Tucklet 会自动读取剪贴板吗？",
+          response:
+            "不会。只有当你主动选择在 Tucklet 中粘贴信息时，App 才会读取剪贴板。"
+        },
+        {
+          question: "私密内容是什么意思？",
+          response:
+            "标记为私密的详情需要通过设备认证后，Tucklet 才会显示其受保护内容。"
+        },
+        {
+          question: "可以在到期前提醒我吗？",
+          response:
+            "可以。你可以为已保存的详情开启到期提醒。通知是否送达还会受到 iPhone 通知设置影响。"
+        },
+        {
+          question: "免费内容和永久解锁价格是什么？",
+          response:
+            "前 10 次成功新建保存免费。之后，当前 StoreKit 配置提供 $0.99 的一次性永久解锁。"
+        }
+      ]),
+      cta(
+        "给临时信息一个更安静的位置。",
+        "Tucklet 即将在 App Store 推出。"
+      )
+    )
+  }),
+  page({
+    key: "tucklet-support",
+    slug: "support",
+    parent: "tucklet-home",
+    appKey: "tucklet",
+    title: "Tucklet 应用支持",
+    seoTitle: "Tucklet iPhone 应用支持",
+    description:
+      "获取 Tucklet 临时信息、到期删除、提醒、私密内容、设备认证和永久解锁方面的帮助。",
+    intent: "Tucklet 应用支持",
+    content: pageContent(
+      "需要 Tucklet 帮助时，请先确认详情是否已到期、提醒所需的 iPhone 通知设置是否开启，以及私密内容是否可使用设备认证。",
+      section(
+        "快速检查",
+        bullets([
+          "Tucklet 会在启动或回到前台时移除已到期详情。",
+          "依赖到期提醒前，请在 iPhone 设置中确认已允许通知。",
+          "打开私密内容时，请使用面容 ID、触控 ID 或设备密码。",
+          "使用购买永久解锁时所登录的 Apple 账号恢复购买。"
+        ])
+      ),
+      section(
+        "联系支持",
+        paragraph(
+          '请通过 <a href="mailto:jxstudio.apps@gmail.com?subject=Tucklet%20Support">jxstudio.apps@gmail.com</a> 联系我们，并说明操作、发生情况、iOS 版本和 Tucklet 版本。除非确有必要，请不要发送私密详情。'
+        )
+      )
+    )
+  }),
+  page({
+    key: "tucklet-privacy",
+    slug: "privacy",
+    parent: "tucklet-home",
+    appKey: "tucklet",
+    title: "Tucklet 隐私政策",
+    seoTitle: "Tucklet 隐私政策",
+    description:
+      "了解 Tucklet 如何处理加密本地详情、剪贴板操作、私密内容、提醒、Apple 购买和支持邮件。",
+    intent: "Tucklet 隐私政策",
+    content: pageContent(
+      "Tucklet 不要求账号。已保存详情会加密并保存在你的设备本地；Tucklet 不会将它们上传到 Tucklet 服务器。",
+      section(
+        "临时详情和剪贴板操作",
+        bullets([
+          "Tucklet 会把已保存详情存放在加密的本地 App 存储中。",
+          "只有当你主动选择粘贴时，Tucklet 才会读取剪贴板信息。",
+          "详情到期后，Tucklet 会在下次启动或回到前台时移除它。",
+          "删除 Tucklet 会根据标准 iOS 行为移除其本地 App 容器。"
+        ])
+      ),
+      section(
+        "私密内容和提醒",
+        paragraph(
+          "私密详情需要设备认证后才会显示内容。若你开启到期提醒，Tucklet 会请求 iOS 安排本地通知；是否送达仍取决于你的 iPhone 通知设置。"
+        )
+      ),
+      section(
+        "购买和支持",
+        paragraph(
+          "一次性永久解锁由 Apple 通过 StoreKit 处理。若你发送支持邮件，支持邮箱会收到你的邮箱地址、内容和你选择附上的信息。"
+        )
+      ),
+      section(
+        "联系我们",
+        paragraph(
+          '如有隐私问题，请发送邮件至 <a href="mailto:jxstudio.apps@gmail.com?subject=Tucklet%20Privacy">jxstudio.apps@gmail.com</a>。最后更新于 2026 年 9 月 15 日。'
+        )
+      )
+    )
+  }),
+  page({
+    key: "tucklet-terms",
+    slug: "terms",
+    parent: "tucklet-home",
+    appKey: "tucklet",
+    title: "Tucklet 使用条款",
+    seoTitle: "Tucklet 使用条款",
+    description:
+      "Tucklet 使用条款，涵盖临时详情到期、设备认证、Apple 许可协议以及购买。",
+    intent: "Tucklet 使用条款",
+    content: pageContent(
+      "Tucklet 使用 Apple 标准许可应用终端用户许可协议。使用 Tucklet 时，也适用以下产品条款。",
+      section(
+        "使用临时详情",
+        paragraph(
+          "你需要自行决定保存哪些信息、选择合适的到期时间，并在详情到期前确认内容。对于必须长期保留的信息，请不要只依赖 Tucklet 保存。"
+        )
+      ),
+      section(
+        "购买",
+        paragraph(
+          "永久解锁是由 Apple 处理的一次性 App 内购买。可以使用购买时的 Apple 账号恢复购买；付款、账单和退款由 Apple 按其适用条款管理。"
+        )
+      ),
+      section(
+        "联系我们",
+        paragraph(
+          '如有条款相关问题，请发送邮件至 <a href="mailto:jxstudio.apps@gmail.com?subject=Tucklet%20Terms">jxstudio.apps@gmail.com</a>。最后更新于 2026 年 9 月 15 日。'
+        )
+      )
+    )
+  }),
+  page({
+    key: "tucklet-about",
+    slug: "about",
+    parent: "tucklet-home",
+    appKey: "tucklet",
+    title: "关于 Tucklet",
+    seoTitle: "关于 Tucklet iPhone 版",
+    description:
+      "了解 Tucklet 如何让临时信息保持清楚、实用、本地保存，并在不再需要时到期移除。",
+    intent: "关于 Tucklet",
+    content: pageContent(
+      "Tucklet 面向短时间有用的小信息：取件码、联系方式、地址，或任务完成前想暂时留住的一条备注。",
+      section(
+        "为临时而设计",
+        paragraph(
+          "与其把短期详情混进长期笔记，Tucklet 为它们提供到期时间、实用操作，以及 iPhone 上一个有意为之的位置。"
+        )
+      ),
+      section(
+        "BlueMorrow Studio 出品",
+        paragraph(
+          'Tucklet 由 <a href="/zh-hans/">BlueMorrow Studio</a> 打造。我们专注于制作控制清楚、并准确说明隐私边界的 iPhone 工具。'
+        )
+      ),
+      cta(
+        "需要时留住，不需要时放下。",
+        "Tucklet 即将在 App Store 推出。"
+      )
+    )
   })
 ];

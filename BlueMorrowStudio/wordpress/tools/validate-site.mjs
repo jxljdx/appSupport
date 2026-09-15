@@ -101,15 +101,34 @@ for (const entry of entries) {
     }
   }
 
-  if ("home" === entry.key) {
+  if (["batchora-home", "tucklet-home"].includes(entry.key)) {
     if (!html.includes('type="image/avif"') || !html.includes('type="image/webp"')) {
       throw new Error(`${pathname} is missing responsive product media`);
     }
+  }
+  if ("batchora-home" === entry.key) {
     if (!/<video[^>]+data-src="[^"]+"[^>]*><\/video>/i.test(html)) {
       throw new Error(`${pathname} is missing a deferred app preview`);
     }
     if (/<video[^>]+\ssrc=/i.test(html)) {
       throw new Error(`${pathname} eagerly loads the app preview`);
+    }
+  }
+  if ("tucklet-home" === entry.key) {
+    if (!/Coming soon|即将推出/.test(html)) {
+      throw new Error(`${pathname} is missing its pre-launch availability state`);
+    }
+    const schemas = schemaMatches.map((match) => JSON.parse(match[1]));
+    const applications = schemas.flatMap((schema) =>
+      (schema["@graph"] || []).filter(
+        (item) => item["@type"] === "MobileApplication"
+      )
+    );
+    if (applications.length !== 1) {
+      throw new Error(`${pathname} is missing Tucklet MobileApplication schema`);
+    }
+    if ("downloadUrl" in applications[0]) {
+      throw new Error(`${pathname} exposes an unconfigured Tucklet download URL`);
     }
   }
 }
