@@ -14,11 +14,12 @@
 3. Upload and activate `bluemorrow-studio-site-1.0.0.zip`.
 4. Upload and activate `bluemorrow-studio-theme-1.0.0.zip`.
 5. Use **Tools → Import → WordPress** to import `bluemorrow-studio-content-1.0.0.xml`.
-6. Publish the 46 imported pages after reviewing their parent relationships.
+6. Publish the 58 imported pages after reviewing their parent relationships.
 7. Set permalinks to **Post name**.
 8. Leave **Your homepage displays** set to **Your latest posts**. The site plugin redirects `/` to `/en/`; assigning the English page as a static homepage would remove its `/en/` URL.
 9. Upload `site-icon-512.png` from the media package as the Site Icon. Keep
-   `app-icon-512.png` for Batchora product cards and App-specific uses.
+   `app-icon-512.png` for Batchora and `tucklet-icon-512.png` for Tucklet
+   product cards and App-specific uses.
 10. Verify the plugin-generated primary and footer navigation in both locales.
     Do not replace the dynamic navigation blocks with a manually created
     WordPress Navigation menu.
@@ -38,9 +39,13 @@
 - `/en/` and `/zh-hans/` return HTTP 200 and display the correct language.
 - Every page has one canonical URL and `en-US`, `zh-Hans`, and `x-default` alternates.
 - `/robots.txt`, `/wp-sitemap.xml`, and `/llms.txt` return HTTP 200.
-- App Store buttons open App Store ID `6810283756`.
-- The App Preview is not requested until the visitor activates its play button.
-- English pages show English screenshots and Preview; Chinese pages show Chinese assets.
+- Batchora App Store buttons open App Store ID `6810283756`.
+- Tucklet displays “Coming soon / 即将推出” without a download link until its
+  public App Store URL is configured.
+- The Batchora App Preview is not requested until the visitor activates its
+  play button. Tucklet has no App Preview in this release.
+- English pages show English screenshots; Simplified Chinese pages show
+  Simplified Chinese screenshots. Batchora's Preview is localized as well.
 - The site remains usable with JavaScript disabled, except for click-to-load video playback.
 - Mobile and desktop layouts have no clipped headings, horizontal scrolling, or overlapping controls.
 - Cloudflare Web Analytics does not set advertising cookies.
@@ -52,3 +57,12 @@
 3. Enable public indexing only after all production checks pass.
 4. Update App Store Connect Support and Privacy Policy URLs to the final domain.
 5. Update the old GitHub Pages support pages only after the new URLs are stable.
+
+## When Tucklet is published
+
+1. Add its verified public App Store URL to Tucklet's `app_store_url` product
+   configuration in the site plugin.
+2. Rebuild the media/content package and re-run the static and WordPress
+   Playground validation.
+3. Verify both localized Tucklet pages render an App Store link and emit the
+   matching `MobileApplication.downloadUrl` structured-data property.
