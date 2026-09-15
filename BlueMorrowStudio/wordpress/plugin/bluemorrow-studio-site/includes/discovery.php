@@ -134,9 +134,20 @@ function batchora_output_llms_txt() {
 	);
 
 	header( 'Content-Type: text/plain; charset=utf-8' );
-	echo "# Batchora\n\n";
-	echo "> Official product information and guides for Batchora, an iPhone photo and video batch processing app.\n\n";
-	echo "App Store: " . esc_url_raw( batchora_app_store_url() ) . "\n\n";
+	echo "# BlueMorrow Studio\n\n";
+	echo "> Official product information for BlueMorrow Studio iPhone apps.\n\n";
+	echo "## Apps\n\n";
+	foreach ( bluemorrow_apps() as $app ) {
+		printf( "### %s\n", wp_strip_all_tags( $app['store_name'] ) );
+		$url = bluemorrow_app_store_url( $app['key'] );
+		if ( $url ) {
+			printf( "App Store: %s\n", esc_url_raw( $url ) );
+		} else {
+			echo "Availability: Coming soon\n";
+		}
+		echo "\n";
+	}
+	echo "## Pages\n\n";
 	foreach ( $pages as $page ) {
 		$description = get_post_meta(
 			$page->ID,

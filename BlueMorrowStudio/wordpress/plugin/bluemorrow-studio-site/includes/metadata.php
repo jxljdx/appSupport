@@ -100,7 +100,7 @@ function batchora_output_metadata() {
 		'og:description' => $description,
 		'og:url'         => $canonical,
 		'og:locale'      => 'zh-Hans' === $locale ? 'zh_CN' : 'en_US',
-		'og:site_name'   => 'Batchora',
+		'og:site_name'   => 'BlueMorrow Studio',
 		'og:image'       => $image,
 	);
 	foreach ( $properties as $property => $content ) {
@@ -116,6 +116,33 @@ function batchora_output_metadata() {
 }
 remove_action( 'wp_head', 'rel_canonical' );
 add_action( 'wp_head', 'batchora_output_metadata', 2 );
+
+function bluemorrow_mobile_application_schema( $app, $locale, $description ) {
+	$schema = array(
+		'@type'               => 'MobileApplication',
+		'name'                => $app['store_name'],
+		'operatingSystem'     => $app['operating_system'],
+		'applicationCategory' => $app['application_category'],
+		'description'         => $description,
+		'inLanguage'          => $locale,
+		'isAccessibleForFree' => $app['is_accessible_for_free'],
+	);
+
+	if ( ! empty( $app['offer_price'] ) && ! empty( $app['offer_currency'] ) ) {
+		$schema['offers'] = array(
+			'@type'         => 'Offer',
+			'price'         => $app['offer_price'],
+			'priceCurrency' => $app['offer_currency'],
+		);
+	}
+
+	$url = bluemorrow_app_store_url( $app['key'] );
+	if ( $url ) {
+		$schema['downloadUrl'] = $url;
+	}
+
+	return $schema;
+}
 
 function batchora_breadcrumb_schema( $post_id ) {
 	$ancestors = array_reverse( get_post_ancestors( $post_id ) );
@@ -182,7 +209,7 @@ function batchora_output_schema() {
 		array(
 			'@type' => 'Organization',
 			'@id'   => home_url( '/#organization' ),
-			'name'  => 'Batchora',
+			'name'  => 'BlueMorrow Studio',
 			'url'   => home_url( '/' ),
 			'email' => 'jxstudio.apps@gmail.com',
 		),
@@ -190,28 +217,19 @@ function batchora_output_schema() {
 			'@type'       => 'WebSite',
 			'@id'         => home_url( '/#website' ),
 			'url'         => home_url( '/' ),
-			'name'        => 'Batchora',
+			'name'        => 'BlueMorrow Studio',
 			'inLanguage'  => array( 'en-US', 'zh-Hans' ),
 			'publisher'   => array( '@id' => home_url( '/#organization' ) ),
 		),
 		batchora_breadcrumb_schema( $post_id ),
 	);
 
-	if ( 'batchora-home' === batchora_translation_key( $post_id ) ) {
-		$graph[] = array(
-			'@type'                => 'MobileApplication',
-			'name'                 => 'Batchora: Photo & Video',
-			'operatingSystem'      => 'iOS 17 or later',
-			'applicationCategory'  => 'MultimediaApplication',
-			'downloadUrl'          => batchora_app_store_url(),
-			'description'          => $description,
-			'inLanguage'           => $locale,
-			'isAccessibleForFree'  => true,
-			'offers'               => array(
-				'@type'         => 'Offer',
-				'price'         => '0',
-				'priceCurrency' => 'USD',
-			),
+	$app = bluemorrow_current_app( $post_id );
+	if ( $app && $app['home_key'] === batchora_translation_key( $post_id ) ) {
+		$graph[] = bluemorrow_mobile_application_schema(
+			$app,
+			$locale,
+			$description
 		);
 	}
 
@@ -226,7 +244,7 @@ function batchora_output_schema() {
 			'mainEntityOfPage' => get_permalink( $post_id ),
 			'author'           => array(
 				'@type' => 'Organization',
-				'name'  => 'Batchora Team',
+				'name'  => 'BlueMorrow Studio',
 			),
 			'publisher'        => array( '@id' => home_url( '/#organization' ) ),
 		);
