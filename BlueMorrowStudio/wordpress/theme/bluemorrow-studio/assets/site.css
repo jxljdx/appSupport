@@ -1649,15 +1649,25 @@ summary:focus-visible {
 }
 
 .tucklet-workflow-card__media {
-  min-height: 17rem;
-  overflow: hidden;
-  background: #f3e6dc;
+  display: grid;
+  min-height: 25rem;
+  place-items: center;
+  padding: 1.25rem;
+  background:
+    radial-gradient(circle at 50% 0, rgba(255, 255, 255, 0.78), transparent 16rem),
+    #f3e6dc;
+}
+
+.tucklet-workflow-card__media picture {
+  display: block;
+  width: min(100%, 13rem);
 }
 
 .tucklet-workflow-screen {
   display: block;
-  width: min(100%, 18rem);
-  margin: 1.25rem auto -3.25rem;
+  width: 100%;
+  height: auto;
+  margin: 0;
   border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: 1.35rem;
   box-shadow: 0 18px 42px rgba(93, 53, 37, 0.16);
@@ -2124,6 +2134,20 @@ summary:focus-visible {
 }
 
 @media (max-width: 640px) {
+  .tucklet-workflow-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tucklet-media-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tucklet-media-gallery picture:last-child {
+    grid-column: 1 / -1;
+    width: calc(50% - 0.35rem);
+    margin-inline: auto;
+  }
+
   .site-header {
     padding: 0.65rem;
   }
@@ -2362,16 +2386,3 @@ summary:focus-visible {
     transform: none;
   }
 }
-  .tucklet-workflow-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .tucklet-media-gallery {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .tucklet-media-gallery picture:last-child {
-    grid-column: 1 / -1;
-    width: calc(50% - 0.35rem);
-    margin-inline: auto;
-  }
