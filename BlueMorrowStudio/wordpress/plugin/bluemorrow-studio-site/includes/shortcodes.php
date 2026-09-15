@@ -25,10 +25,6 @@ function batchora_app_store_cta_shortcode( $attributes ) {
 	}
 
 	$url = bluemorrow_app_store_url();
-	if ( ! $url ) {
-		return '';
-	}
-
 	$attributes = shortcode_atts(
 		array( 'compact' => 'false' ),
 		$attributes,
@@ -39,6 +35,20 @@ function batchora_app_store_cta_shortcode( $attributes ) {
 	$class      = 'batchora-button';
 	if ( 'true' === $attributes['compact'] ) {
 		$class .= ' batchora-button--compact';
+	}
+
+	if ( ! $url ) {
+		$coming_soon = $is_chinese ? '即将推出' : 'Coming soon';
+		$description = $is_chinese
+			? 'Tucklet 即将在 App Store 推出。'
+			: 'Tucklet is coming soon to the App Store.';
+
+		return sprintf(
+			'<span class="%1$s batchora-button--coming-soon" role="status" aria-label="%2$s">%3$s</span>',
+			esc_attr( $class ),
+			esc_attr( $description ),
+			esc_html( $coming_soon )
+		);
 	}
 
 	return sprintf(
@@ -107,6 +117,25 @@ function bluemorrow_navigation_links( $is_chinese, $scope ) {
 			);
 	}
 
+	$app = bluemorrow_current_app();
+	if ( $app && 'tucklet' === $app['key'] ) {
+		return $is_chinese
+			? array(
+				'studio-home'   => 'Studio',
+				'tucklet-home'  => 'Tucklet',
+				'tucklet-faq'   => '常见问题',
+				'tucklet-about' => '关于',
+				'tucklet-support' => '支持',
+			)
+			: array(
+				'studio-home'   => 'Studio',
+				'tucklet-home'  => 'Tucklet',
+				'tucklet-faq'   => 'FAQ',
+				'tucklet-about' => 'About',
+				'tucklet-support' => 'Support',
+			);
+	}
+
 	return $is_chinese
 		? array(
 			'studio-home'      => 'Studio',
@@ -165,6 +194,7 @@ function bluemorrow_footer_groups( $is_chinese, $scope ) {
 				'产品' => array(
 					'apps'          => '所有 App',
 					'batchora-home' => 'Batchora',
+					'tucklet-home'  => 'Tucklet',
 				),
 				'Studio' => array(
 					'studio-about'   => '关于',
@@ -176,11 +206,41 @@ function bluemorrow_footer_groups( $is_chinese, $scope ) {
 				'Products' => array(
 					'apps'          => 'All apps',
 					'batchora-home' => 'Batchora',
+					'tucklet-home'  => 'Tucklet',
 				),
 				'Studio' => array(
 					'studio-about'   => 'About',
 					'studio-support' => 'Support',
 					'studio-privacy' => 'Website privacy',
+				),
+			);
+	}
+
+	$app = bluemorrow_current_app();
+	if ( $app && 'tucklet' === $app['key'] ) {
+		return $is_chinese
+			? array(
+				'Tucklet' => array(
+					'tucklet-home' => '首页',
+					'tucklet-faq'  => '常见问题',
+					'tucklet-about' => '关于 Tucklet',
+				),
+				'帮助' => array(
+					'tucklet-support' => '应用支持',
+					'tucklet-privacy' => '隐私政策',
+					'tucklet-terms'   => '使用条款',
+				),
+			)
+			: array(
+				'Tucklet' => array(
+					'tucklet-home' => 'Home',
+					'tucklet-faq'  => 'FAQ',
+					'tucklet-about' => 'About Tucklet',
+				),
+				'Help' => array(
+					'tucklet-support' => 'Support',
+					'tucklet-privacy' => 'Privacy',
+					'tucklet-terms'   => 'Terms',
 				),
 			);
 	}
@@ -269,9 +329,17 @@ function bluemorrow_footer_brand_block() {
 				: 'Simple tools, thoughtfully made.'
 		)
 		: (
-			$is_chinese
-				? '在 iPhone 本地完成照片与视频批处理。'
-				: 'Private photo and video batch processing for iPhone.'
+			( $app = bluemorrow_current_app() ) && 'tucklet' === $app['key']
+				? (
+					$is_chinese
+						? '让临时信息在需要时随手可用。'
+						: 'Keep temporary details useful, then let them go.'
+				)
+				: (
+					$is_chinese
+						? '在 iPhone 本地完成照片与视频批处理。'
+						: 'Private photo and video batch processing for iPhone.'
+				)
 		);
 
 	return '<div class="bluemorrow-footer-brand">' .
@@ -284,17 +352,26 @@ function bluemorrow_footer_brand_block() {
 function batchora_legal_links_shortcode() {
 	$is_chinese = batchora_is_chinese();
 	$scope      = bluemorrow_page_scope();
+	$app        = bluemorrow_current_app();
 	$link_map   = 'studio' === $scope
 		? array(
 			'studio-home'    => $is_chinese ? '首页' : 'Home',
 			'studio-privacy' => $is_chinese ? '网站隐私' : 'Website privacy',
 			'studio-support' => $is_chinese ? '支持' : 'Support',
 		)
-		: array(
+		: ( $app && 'tucklet' === $app['key']
+			? array(
+				'tucklet-home'    => $is_chinese ? 'Tucklet 首页' : 'Tucklet home',
+				'tucklet-privacy' => $is_chinese ? '隐私政策' : 'Privacy',
+				'tucklet-terms'   => $is_chinese ? '使用条款' : 'Terms',
+				'tucklet-support' => $is_chinese ? '应用支持' : 'Support',
+			)
+			: array(
 			'batchora-home' => $is_chinese ? 'Batchora 首页' : 'Batchora home',
 			'privacy'       => $is_chinese ? '隐私政策' : 'Privacy',
 			'terms'         => $is_chinese ? '使用条款' : 'Terms',
 			'support'       => $is_chinese ? '应用支持' : 'Support',
+			)
 		);
 	$links      = array();
 

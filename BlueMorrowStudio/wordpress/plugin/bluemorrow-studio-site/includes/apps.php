@@ -17,8 +17,18 @@ function bluemorrow_apps() {
 			'name'            => 'Batchora',
 			'store_name'      => 'Batchora: Photo & Video',
 			'app_store_id'    => '6810283756',
-			'home_key'          => 'batchora-home',
+			'home_key'        => 'batchora-home',
 			'icon'            => 'app-icon-512.png',
+			'supported_locales' => array( 'en-US', 'zh-Hans' ),
+		),
+		'tucklet' => array(
+			'key'               => 'tucklet',
+			'slug'              => 'tucklet',
+			'name'              => 'Tucklet',
+			'store_name'        => 'Tucklet',
+			'app_store_url'     => '',
+			'home_key'          => 'tucklet-home',
+			'icon'              => 'tucklet-icon-512.png',
 			'supported_locales' => array( 'en-US', 'zh-Hans' ),
 		),
 	);
@@ -61,7 +71,15 @@ function bluemorrow_app_store_url( $app_key = '' ) {
 	$app = bluemorrow_app(
 		$app_key ?: bluemorrow_page_app_key()
 	);
-	if ( ! $app || empty( $app['app_store_id'] ) ) {
+	if ( ! $app ) {
+		return '';
+	}
+
+	if ( ! empty( $app['app_store_url'] ) ) {
+		return esc_url_raw( $app['app_store_url'] );
+	}
+
+	if ( empty( $app['app_store_id'] ) ) {
 		return '';
 	}
 

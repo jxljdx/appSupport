@@ -1036,6 +1036,12 @@ summary:focus-visible {
   transform: translateY(-1px);
 }
 
+.batchora-button--coming-soon {
+  cursor: default;
+  background: linear-gradient(120deg, #8b4d3e, #bf704c);
+  box-shadow: none;
+}
+
 .batchora-button--compact {
   min-height: 2.5rem;
   padding: 0.6rem 1rem;
