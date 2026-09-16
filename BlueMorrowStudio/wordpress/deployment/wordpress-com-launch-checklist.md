@@ -13,8 +13,15 @@
 2. Keep search-engine indexing disabled while importing and checking the site. Do not share the temporary WordPress.com address.
 3. Upload and activate `bluemorrow-studio-site-1.0.0.zip`.
 4. Upload and activate `bluemorrow-studio-theme-1.0.0.zip`.
-5. Use **Tools → Import → WordPress** to import `bluemorrow-studio-content-1.0.0.xml`.
-6. Publish the 58 imported pages after reviewing their parent relationships.
+5. For a fresh site, use **Tools → Import → WordPress** to import
+   `bluemorrow-studio-content-1.0.0.xml`. For the existing
+   `bluemorrowstudio.com` site, import only `tucklet-content-1.0.0.xml` to
+   avoid duplicating its Batchora and Studio pages.
+6. When using `tucklet-content-1.0.0.xml`, assign **Tucklet for iPhone** to
+   the existing English **Apps** page and **Tucklet iPhone 版** to the existing
+   Simplified Chinese **App** page. The ten imported child pages remain under
+   their corresponding Tucklet page. Publish the 12 Tucklet pages after
+   verifying those parent relationships.
 7. Set permalinks to **Post name**.
 8. Leave **Your homepage displays** set to **Your latest posts**. The site plugin redirects `/` to `/en/`; assigning the English page as a static homepage would remove its `/en/` URL.
 9. Upload `site-icon-512.png` from the media package as the Site Icon. Keep

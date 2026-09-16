@@ -9,6 +9,10 @@ const outputPath = path.join(
   releaseDirectory,
   "bluemorrow-studio-content-1.0.0.xml"
 );
+const tuckletOutputPath = path.join(
+  releaseDirectory,
+  "tucklet-content-1.0.0.xml"
+);
 
 const xml = (value) =>
   String(value)
@@ -21,18 +25,24 @@ const xml = (value) =>
 const cdata = (value) => String(value).replaceAll("]]>", "]]]]><![CDATA[>");
 
 const now = "2026-09-10 00:00:00";
-const entries = [...englishEntries, ...chineseEntries];
-const entryIds = new Map();
-let nextId = 1000;
+const allEntries = [...englishEntries, ...chineseEntries];
+const tuckletEntries = allEntries.filter((entry) => entry.appKey === "tucklet");
 
-for (const entry of entries) {
-  entryIds.set(`${entry.locale}:${entry.key}`, nextId);
-  entry._exportId = nextId;
-  nextId += 1;
+if (tuckletEntries.length !== 12) {
+  throw new Error("Expected 12 localized Tucklet pages");
 }
 
-const items = entries
-  .map((entry) => {
+const documentFor = (entries, description) => {
+  const entryIds = new Map();
+  let nextId = 1000;
+  for (const entry of entries) {
+    entryIds.set(`${entry.locale}:${entry.key}`, nextId);
+    nextId += 1;
+  }
+
+  const items = entries
+    .map((entry) => {
+      const exportId = entryIds.get(`${entry.locale}:${entry.key}`);
     const parent = entry.parent
       ? entryIds.get(`${entry.locale}:${entry.parent}`) || 0
       : 0;
@@ -65,11 +75,11 @@ const items = entries
 <link>https://example.com/${xml(entry.slug)}/</link>
 <pubDate>Thu, 10 Sep 2026 00:00:00 +0000</pubDate>
 <dc:creator><![CDATA[bluemorrowstudio]]></dc:creator>
-<guid isPermaLink="false">https://example.com/?p=${entry._exportId}</guid>
+<guid isPermaLink="false">https://example.com/?p=${exportId}</guid>
 <description></description>
 <content:encoded><![CDATA[${cdata(entry.content)}]]></content:encoded>
 <excerpt:encoded><![CDATA[${cdata(entry.description)}]]></excerpt:encoded>
-<wp:post_id>${entry._exportId}</wp:post_id>
+<wp:post_id>${exportId}</wp:post_id>
 <wp:post_date><![CDATA[${now}]]></wp:post_date>
 <wp:post_date_gmt><![CDATA[${now}]]></wp:post_date_gmt>
 <wp:post_modified><![CDATA[${now}]]></wp:post_modified>
@@ -85,10 +95,10 @@ const items = entries
 <wp:is_sticky>0</wp:is_sticky>
 ${metaXml}
 </item>`;
-  })
-  .join("\n");
+    })
+    .join("\n");
 
-const document = `<?xml version="1.0" encoding="UTF-8" ?>
+  return `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0"
   xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
   xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -98,7 +108,7 @@ const document = `<?xml version="1.0" encoding="UTF-8" ?>
 <channel>
 <title>BlueMorrow Studio</title>
 <link>https://example.com</link>
-<description>BlueMorrow Studio WordPress content package</description>
+<description>${xml(description)}</description>
 <pubDate>Thu, 10 Sep 2026 00:00:00 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
@@ -116,7 +126,21 @@ ${items}
 </channel>
 </rss>
 `;
+};
 
 await mkdir(releaseDirectory, { recursive: true });
-await writeFile(outputPath, document, "utf8");
+await writeFile(
+  outputPath,
+  documentFor(allEntries, "BlueMorrow Studio WordPress content package"),
+  "utf8"
+);
+await writeFile(
+  tuckletOutputPath,
+  documentFor(
+    tuckletEntries,
+    "Tucklet-only content package for an existing BlueMorrow Studio site"
+  ),
+  "utf8"
+);
 console.log(`Created ${outputPath}`);
+console.log(`Created ${tuckletOutputPath}`);

@@ -33,3 +33,7 @@ The complete upload bundle is
 `release/bluemorrow-studio-wordpress-release-1.0.0.zip`. Follow the checklist in
 `deployment/wordpress-com-launch-checklist.md`; production credentials and
 exports must remain outside Git.
+
+For an existing BlueMorrow Studio production site, import
+`release/tucklet-content-1.0.0.xml` rather than the full content export. The
+Tucklet-only WXR avoids duplicating the existing Batchora and Studio pages.
