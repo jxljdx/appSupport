@@ -1,17 +1,21 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { englishEntries } from "../content/en.mjs";
 import { chineseEntries } from "../content/zh-hans.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const releaseDirectory = path.join(root, "release");
+const manifest = JSON.parse(
+  await readFile(path.join(root, "package.json"), "utf8")
+);
+const version = process.env.BLUEMORROW_STUDIO_VERSION || manifest.version;
 const outputPath = path.join(
   releaseDirectory,
-  "bluemorrow-studio-content-1.0.0.xml"
+  `bluemorrow-studio-content-${version}.xml`
 );
 const tuckletOutputPath = path.join(
   releaseDirectory,
-  "tucklet-content-1.0.0.xml"
+  `tucklet-content-${version}.xml`
 );
 
 const xml = (value) =>

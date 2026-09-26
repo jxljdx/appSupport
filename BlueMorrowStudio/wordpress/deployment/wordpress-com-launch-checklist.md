@@ -5,19 +5,19 @@
 - Purchase or connect the final independent domain.
 - Activate a paid WordPress.com plan that supports custom theme and plugin uploads.
 - Keep the existing GitHub Pages support and privacy URLs unchanged until the new site passes production checks.
-- Download `bluemorrow-studio-wordpress-release-1.0.0.zip` and verify the files against `SHA256SUMS`.
+- Download `bluemorrow-studio-wordpress-release-1.0.1.zip` and verify the files against `SHA256SUMS`.
 
 ## Install the release
 
 1. Connect the final domain and set it as the WordPress.com primary address.
 2. Keep search-engine indexing disabled while importing and checking the site. Do not share the temporary WordPress.com address.
-3. Upload and activate `bluemorrow-studio-site-1.0.0.zip`.
-4. Upload and activate `bluemorrow-studio-theme-1.0.0.zip`.
+3. Upload and activate `bluemorrow-studio-site-1.0.1.zip`.
+4. Upload and activate `bluemorrow-studio-theme-1.0.1.zip`.
 5. For a fresh site, use **Tools → Import → WordPress** to import
-   `bluemorrow-studio-content-1.0.0.xml`. For the existing
-   `bluemorrowstudio.com` site, import only `tucklet-content-1.0.0.xml` to
+   `bluemorrow-studio-content-1.0.1.xml`. For the existing
+   `bluemorrowstudio.com` site, import only `tucklet-content-1.0.1.xml` to
    avoid duplicating its Batchora and Studio pages.
-6. When using `tucklet-content-1.0.0.xml`, assign **Tucklet for iPhone** to
+6. When using `tucklet-content-1.0.1.xml`, assign **Tucklet for iPhone** to
    the existing English **Apps** page and **Tucklet iPhone 版** to the existing
    Simplified Chinese **App** page. The ten imported child pages remain under
    their corresponding Tucklet page. Publish the 12 Tucklet pages after

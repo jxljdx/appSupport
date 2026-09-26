@@ -6,7 +6,10 @@ import process from "node:process";
 
 const root = path.resolve(import.meta.dirname, "..");
 const releaseDirectory = path.join(root, "release");
-const version = process.env.BLUEMORROW_STUDIO_VERSION || "1.0.0";
+const manifest = JSON.parse(
+  await readFile(path.join(root, "package.json"), "utf8")
+);
+const version = process.env.BLUEMORROW_STUDIO_VERSION || manifest.version;
 
 await mkdir(releaseDirectory, { recursive: true });
 
