@@ -255,8 +255,8 @@ const chineseKeys = chineseEntries.map((entry) => entry.key).sort();
 if (JSON.stringify(englishKeys) !== JSON.stringify(chineseKeys)) {
   throw new Error("English and Chinese content entries are not aligned");
 }
-if (englishEntries.length !== 29 || chineseEntries.length !== 29) {
-  throw new Error("Expected 29 pages per locale");
+if (englishEntries.length !== 35 || chineseEntries.length !== 35) {
+  throw new Error("Expected 35 pages per locale");
 }
 
 console.log("BlueMorrow Studio WordPress source is valid.");

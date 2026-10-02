@@ -115,8 +115,8 @@ for (const entry of entries) {
     }
   }
   if ("tucklet-home" === entry.key) {
-    if (!/Coming soon|即将推出/.test(html)) {
-      throw new Error(`${pathname} is missing its pre-launch availability state`);
+    if (!html.includes("id6812370360")) {
+      throw new Error(`${pathname} is missing the Tucklet App Store link`);
     }
     const schemas = schemaMatches.map((match) => JSON.parse(match[1]));
     const applications = schemas.flatMap((schema) =>
@@ -127,8 +127,8 @@ for (const entry of entries) {
     if (applications.length !== 1) {
       throw new Error(`${pathname} is missing Tucklet MobileApplication schema`);
     }
-    if ("downloadUrl" in applications[0]) {
-      throw new Error(`${pathname} exposes an unconfigured Tucklet download URL`);
+    if (!applications[0].downloadUrl?.includes("id6812370360")) {
+      throw new Error(`${pathname} has the wrong Tucklet download URL`);
     }
   }
 }
@@ -158,7 +158,12 @@ if (
 }
 
 const llms = await request("/llms.txt");
-if (!llms.includes("# Batchora") || !llms.includes("App Store:")) {
+if (
+  !llms.includes("# Batchora") ||
+  !llms.includes("id6810283756") ||
+  !llms.includes("# Tucklet") ||
+  !llms.includes("id6812370360")
+) {
   throw new Error("llms.txt is incomplete");
 }
 

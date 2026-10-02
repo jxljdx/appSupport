@@ -30,10 +30,11 @@ run `npm run validate:site` while the site is available at
 `http://127.0.0.1:9401`.
 
 The complete upload bundle is
-`release/bluemorrow-studio-wordpress-release-1.0.1.zip`. Follow the checklist in
+`release/bluemorrow-studio-wordpress-release-1.0.2.zip`. Follow the checklist in
 `deployment/wordpress-com-launch-checklist.md`; production credentials and
 exports must remain outside Git.
 
-For an existing BlueMorrow Studio production site, import
-`release/tucklet-content-1.0.1.xml` rather than the full content export. The
-Tucklet-only WXR avoids duplicating the existing Batchora and Studio pages.
+For the existing BlueMorrow Studio production site, upload the 1.0.2 site
+plugin and import `release/store-launch-content-1.0.2.xml`. The focused WXR
+contains the new bilingual use-case pages plus the existing parent records the
+WordPress importer needs to preserve page hierarchy.

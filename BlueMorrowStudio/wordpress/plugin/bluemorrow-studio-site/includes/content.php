@@ -107,5 +107,9 @@ function batchora_is_guide( $post_id = 0 ) {
 	}
 
 	$parent_id = wp_get_post_parent_id( $post_id );
-	return $parent_id && 'guides' === batchora_translation_key( $parent_id );
+	return $parent_id && in_array(
+		batchora_translation_key( $parent_id ),
+		array( 'guides', 'tucklet-use-cases' ),
+		true
+	);
 }

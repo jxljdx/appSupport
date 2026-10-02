@@ -123,6 +123,7 @@ function bluemorrow_navigation_links( $is_chinese, $scope ) {
 			? array(
 				'studio-home'   => 'Studio',
 				'tucklet-home'  => 'Tucklet',
+				'tucklet-use-cases' => '使用场景',
 				'tucklet-faq'   => '常见问题',
 				'tucklet-about' => '关于',
 				'tucklet-support' => '支持',
@@ -130,6 +131,7 @@ function bluemorrow_navigation_links( $is_chinese, $scope ) {
 			: array(
 				'studio-home'   => 'Studio',
 				'tucklet-home'  => 'Tucklet',
+				'tucklet-use-cases' => 'Use cases',
 				'tucklet-faq'   => 'FAQ',
 				'tucklet-about' => 'About',
 				'tucklet-support' => 'Support',
@@ -222,6 +224,7 @@ function bluemorrow_footer_groups( $is_chinese, $scope ) {
 			? array(
 				'Tucklet' => array(
 					'tucklet-home' => '首页',
+					'tucklet-use-cases' => '使用场景',
 					'tucklet-faq'  => '常见问题',
 					'tucklet-about' => '关于 Tucklet',
 				),
@@ -234,6 +237,7 @@ function bluemorrow_footer_groups( $is_chinese, $scope ) {
 			: array(
 				'Tucklet' => array(
 					'tucklet-home' => 'Home',
+					'tucklet-use-cases' => 'Use cases',
 					'tucklet-faq'  => 'FAQ',
 					'tucklet-about' => 'About Tucklet',
 				),

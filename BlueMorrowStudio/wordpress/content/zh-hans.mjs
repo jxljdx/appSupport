@@ -41,6 +41,16 @@ const article = (entry) => ({
   ...entry
 });
 
+const tuckletArticle = (entry) => ({
+  locale: "zh-Hans",
+  type: "page",
+  parent: "tucklet-use-cases",
+  scope: "app",
+  appKey: "tucklet",
+  status: "draft",
+  ...entry
+});
+
 const featureCta = cta(
   "用 Batchora 完成整批处理",
   "在 iPhone 上批量压缩、重命名、改尺寸、转换并导出成功处理的副本。"
@@ -54,13 +64,13 @@ export const chineseEntries = [
     title: "BlueMorrow Studio 简体中文",
     seoTitle: "BlueMorrow Studio｜用心打造的实用 App",
     description:
-      "BlueMorrow Studio 打造清晰、注重隐私的日常工具。了解 Batchora iPhone 照片与视频批处理 App。",
+      "BlueMorrow Studio 打造注重隐私的 iPhone 工具，包括媒体批处理 Batchora 和临时信息 App Tucklet。",
     intent: "BlueMorrow Studio App",
     template: "front-page",
     content: [
       `<!-- wp:bluemorrow/studio-home-hero /-->`,
       answer(
-        "BlueMorrow Studio 专注于清晰、克制并从一开始就考虑隐私的实用工具。首款 App Batchora 可在 iPhone 本地批量处理照片与视频。"
+        "BlueMorrow Studio 专注于清晰、克制并从一开始就考虑隐私的 iPhone 工具。Batchora 用于批量处理照片与视频，Tucklet 让临时信息只留到真正需要为止。"
       ),
       `<!-- wp:bluemorrow/studio-apps /-->`,
       `<!-- wp:bluemorrow/studio-principles /-->`
@@ -72,12 +82,12 @@ export const chineseEntries = [
     title: "App",
     seoTitle: "BlueMorrow Studio App",
     description:
-      "了解 BlueMorrow Studio 的 App，包括用于 iPhone 照片与视频本地批处理的 Batchora。",
+      "了解 BlueMorrow Studio 的 Batchora 媒体批处理工具和 Tucklet 临时信息 App。",
     intent: "BlueMorrow Studio App",
     content: [
       `<!-- wp:bluemorrow/studio-page-hero /-->`,
       answer(
-        "BlueMorrow Studio 目前推出了 Batchora，一款可在 iPhone 批量压缩、重命名、改尺寸、转换并导出照片和视频的 App。"
+        "BlueMorrow Studio 推出了 Batchora 和 Tucklet：前者用于批量压缩、重命名、改尺寸和导出媒体，后者用于保存会到期的临时信息。"
       ),
       `<!-- wp:bluemorrow/studio-apps /-->`
     ].join("\n")
@@ -177,6 +187,13 @@ export const chineseEntries = [
       `<!-- wp:bluemorrow/batchora-feature-explorer /-->`,
       `<!-- wp:bluemorrow/batchora-product-media /-->`,
       `<!-- wp:bluemorrow/batchora-trust-panel /-->`,
+      section(
+        "看看 Batchora 如何用于日常任务",
+        bullets([
+          '<a href="/zh-hans/apps/batchora/guides/prepare-photos-online-forms/">为在线表单准备整批照片</a>',
+          '<a href="/zh-hans/apps/batchora/guides/organize-event-photos/">分享前整理活动照片</a>'
+        ])
+      ),
       section(
         "常见问题",
         faq([
@@ -504,10 +521,12 @@ export const chineseEntries = [
       section(
         "从常见任务开始",
         bullets([
-          '<a href="/zh-hans/guides/compress-photos-iphone/">如何压缩照片并保留原件</a>',
-          '<a href="/zh-hans/guides/reduce-video-file-size-iphone/">分享前如何减小视频体积</a>',
-          '<a href="/zh-hans/guides/convert-heic-to-jpg-iphone/">如何在 iPhone 将 HEIC 转为 JPG</a>',
-          '<a href="/zh-hans/guides/remove-photo-location-iphone/">如何从照片副本移除定位信息</a>'
+          '<a href="/zh-hans/apps/batchora/guides/compress-photos-iphone/">如何压缩照片并保留原件</a>',
+          '<a href="/zh-hans/apps/batchora/guides/reduce-video-file-size-iphone/">分享前如何减小视频体积</a>',
+          '<a href="/zh-hans/apps/batchora/guides/convert-heic-to-jpg-iphone/">如何在 iPhone 将 HEIC 转为 JPG</a>',
+          '<a href="/zh-hans/apps/batchora/guides/remove-photo-location-iphone/">如何从照片副本移除定位信息</a>',
+          '<a href="/zh-hans/apps/batchora/guides/prepare-photos-online-forms/">为在线表单和上传入口准备照片</a>',
+          '<a href="/zh-hans/apps/batchora/guides/organize-event-photos/">分享前整理一批活动照片</a>'
         ])
       )
     )
@@ -748,6 +767,58 @@ export const chineseEntries = [
       featureCta
     )
   }),
+  article({
+    key: "guide-online-forms",
+    slug: "prepare-photos-online-forms",
+    title: "如何为在线表单准备 iPhone 照片",
+    seoTitle: "如何为在线表单准备 iPhone 照片",
+    description:
+      "在 iPhone 批量调整照片尺寸、格式和文件名，为在线表单准备副本，同时保留原件控制权。",
+    intent: "iPhone 在线表单照片准备",
+    content: pageContent(
+      "当学校、保险、二手平台或申请页面要求较小的 JPG 文件时，可以用 Batchora 在一个流程中准备整批照片副本，而不替换原件。",
+      heading("实用的在线上传流程"),
+      steps([
+        "先确认页面接受的格式、尺寸和文件大小限制。",
+        "在 Batchora 中选择需要上传的照片。",
+        "选择 JPEG，并只按接收方要求调整尺寸。",
+        "建立清楚的文件名，方便识别每份材料或图片。",
+        "提交不需要定位信息时，移除照片副本中的位置元数据。",
+        "按页面要求导出单独文件，或在支持时打包为一个 ZIP。"
+      ]),
+      heading("上传前再次检查"),
+      paragraph(
+        "打开导出的副本，确认文字仍然清晰、方向正确，并且所需图片没有遗漏。不同页面的上传规则不同，Batchora 无法保证同一个预设适合所有网站。"
+      ),
+      featureCta
+    )
+  }),
+  article({
+    key: "guide-event-photos",
+    slug: "organize-event-photos",
+    title: "分享前如何整理一批活动照片",
+    seoTitle: "分享前如何整理一批活动照片",
+    description:
+      "统一活动照片文件名、尺寸和隐私设置，并按需整理成一个便于分享的 ZIP。",
+    intent: "分享前整理活动照片",
+    content: pageContent(
+      "旅行、学校活动、聚会或家庭相册结束后，可以用 Batchora 把相册中的混合选择整理成命名一致、方便分享的副本，同时保持原件不变。",
+      heading("完成一次清楚的交付"),
+      steps([
+        "只选择真正准备发送给对方的照片。",
+        "根据聊天、邮件或网盘分享选择合适的尺寸和画质。",
+        "用活动名称和序号建立统一文件名。",
+        "检查整批文件名预览和顺序。",
+        "需要时移除定位或其他非必要元数据。",
+        "单独导出副本，或把它们整理进一个 ZIP。"
+      ]),
+      heading("隐私仍需要看图检查"),
+      paragraph(
+        "元数据控制不会遮挡照片中可见的人脸、工牌、屏幕、地址或其他细节。分享前请检查真实画面，必要时先使用合适的编辑工具处理。"
+      ),
+      featureCta
+    )
+  }),
   page({
     key: "tucklet-home",
     slug: "tucklet",
@@ -766,11 +837,129 @@ export const chineseEntries = [
       `<!-- wp:bluemorrow/tucklet-workflow /-->`,
       `<!-- wp:bluemorrow/tucklet-screenshot-gallery /-->`,
       `<!-- wp:bluemorrow/tucklet-trust-panel /-->`,
+      section(
+        "适合那些不该永久留下的信息",
+        bullets([
+          '<a href="/zh-hans/apps/tucklet/use-cases/pickup-codes/">把取件码留到完成领取</a>',
+          '<a href="/zh-hans/apps/tucklet/use-cases/temporary-addresses/">为一次任务保存临时地址</a>',
+          '<a href="/zh-hans/apps/tucklet/use-cases/confidential-details/">保护短期私密详情</a>'
+        ])
+      ),
       cta(
         "临时信息，也值得被认真对待。",
-        "Tucklet 即将在 App Store 推出。"
+        "在 iPhone 下载 Tucklet，让短期信息只保留到你选择的到期时间。"
       )
     ].join("\n")
+  }),
+  page({
+    key: "tucklet-use-cases",
+    slug: "use-cases",
+    parent: "tucklet-home",
+    appKey: "tucklet",
+    title: "Tucklet 使用场景",
+    seoTitle: "Tucklet 临时信息使用场景",
+    description:
+      "了解如何用 Tucklet 暂存取件码、临时地址、联系方式和私密详情，只留到真正不再需要。",
+    intent: "临时信息 App 使用场景",
+    content: pageContent(
+      "当一条信息只与某个任务或几天时间有关、不适合永久留在备忘录里时，Tucklet 可以派上用场。以下场景展示到期、提醒、识别操作和私密模式如何配合真实任务。",
+      section(
+        "选择一个场景",
+        bullets([
+          '<a href="/zh-hans/apps/tucklet/use-cases/pickup-codes/">取件码和领取编号</a>',
+          '<a href="/zh-hans/apps/tucklet/use-cases/temporary-addresses/">临时地址和联系方式</a>',
+          '<a href="/zh-hans/apps/tucklet/use-cases/confidential-details/">短期私密详情</a>'
+        ])
+      ),
+      cta(
+        "给临时信息一个有意为之的位置。",
+        "在 iPhone 下载 Tucklet，并在保存详情时选择到期时间。"
+      )
+    )
+  }),
+  tuckletArticle({
+    key: "tucklet-use-case-pickup",
+    slug: "pickup-codes",
+    title: "把取件码留到完成领取",
+    seoTitle: "如何在 iPhone 临时保存取件码",
+    description:
+      "为快递柜、订单或门店取件码设置到期和提醒，领取时快速复制，任务完成后不再长期保留。",
+    intent: "iPhone 临时保存取件码",
+    content: pageContent(
+      "快递柜密码或领取编号通常只在完成取件前有用。Tucklet 可以把它放进一个专注的本地详情，在到期前提醒你，并在你选择的时间之后移除。",
+      heading("简单的取件码流程"),
+      steps([
+        "复制包含取件码的消息。",
+        "主动选择 Tucklet 的粘贴操作并确认内容。",
+        "把到期时间设在预计领取时间之后。",
+        "如果取件有截止时间，开启到期提醒。",
+        "到达时打开详情并复制识别出的代码。"
+      ]),
+      heading("重要物品仍应保留来源"),
+      paragraph(
+        "通知是否送达会受到 iPhone 设置影响，到期详情也会按设计被移除。如果物品贵重或难以补办，请同时保留原始消息作为备用。"
+      ),
+      cta(
+        "留下取件码，不留下长期杂乱。",
+        "在 iPhone 下载 Tucklet，保存会到期的领取信息。"
+      )
+    )
+  }),
+  tuckletArticle({
+    key: "tucklet-use-case-address",
+    slug: "temporary-addresses",
+    title: "为一次任务保存临时地址",
+    seoTitle: "为一次任务保存临时地址",
+    description:
+      "把一次访问所需的地址、电话或邮箱暂时放在一起，任务完成后让详情按时到期。",
+    intent: "iPhone 临时保存地址",
+    content: pageContent(
+      "维修上门、短租入住、二手交易或一次预约，常常会带来只需短期使用的地址和联系方式。Tucklet 可以把它们集中在一起，而不必变成一条永久备忘录。",
+      heading("使用可用的识别操作"),
+      steps([
+        "把消息或详情主动粘贴到 Tucklet。",
+        "把到期时间设在访问或任务预计完成之后。",
+        "从已保存详情使用可用的地址、电话或邮箱操作。",
+        "如果错过任务会造成影响，开启到期提醒。",
+        "让详情到期，或在任务提前完成时主动移除。"
+      ]),
+      heading("操作前核对来源"),
+      paragraph(
+        "识别操作只提供便利，不代表内容已经验证。导航、拨号或发邮件前，请与原始来源核对地址、收件人和联系方式。"
+      ),
+      cta(
+        "别让一次性的安排永久占据备忘录。",
+        "在 iPhone 下载 Tucklet，并决定每条详情何时到期。"
+      )
+    )
+  }),
+  tuckletArticle({
+    key: "tucklet-use-case-confidential",
+    slug: "confidential-details",
+    title: "保护一条短期私密详情",
+    seoTitle: "保护一条短期私密详情",
+    description:
+      "让临时访问详情需要设备认证后才显示，并选择 Tucklet 从本地存储中移除它的时间。",
+    intent: "iPhone 临时私密信息",
+    content: pageContent(
+      "有些信息既短期有效，又不适合直接显示，例如临时访问详情或预约 PIN。Tucklet 可以把它标为私密，只有通过设备认证后才显示受保护内容。",
+      heading("同时设置保护和到期"),
+      steps([
+        "主动把短期详情粘贴到 Tucklet。",
+        "保存前将其标记为私密。",
+        "把到期时间设在信息停止使用之后不久。",
+        "需要查看时，通过面容 ID、触控 ID 或设备密码认证。",
+        "如果任务提前完成，可以主动提前移除。"
+      ]),
+      heading("不能替代密码管理器"),
+      paragraph(
+        "Tucklet 面向临时详情，不适合永久密码、恢复密钥，或无法补办信息的唯一副本。长期秘密应使用合适的密码管理器或安全记录系统。"
+      ),
+      cta(
+        "需要时保护，不需要时放下。",
+        "在 iPhone 下载 Tucklet，为私密详情设定清楚的到期时间。"
+      )
+    )
   }),
   page({
     key: "tucklet-faq",
@@ -817,7 +1006,7 @@ export const chineseEntries = [
       ]),
       cta(
         "给临时信息一个更安静的位置。",
-        "Tucklet 即将在 App Store 推出。"
+        "在 iPhone 下载 Tucklet，让临时信息只留到真正需要为止。"
       )
     )
   }),
@@ -949,7 +1138,7 @@ export const chineseEntries = [
       ),
       cta(
         "需要时留住，不需要时放下。",
-        "Tucklet 即将在 App Store 推出。"
+        "在 iPhone 下载 Tucklet。"
       )
     )
   })

@@ -17,6 +17,10 @@ const tuckletOutputPath = path.join(
   releaseDirectory,
   `tucklet-content-${version}.xml`
 );
+const storeLaunchOutputPath = path.join(
+  releaseDirectory,
+  `store-launch-content-${version}.xml`
+);
 
 const xml = (value) =>
   String(value)
@@ -31,9 +35,28 @@ const cdata = (value) => String(value).replaceAll("]]>", "]]]]><![CDATA[>");
 const now = "2026-09-10 00:00:00";
 const allEntries = [...englishEntries, ...chineseEntries];
 const tuckletEntries = allEntries.filter((entry) => entry.appKey === "tucklet");
+const storeLaunchKeys = new Set([
+  "studio-home",
+  "apps",
+  "batchora-home",
+  "guides",
+  "guide-online-forms",
+  "guide-event-photos",
+  "tucklet-home",
+  "tucklet-use-cases",
+  "tucklet-use-case-pickup",
+  "tucklet-use-case-address",
+  "tucklet-use-case-confidential"
+]);
+const storeLaunchEntries = allEntries.filter((entry) =>
+  storeLaunchKeys.has(entry.key)
+);
 
-if (tuckletEntries.length !== 12) {
-  throw new Error("Expected 12 localized Tucklet pages");
+if (tuckletEntries.length !== 20) {
+  throw new Error("Expected 20 localized Tucklet pages");
+}
+if (storeLaunchEntries.length !== 22) {
+  throw new Error("Expected 22 store-launch update entries");
 }
 
 const documentFor = (entries, description) => {
@@ -146,5 +169,14 @@ await writeFile(
   ),
   "utf8"
 );
+await writeFile(
+  storeLaunchOutputPath,
+  documentFor(
+    storeLaunchEntries,
+    "App Store links and use-case article update for BlueMorrow Studio"
+  ),
+  "utf8"
+);
 console.log(`Created ${outputPath}`);
 console.log(`Created ${tuckletOutputPath}`);
+console.log(`Created ${storeLaunchOutputPath}`);

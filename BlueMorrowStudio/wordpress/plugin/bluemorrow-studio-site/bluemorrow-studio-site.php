@@ -2,7 +2,7 @@
 /**
  * Plugin Name: BlueMorrow Studio Site
  * Description: Product metadata and discovery behavior for the BlueMorrow Studio website.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Requires at least: 6.8
  * Requires PHP: 7.4
  * Author: BlueMorrow Studio
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'BLUEMORROW_SITE_VERSION', '1.0.1' );
+define( 'BLUEMORROW_SITE_VERSION', '1.0.2' );
 define( 'BLUEMORROW_SITE_PATH', plugin_dir_path( __FILE__ ) );
 
 require_once BLUEMORROW_SITE_PATH . 'includes/apps.php';
@@ -25,6 +25,7 @@ require_once BLUEMORROW_SITE_PATH . 'includes/media.php';
 require_once BLUEMORROW_SITE_PATH . 'includes/studio.php';
 require_once BLUEMORROW_SITE_PATH . 'includes/tucklet.php';
 require_once BLUEMORROW_SITE_PATH . 'includes/settings.php';
+require_once BLUEMORROW_SITE_PATH . 'includes/upgrades.php';
 
 function bluemorrow_site_register_meta() {
 	$fields = array(

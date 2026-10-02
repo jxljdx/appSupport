@@ -141,20 +141,20 @@ function bluemorrow_studio_apps_block() {
 	);
 	$tucklet_labels = $is_chinese
 		? array(
-			'eyebrow' => '即将推出',
+			'eyebrow' => '现已推出',
 			'heading' => '认识 Tucklet',
 			'lede' => '为短时间有用的信息准备：主动粘贴、设置到期、随手使用，到期后放下。',
 			'open' => '了解 Tucklet',
-			'status' => '即将推出',
+			'store' => '前往 App Store',
 			'alt' => 'Tucklet 临时信息到期删除界面',
 			'features' => array( '临时信息', '到期删除', '本地加密' ),
 		)
 		: array(
-			'eyebrow' => 'Coming soon',
+			'eyebrow' => 'Available now',
 			'heading' => 'Meet Tucklet',
 			'lede' => 'For details that matter briefly: paste with intent, set an expiry, use the detail, then let it go.',
 			'open' => 'Explore Tucklet',
-			'status' => 'Coming soon',
+			'store' => 'View on the App Store',
 			'alt' => 'Tucklet temporary information expiry screen',
 			'features' => array( 'Temporary details', 'Expiry removal', 'Encrypted locally' ),
 		);
@@ -166,7 +166,7 @@ function bluemorrow_studio_apps_block() {
 		array( 'sizes' => '(max-width: 800px) 68vw, 22rem' )
 	);
 	$tucklet_card = sprintf(
-		'<section class="bluemorrow-app-showcase alignwide"><div class="bluemorrow-app-showcase__heading"><p class="tucklet-eyebrow">%1$s</p><h2>%2$s</h2><p>%3$s</p></div><article class="bluemorrow-app-card bluemorrow-app-card--tucklet"><div class="bluemorrow-app-card__copy"><div class="bluemorrow-app-card__identity">%4$s<div><strong>Tucklet</strong><span>%5$s</span></div></div><div class="bluemorrow-app-card__features"><span>%6$s</span><span>%7$s</span><span>%8$s</span></div><div class="batchora-actions"><a class="batchora-button batchora-button--coming-soon" href="%9$s">%10$s</a><span class="tucklet-availability" role="status">%11$s</span></div></div><div class="bluemorrow-app-card__visual"><div class="bluemorrow-app-card__glow tucklet-app-card__glow" aria-hidden="true"></div>%12$s</div></article></section>',
+		'<section class="bluemorrow-app-showcase alignwide"><div class="bluemorrow-app-showcase__heading"><p class="tucklet-eyebrow">%1$s</p><h2>%2$s</h2><p>%3$s</p></div><article class="bluemorrow-app-card bluemorrow-app-card--tucklet"><div class="bluemorrow-app-card__copy"><div class="bluemorrow-app-card__identity">%4$s<div><strong>Tucklet</strong><span>%5$s</span></div></div><div class="bluemorrow-app-card__features"><span>%6$s</span><span>%7$s</span><span>%8$s</span></div><div class="batchora-actions"><a class="batchora-button" href="%9$s">%10$s</a><a class="batchora-text-link" href="%11$s" rel="noopener">%12$s</a></div></div><div class="bluemorrow-app-card__visual"><div class="bluemorrow-app-card__glow tucklet-app-card__glow" aria-hidden="true"></div>%13$s</div></article></section>',
 		esc_html( $tucklet_labels['eyebrow'] ),
 		esc_html( $tucklet_labels['heading'] ),
 		esc_html( $tucklet_labels['lede'] ),
@@ -177,7 +177,8 @@ function bluemorrow_studio_apps_block() {
 		esc_html( $tucklet_labels['features'][2] ),
 		esc_url( batchora_page_url( 'tucklet-home' ) ),
 		esc_html( $tucklet_labels['open'] ),
-		esc_html( $tucklet_labels['status'] ),
+		esc_url( bluemorrow_app_store_url( 'tucklet' ) ),
+		esc_html( $tucklet_labels['store'] ),
 		$tucklet_screen
 	);
 

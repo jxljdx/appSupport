@@ -41,6 +41,16 @@ const post = (entry) => ({
   ...entry
 });
 
+const tuckletArticle = (entry) => ({
+  locale: "en-US",
+  type: "page",
+  parent: "tucklet-use-cases",
+  scope: "app",
+  appKey: "tucklet",
+  status: "draft",
+  ...entry
+});
+
 const featureCta = cta(
   "Process the batch with Batchora",
   "Download Batchora on iPhone to compress, rename, resize, convert, and export successful copies."
@@ -54,13 +64,13 @@ export const englishEntries = [
     title: "BlueMorrow Studio",
     seoTitle: "BlueMorrow Studio | Thoughtful Apps for Everyday Tasks",
     description:
-      "BlueMorrow Studio makes clear, privacy-conscious apps for everyday tasks. Explore Batchora for photo and video batch processing on iPhone.",
+      "BlueMorrow Studio makes privacy-conscious iPhone tools. Explore Batchora for media batches and Tucklet for expiring temporary details.",
     intent: "BlueMorrow Studio apps",
     template: "front-page",
     content: [
       `<!-- wp:bluemorrow/studio-home-hero /-->`,
       answer(
-        "BlueMorrow Studio creates simple tools with careful design, clear controls, and privacy considered from the start. Its first app, Batchora, processes photos and videos in batches on iPhone."
+        "BlueMorrow Studio creates simple iPhone tools with careful design, clear controls, and privacy considered from the start. Batchora handles photo and video batches, while Tucklet keeps temporary details only while they matter."
       ),
       `<!-- wp:bluemorrow/studio-apps /-->`,
       `<!-- wp:bluemorrow/studio-principles /-->`
@@ -72,12 +82,12 @@ export const englishEntries = [
     title: "Apps",
     seoTitle: "Apps from BlueMorrow Studio",
     description:
-      "Explore apps from BlueMorrow Studio, starting with Batchora for private photo and video batch processing on iPhone.",
+      "Explore Batchora for private media batch processing and Tucklet for temporary details that expire on iPhone.",
     intent: "BlueMorrow Studio apps",
     content: [
       `<!-- wp:bluemorrow/studio-page-hero /-->`,
       answer(
-        "BlueMorrow Studio currently offers Batchora, an iPhone app for compressing, renaming, resizing, converting, and exporting photos and videos in batches."
+        "BlueMorrow Studio offers Batchora for compressing, renaming, resizing, converting, and exporting media in batches, plus Tucklet for useful details that should expire."
       ),
       `<!-- wp:bluemorrow/studio-apps /-->`
     ].join("\n")
@@ -177,6 +187,13 @@ export const englishEntries = [
       `<!-- wp:bluemorrow/batchora-feature-explorer /-->`,
       `<!-- wp:bluemorrow/batchora-product-media /-->`,
       `<!-- wp:bluemorrow/batchora-trust-panel /-->`,
+      section(
+        "See Batchora in everyday workflows",
+        bullets([
+          '<a href="/en/apps/batchora/guides/prepare-photos-online-forms-iphone/">Prepare a photo batch for online forms</a>',
+          '<a href="/en/apps/batchora/guides/organize-event-photos-before-sharing/">Organize event photos before sharing</a>'
+        ])
+      ),
       `<!-- wp:pattern {"slug":"bluemorrow/faq"} /-->`,
       featureCta
     ].join("\n")
@@ -493,10 +510,12 @@ export const englishEntries = [
       section(
         "Start with a common task",
         bullets([
-          '<a href="/en/guides/how-to-compress-photos-on-iphone/">How to compress photos without replacing originals</a>',
-          '<a href="/en/guides/how-to-reduce-video-file-size-iphone/">How to reduce video file size before sharing</a>',
-          '<a href="/en/guides/how-to-convert-heic-to-jpg-iphone/">How to convert HEIC to JPG on iPhone</a>',
-          '<a href="/en/guides/how-to-remove-location-from-photo-iphone/">How to remove location metadata from a photo copy</a>'
+          '<a href="/en/apps/batchora/guides/how-to-compress-photos-on-iphone/">How to compress photos without replacing originals</a>',
+          '<a href="/en/apps/batchora/guides/how-to-reduce-video-file-size-iphone/">How to reduce video file size before sharing</a>',
+          '<a href="/en/apps/batchora/guides/how-to-convert-heic-to-jpg-iphone/">How to convert HEIC to JPG on iPhone</a>',
+          '<a href="/en/apps/batchora/guides/how-to-remove-location-from-photo-iphone/">How to remove location metadata from a photo copy</a>',
+          '<a href="/en/apps/batchora/guides/prepare-photos-online-forms-iphone/">Prepare photos for online forms and portals</a>',
+          '<a href="/en/apps/batchora/guides/organize-event-photos-before-sharing/">Organize an event photo batch before sharing</a>'
         ])
       )
     )
@@ -737,6 +756,58 @@ export const englishEntries = [
       featureCta
     )
   }),
+  post({
+    key: "guide-online-forms",
+    slug: "prepare-photos-online-forms-iphone",
+    title: "How to Prepare iPhone Photos for Online Forms",
+    seoTitle: "How to Prepare iPhone Photos for Online Forms",
+    description:
+      "Resize, convert, rename, and package iPhone photo copies for online forms while keeping originals under your control.",
+    intent: "prepare iPhone photos for online forms",
+    content: pageContent(
+      "When a school, insurer, marketplace, or application portal asks for smaller JPG files, Batchora can prepare a whole photo selection in one repeatable workflow without replacing the originals.",
+      heading("A practical online-form workflow"),
+      steps([
+        "Check the portal’s accepted format, dimensions, and file-size limit.",
+        "Select the required photos in Batchora.",
+        "Choose JPEG output and resize only as far as the destination requires.",
+        "Build clear filenames so each document or image is easy to identify.",
+        "Remove location metadata when it is unnecessary for the submission.",
+        "Export individual copies or one ZIP if the portal accepts archives."
+      ]),
+      heading("Check before you upload"),
+      paragraph(
+        "Open the exported copies and confirm text remains readable, orientation is correct, and every required image is present. Batchora cannot guarantee that one preset will satisfy every portal because upload rules differ."
+      ),
+      featureCta
+    )
+  }),
+  post({
+    key: "guide-event-photos",
+    slug: "organize-event-photos-before-sharing",
+    title: "How to Organize Event Photos Before Sharing",
+    seoTitle: "How to Organize Event Photos Before Sharing",
+    description:
+      "Prepare an event photo batch with consistent names, practical dimensions, privacy checks, and a clean ZIP for sharing.",
+    intent: "organize event photos before sharing",
+    content: pageContent(
+      "After a trip, school event, meetup, or family gathering, Batchora can turn a mixed camera-roll selection into consistently named, share-ready copies while leaving the originals untouched.",
+      heading("Build one clean handoff"),
+      steps([
+        "Select only the photos intended for the recipient.",
+        "Choose dimensions and quality suited to messaging, email, or cloud sharing.",
+        "Create a filename pattern with an event name and sequence number.",
+        "Review the filename preview and the order of the batch.",
+        "Remove location or other nonessential metadata when appropriate.",
+        "Export the copies individually or package them into one ZIP."
+      ]),
+      heading("Privacy still needs a visual check"),
+      paragraph(
+        "Metadata controls do not hide faces, badges, screens, addresses, or other details visible in the image. Review the actual pictures and edit visible information before sharing when needed."
+      ),
+      featureCta
+    )
+  }),
   page({
     key: "tucklet-home",
     slug: "tucklet",
@@ -755,11 +826,129 @@ export const englishEntries = [
       `<!-- wp:bluemorrow/tucklet-workflow /-->`,
       `<!-- wp:bluemorrow/tucklet-screenshot-gallery /-->`,
       `<!-- wp:bluemorrow/tucklet-trust-panel /-->`,
+      section(
+        "Useful for details that should not live forever",
+        bullets([
+          '<a href="/en/apps/tucklet/use-cases/pickup-codes/">Keep a pickup code until collection</a>',
+          '<a href="/en/apps/tucklet/use-cases/temporary-addresses/">Save a temporary address for one task</a>',
+          '<a href="/en/apps/tucklet/use-cases/confidential-details/">Protect a short-lived confidential detail</a>'
+        ])
+      ),
       cta(
         "Temporary information, handled with intention.",
-        "Tucklet is coming soon to the App Store."
+        "Download Tucklet on iPhone to keep short-lived details useful until their chosen expiry."
       )
     ].join("\n")
+  }),
+  page({
+    key: "tucklet-use-cases",
+    slug: "use-cases",
+    parent: "tucklet-home",
+    appKey: "tucklet",
+    title: "Tucklet Use Cases",
+    seoTitle: "Tucklet Use Cases for Temporary Information",
+    description:
+      "See how Tucklet can hold pickup codes, temporary addresses, contact details, and confidential notes only while they matter.",
+    intent: "temporary information app use cases",
+    content: pageContent(
+      "Tucklet is useful when information matters for a task or a few days but does not belong in permanent notes. These examples show how expiry, reminders, detected actions, and confidential mode fit real situations.",
+      section(
+        "Choose a situation",
+        bullets([
+          '<a href="/en/apps/tucklet/use-cases/pickup-codes/">Pickup and collection codes</a>',
+          '<a href="/en/apps/tucklet/use-cases/temporary-addresses/">Temporary addresses and contact details</a>',
+          '<a href="/en/apps/tucklet/use-cases/confidential-details/">Short-lived confidential details</a>'
+        ])
+      ),
+      cta(
+        "Give temporary details a deliberate place.",
+        "Download Tucklet on iPhone and set an expiry when you save a detail."
+      )
+    )
+  }),
+  tuckletArticle({
+    key: "tucklet-use-case-pickup",
+    slug: "pickup-codes",
+    title: "Keep Pickup Codes Handy Until Collection",
+    seoTitle: "Keep Pickup Codes Handy Until Collection",
+    description:
+      "Save a parcel, locker, or order pickup code with an expiry and reminder, then copy it quickly when collection time arrives.",
+    intent: "save pickup code on iPhone",
+    content: pageContent(
+      "A parcel locker code or collection number matters until the item is picked up. Tucklet keeps it in a focused local detail, can remind you before expiry, and removes it after the time you choose.",
+      heading("A simple pickup-code flow"),
+      steps([
+        "Copy the message containing the pickup code.",
+        "Choose Tucklet’s paste action and confirm the captured detail.",
+        "Set an expiry after the expected collection window.",
+        "Turn on a reminder if the pickup has a deadline.",
+        "Open the detail and copy the detected code when you arrive."
+      ]),
+      heading("Keep a fallback for important collections"),
+      paragraph(
+        "Notification delivery depends on iPhone settings, and an expired detail is intentionally removed. Keep the original message when a collection is valuable or difficult to replace."
+      ),
+      cta(
+        "Keep the code, not the clutter.",
+        "Download Tucklet on iPhone for pickup details that should expire."
+      )
+    )
+  }),
+  tuckletArticle({
+    key: "tucklet-use-case-address",
+    slug: "temporary-addresses",
+    title: "Save a Temporary Address for One Task",
+    seoTitle: "Save a Temporary Address for One Task",
+    description:
+      "Keep a temporary address, phone number, or email available for a visit or errand, then let it expire after the task.",
+    intent: "save temporary address on iPhone",
+    content: pageContent(
+      "A repair visit, rental check-in, marketplace pickup, or one-time appointment may come with an address and contact details you need briefly. Tucklet keeps the information together without turning it into a permanent note.",
+      heading("Use detected details when available"),
+      steps([
+        "Paste the message or details into Tucklet.",
+        "Choose an expiry after the visit or task should be complete.",
+        "Use an available address, phone, or email action from the saved detail.",
+        "Add an expiry reminder when missing the task would matter.",
+        "Let the detail expire or remove it early when the task is done."
+      ]),
+      heading("Confirm before acting"),
+      paragraph(
+        "Detected actions are conveniences, not verification. Check the address, recipient, and contact information against the source before navigating, calling, or sending a message."
+      ),
+      cta(
+        "Keep one-time logistics out of permanent notes.",
+        "Download Tucklet on iPhone and choose when each detail should expire."
+      )
+    )
+  }),
+  tuckletArticle({
+    key: "tucklet-use-case-confidential",
+    slug: "confidential-details",
+    title: "Protect a Short-Lived Confidential Detail",
+    seoTitle: "Protect a Short-Lived Confidential Detail",
+    description:
+      "Place a temporary access detail behind device authentication and choose when Tucklet should remove it from local storage.",
+    intent: "temporary confidential note iPhone",
+    content: pageContent(
+      "Some information is both temporary and sensitive, such as a short-lived access detail or reservation PIN. Tucklet can mark the detail confidential so device authentication is required before its protected content is shown.",
+      heading("Add protection and an expiry"),
+      steps([
+        "Paste the short-lived detail into Tucklet deliberately.",
+        "Mark it confidential before saving.",
+        "Choose an expiry shortly after the information stops being useful.",
+        "Authenticate with Face ID, Touch ID, or the device passcode when you need to reveal it.",
+        "Remove it early when the task finishes sooner than expected."
+      ]),
+      heading("Not a replacement for a password manager"),
+      paragraph(
+        "Tucklet is designed for temporary details, not permanent credentials, recovery keys, or the only copy of information you cannot replace. Use an appropriate password manager or secure record system for long-term secrets."
+      ),
+      cta(
+        "Protect it while it matters. Let it go afterward.",
+        "Download Tucklet on iPhone for confidential details with a clear expiry."
+      )
+    )
   }),
   page({
     key: "tucklet-faq",
@@ -807,7 +996,7 @@ export const englishEntries = [
       ]),
       cta(
         "A quieter place for temporary details.",
-        "Tucklet is coming soon to the App Store."
+        "Download Tucklet on iPhone and keep temporary details only while they matter."
       )
     )
   }),
@@ -939,7 +1128,7 @@ export const englishEntries = [
       ),
       cta(
         "Keep it while it helps.",
-        "Tucklet is coming soon to the App Store."
+        "Download Tucklet on iPhone."
       )
     )
   })

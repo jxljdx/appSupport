@@ -5,23 +5,23 @@
 - Purchase or connect the final independent domain.
 - Activate a paid WordPress.com plan that supports custom theme and plugin uploads.
 - Keep the existing GitHub Pages support and privacy URLs unchanged until the new site passes production checks.
-- Download `bluemorrow-studio-wordpress-release-1.0.1.zip` and verify the files against `SHA256SUMS`.
+- Download `bluemorrow-studio-wordpress-release-1.0.2.zip` and verify the files against `SHA256SUMS`.
 
 ## Install the release
 
 1. Connect the final domain and set it as the WordPress.com primary address.
 2. Keep search-engine indexing disabled while importing and checking the site. Do not share the temporary WordPress.com address.
-3. Upload and activate `bluemorrow-studio-site-1.0.1.zip`.
-4. Upload and activate `bluemorrow-studio-theme-1.0.1.zip`.
+3. Upload and activate `bluemorrow-studio-site-1.0.2.zip`.
+4. Upload and activate `bluemorrow-studio-theme-1.0.2.zip`.
 5. For a fresh site, use **Tools → Import → WordPress** to import
-   `bluemorrow-studio-content-1.0.1.xml`. For the existing
-   `bluemorrowstudio.com` site, import only `tucklet-content-1.0.1.xml` to
-   avoid duplicating its Batchora and Studio pages.
-6. When using `tucklet-content-1.0.1.xml`, assign **Tucklet for iPhone** to
-   the existing English **Apps** page and **Tucklet iPhone 版** to the existing
-   Simplified Chinese **App** page. The ten imported child pages remain under
-   their corresponding Tucklet page. Publish the 12 Tucklet pages after
-   verifying those parent relationships.
+   `bluemorrow-studio-content-1.0.2.xml`. For the existing
+   `bluemorrowstudio.com` site, import
+   `store-launch-content-1.0.2.xml`; existing parent records should be skipped
+   while the 12 new bilingual use-case pages are added.
+6. On the existing site, confirm the plugin upgrade changed both Studio pages
+   to mention Batchora and Tucklet, and removed Tucklet's prelaunch copy.
+   Publish the new pages after checking that Batchora articles are under
+   **Guides** and Tucklet articles are under **Use Cases / 使用场景**.
 7. Set permalinks to **Post name**.
 8. Leave **Your homepage displays** set to **Your latest posts**. The site plugin redirects `/` to `/en/`; assigning the English page as a static homepage would remove its `/en/` URL.
 9. Upload `site-icon-512.png` from the media package as the Site Icon. Keep
@@ -47,8 +47,9 @@
 - Every page has one canonical URL and `en-US`, `zh-Hans`, and `x-default` alternates.
 - `/robots.txt`, `/wp-sitemap.xml`, and `/llms.txt` return HTTP 200.
 - Batchora App Store buttons open App Store ID `6810283756`.
-- Tucklet displays “Coming soon / 即将推出” without a download link until its
-  public App Store URL is configured.
+- Tucklet App Store buttons open App Store ID `6812370360`.
+- Both product home pages emit the matching
+  `MobileApplication.downloadUrl` structured-data property.
 - The Batchora App Preview is not requested until the visitor activates its
   play button. Tucklet has no App Preview in this release.
 - English pages show English screenshots; Simplified Chinese pages show
@@ -65,11 +66,10 @@
 4. Update App Store Connect Support and Privacy Policy URLs to the final domain.
 5. Update the old GitHub Pages support pages only after the new URLs are stable.
 
-## When Tucklet is published
+## Store-launch content update
 
-1. Add its verified public App Store URL to Tucklet's `app_store_url` product
-   configuration in the site plugin.
-2. Rebuild the media/content package and re-run the static and WordPress
-   Playground validation.
-3. Verify both localized Tucklet pages render an App Store link and emit the
-   matching `MobileApplication.downloadUrl` structured-data property.
+1. Confirm the six new English pages and six new Simplified Chinese pages are
+   published.
+2. Open every use-case link from the Batchora and Tucklet product pages.
+3. Confirm each article emits `Article` structured data and links to the
+   correct App Store product.

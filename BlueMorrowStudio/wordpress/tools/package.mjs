@@ -60,7 +60,8 @@ const artifactNames = [
   `bluemorrow-studio-site-${version}.zip`,
   `bluemorrow-studio-media-${version}.zip`,
   `bluemorrow-studio-content-${version}.xml`,
-  `tucklet-content-${version}.xml`
+  `tucklet-content-${version}.xml`,
+  `store-launch-content-${version}.xml`
 ];
 const checksumLines = [];
 for (const artifactName of artifactNames) {
